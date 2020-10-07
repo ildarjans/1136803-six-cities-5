@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="footer container">
       <a className="footer__logo-link" href="main.html">
@@ -16,5 +15,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

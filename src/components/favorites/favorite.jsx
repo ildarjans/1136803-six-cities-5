@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "../header/header";
-import Footer from "../footer/footer";
+import {Header} from "../header/header";
+import {Footer} from "../footer/footer";
 
-const Favorites = () => {
+export const Favorites = () => {
   return (
     <div className="page">
 
@@ -160,5 +160,3 @@ const Favorites = () => {
     </div>
   );
 };
-
-export default Favorites;

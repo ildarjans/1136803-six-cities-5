@@ -1,13 +1,12 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import PropTypes from "prop-types";
-import MainPage from '../main-page/main-page';
-import Login from "../login/login";
-import Favorites from "../favorites/favorite";
-import Offer from "../offer/offer";
+import {MainPage} from '../main-page/main-page';
+import {Login} from "../login/login";
+import {Favorites} from "../favorites/favorite";
+import {Offer} from "../offer/offer";
 
-const App = (props) => {
-  const {offersCount} = props;
+export const App = ({offersCount}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -40,5 +39,3 @@ const App = (props) => {
 App.propTypes = {
   offersCount: PropTypes.number.isRequired
 };
-
-export default App;

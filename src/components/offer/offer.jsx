@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../header/header";
+import {Header} from "../header/header";
 
-const Offer = () => {
+export const Offer = () => {
   return (
     <div className="page">
       <Header/>
@@ -321,5 +321,3 @@ const Offer = () => {
     </div>
   );
 };
-
-export default Offer;

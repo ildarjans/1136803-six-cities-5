@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../header/header";
+import {Header} from "../header/header";
 
-const Login = () => {
+export const Login = () => {
 
   return (
     <div className="page page--gray page--login">
@@ -48,5 +48,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;
