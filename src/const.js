@@ -1,3 +1,3 @@
-export const DisplaySettings = {
+export const Settings = {
   OFFERS_COUNT: 969
 };
