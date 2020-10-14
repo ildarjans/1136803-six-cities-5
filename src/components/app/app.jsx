@@ -1,35 +1,43 @@
-import React, {Fragment} from 'react';
-import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
+import React from "react";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
 import PropTypes from "prop-types";
-import {MainPage} from '../main-page/main-page';
-import {Login} from "../login/login";
-import {Favorites} from "../favorites/favorite";
-import {Offer} from "../offer/offer";
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {MainPage} from "../main-page/main-page";
+import {LoginPage} from "../login-page/login-page";
+import {FavoritesPage} from "../favorites-page/favorites-page";
+import {Property} from "../property/property";
+import {UnFoundPage} from "../unfound-page/unfound-page";
 
-export const App = ({offersCount}) => {
+export const App = ({offersCount, offers, reviews}) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/'>
-          <MainPage offersCount={offersCount}/>
+
+        <Route exact path="/">
+          <MainPage offersCount={offersCount} offers={offers}/>
         </Route>
-        <Route exact path='/login'>
-          <Login/>
+
+        <Route exact path="/login">
+          <LoginPage/>
         </Route>
-        <Route exact path='/favorites'>
-          <Favorites/>
+
+        <Route exact path="/favorites">
+          <FavoritesPage/>
         </Route>
-        <Route exact path='/offer/:id'>
-          <Offer/>
-        </Route>
-        <Route render={() => (
-          <Fragment>
-            <h1>Page not Found</h1>
-            <br/>
-            <Link to='/'>Go to main page</Link>
-          </Fragment>
-        )}
+
+        <Route
+          exact path="/offer/:id"
+          render={(props) => (
+            <Property {...props} reviews={reviews} offers={offers}/>
+          )}
         />
+
+        <Route component={UnFoundPage}/>
+
       </Switch>
     </BrowserRouter>
   );
@@ -37,5 +45,7 @@ export const App = ({offersCount}) => {
 
 
 App.propTypes = {
-  offersCount: PropTypes.number.isRequired
+  offersCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes),
+  reviews: PropTypes.array.isRequired,
 };
