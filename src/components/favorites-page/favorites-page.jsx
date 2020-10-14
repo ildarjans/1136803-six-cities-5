@@ -2,7 +2,7 @@ import React from 'react';
 import {Header} from "../header/header";
 import {Footer} from "../footer/footer";
 
-export const Favorites = () => {
+export const FavoritesPage = () => {
   return (
     <div className="page">
 
