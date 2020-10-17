@@ -1,5 +1,5 @@
 import React from "react";
-import {RatingTitle} from "../../const";
+import {RatingTitle, Settings} from "../../const";
 
 export class PropertyReviewsForm extends React.PureComponent {
   constructor(props) {
@@ -12,11 +12,11 @@ export class PropertyReviewsForm extends React.PureComponent {
     };
 
     this._formRef = React.createRef();
-    this._changeFormHandler = this._changeFormHandler.bind(this);
-    this._submitHandler = this._submitHandler.bind(this);
+    this._handleFormChange = this._handleFormChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-  _changeFormHandler(evt) {
+  _handleFormChange(evt) {
     this.setState(Object.assign(
         (prevState) => prevState,
         {
@@ -25,7 +25,7 @@ export class PropertyReviewsForm extends React.PureComponent {
     );
   }
 
-  _submitHandler(evt) {
+  _handleSubmit(evt) {
     evt.preventDefault();
     return new FormData(this._formRef.current);
   }
@@ -37,8 +37,8 @@ export class PropertyReviewsForm extends React.PureComponent {
         className="reviews__form form"
         action="#"
         method="post"
-        onChange={this._changeFormHandler}
-        onSubmit={this._submitHandler}
+        onChange={this._handleFormChange}
+        onSubmit={this._handleSubmit}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -70,7 +70,7 @@ export class PropertyReviewsForm extends React.PureComponent {
         <textarea
           className="reviews__textarea form__textarea" id="review" name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
-          minLength={50}
+          minLength={Settings.REVIEW_TEXT_MIN_LENGTH}
         />
         <div className="reviews__button-wrapper">
           <p className="reviews__help">

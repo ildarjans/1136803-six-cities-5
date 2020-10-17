@@ -8,7 +8,7 @@ export const PlaceCard = (props) => {
   const {id, images, price, rating, title, type} = offer;
   const firstImage = images[0] || ``;
   const ratingToSpanWidth = Math.round(100 / 5 * rating);
-  const onClickNeighbourhoodOffer = onClick ? onClick.bind(null, id) : (() => {
+  const handleNeighbourhoodOfferClick = onClick ? onClick.bind(null, id) : (() => {
   });
 
   return (
@@ -21,7 +21,7 @@ export const PlaceCard = (props) => {
             width="260"
             height="200"
             alt="Place image"
-            onClick={onClickNeighbourhoodOffer}
+            onClick={handleNeighbourhoodOfferClick}
           />
         </Link>
 
@@ -56,7 +56,7 @@ export const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  offer: offerPropTypes,
+  offer: offerPropTypes.isRequired,
   onClick: PropTypes.func,
 };
 

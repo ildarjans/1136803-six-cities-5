@@ -25,5 +25,5 @@ export const PropertyGallery = ({offer}) => {
 };
 
 PropertyGallery.propTypes = {
-  offer: offerPropTypes,
+  offer: offerPropTypes.isRequired,
 };

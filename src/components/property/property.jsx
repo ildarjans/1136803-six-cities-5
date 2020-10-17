@@ -17,10 +17,10 @@ export class Property extends React.PureComponent {
       id: props.match.params.id
     };
 
-    this._neighbourhoodOfferClickHandler = this._neighbourhoodOfferClickHandler.bind(this);
+    this._handleNeighbourhoodOfferClick = this._handleNeighbourhoodOfferClick.bind(this);
   }
 
-  _neighbourhoodOfferClickHandler(id) {
+  _handleNeighbourhoodOfferClick(id) {
     this.setState({
       id
     });
@@ -141,11 +141,11 @@ export class Property extends React.PureComponent {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                {neighbourhoodOffers.map((nbhOffer) => (
+                {neighbourhoodOffers.map((nOffer) => (
                   <PlaceCard
-                    key={nbhOffer.id}
-                    offer={nbhOffer}
-                    onClick={this._neighbourhoodOfferClickHandler}/>
+                    key={nOffer.id}
+                    offer={nOffer}
+                    onClick={this._handleNeighbourhoodOfferClick}/>
                 ))}
               </div>
             </section>
