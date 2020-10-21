@@ -1,27 +1,23 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {Link} from "react-router-dom";
+import {getRatingWidth} from "../../utils";
 
-export const PlaceCard = (props) => {
-  const {offer, onClick} = props;
-  const {id, images, price, rating, title, type} = offer;
-  const firstImage = images[0] || ``;
-  const ratingToSpanWidth = Math.round(100 / 5 * rating);
-  const handleNeighbourhoodOfferClick = onClick ? onClick.bind(null, id) : (() => {
-  });
+export const PlaceCard = ({offer, onClick}) => {
+  const handleClickPlaceCard = onClick.bind(null, offer.id);
 
   return (
     <article className="cities__place-card place-card">
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${id}`}>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
-            src={firstImage}
+            src={offer.images[0]}
             width="260"
             height="200"
-            alt="Place image"
-            onClick={handleNeighbourhoodOfferClick}
+            alt={offer.title}
+            onClick={handleClickPlaceCard}
           />
         </Link>
 
@@ -29,7 +25,7 @@ export const PlaceCard = (props) => {
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{price}</b>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -41,14 +37,14 @@ export const PlaceCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${ratingToSpanWidth}%`}}/>
+            <span style={{width: `${getRatingWidth(offer.rating)}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`}>{title}</Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );
@@ -57,6 +53,6 @@ export const PlaceCard = (props) => {
 
 PlaceCard.propTypes = {
   offer: offerPropTypes.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
