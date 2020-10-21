@@ -8,7 +8,7 @@ export function getReviewDateString(date) {
 
 export function getRatingWidth(rating) {
   return Math.round(100 / RATING_STARS_COUNT * rating);
-};
+}
 
 export function getReviewTimeDateString(date) {
   return date.toISOString().split(`T`)[0];
