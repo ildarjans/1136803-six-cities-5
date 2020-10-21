@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
 import {PropertyReviewsForm} from "../property-reviews-form/property-reviews-form";
 import {PropertyReview} from "../property-review/property-review";
-
+import {reviewPropTypes} from "../../prop-validation/review-prop-types";
 
 export const PropertyReviews = ({reviews}) => {
   return (
@@ -11,7 +10,7 @@ export const PropertyReviews = ({reviews}) => {
       <h2 className="reviews__title">
         Reviews &middot;
         <span className="reviews__amount">
-          reviews.length
+          {reviews.length}
         </span>
       </h2>
       <ul className="reviews__list">
@@ -29,5 +28,5 @@ export const PropertyReviews = ({reviews}) => {
 };
 
 PropertyReviews.propTypes = {
-  reviews: PropTypes.arrayOf(reviewPropTypes).isRequired
+  reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired
 };
