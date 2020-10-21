@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Header} from "../header/header";
-import {PlaceCard} from "../place-card/place-card";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {Settings} from "../../const";
-import {UnFoundPage} from "../unfound-page/unfound-page";
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
+import {NearPlaces} from "../near-places/near-places";
 import {PropertyGallery} from "../property-gallery/property-gallery";
+import {NotFoundPage} from "../not-found-page/not-found-page";
 import {PropertyReviews} from "../property-reviews/property-reviews";
+import {getRatingWidth} from "../../utils";
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {reviewPropTypes} from "../../prop-validation/review-prop-types";
+import {Settings} from "../../const";
 
 export class Property extends React.PureComponent {
   constructor(props) {
@@ -17,13 +18,17 @@ export class Property extends React.PureComponent {
       id: props.match.params.id
     };
 
-    this._handleNeighbourhoodOfferClick = this._handleNeighbourhoodOfferClick.bind(this);
+    this._handleClickNearOffer = this._handleClickNearOffer.bind(this);
   }
 
-  _handleNeighbourhoodOfferClick(id) {
+  _handleClickNearOffer(id) {
     this.setState({
       id
     });
+  }
+
+  _getDecimalRating(offer) {
+    return Math.round(offer * 10) / 10;
   }
 
   render() {
@@ -33,26 +38,11 @@ export class Property extends React.PureComponent {
 
     if (!offer) {
       return (
-        <UnFoundPage/>
+        <NotFoundPage/>
       );
     }
-    const {
-      title,
-      premium,
-      rating,
-      type,
-      bedrooms,
-      guests,
-      price,
-      description,
-      features,
-      owner,
-    } = offer;
-    const ratingToSpanWidth = Math.round(100 / 5 * rating);
-    const decimalRating = Math.round(rating * 10) / 10;
 
-    const neighbourhoodOffers = offers.slice(0, Settings.NEIGHBOURHOOD_OFFERS_DISPLAY_LIMIT);
-
+    const nearOffers = offers.slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
     return (
       <div className="page">
         <Header/>
@@ -63,13 +53,13 @@ export class Property extends React.PureComponent {
             <div className="property__container container">
               <div className="property__wrapper">
 
-                {premium &&
+                {offer.premium &&
                 (<div className="property__mark">
                   <span>Premium</span>
                 </div>)}
 
                 <div className="property__name-wrapper">
-                  <h1 className="property__name">{title}</h1>
+                  <h1 className="property__name">{offer.title}</h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
                       <use xlinkHref="#icon-bookmark"/>
@@ -79,31 +69,33 @@ export class Property extends React.PureComponent {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: `${ratingToSpanWidth}%`}}/>
+                    <span style={{width: `${getRatingWidth(offer.rating)}%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">{decimalRating}</span>
+                  <span className="property__rating-value rating__value">
+                    {this._getDecimalRating(offer.rating)}
+                  </span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {type}
+                    {offer.type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {bedrooms}
+                    {offer.bedrooms}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    {guests}
+                    {offer.guests}
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">&euro;{price}</b>
+                  <b className="property__price-value">&euro;{offer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
 
-                    {features.map((feature, i) => {
+                    {offer.features.map((feature, i) => {
                       return (
                         <li className="property__inside-item" key={`${feature}-${i}`}>
                           {feature}
@@ -117,16 +109,16 @@ export class Property extends React.PureComponent {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src={owner.avatar} width="74" height="74"
-                        alt={`${owner.name} avatar`}/>
+                      <img className="property__avatar user__avatar" src={offer.owner.avatar} width="74" height="74"
+                        alt={`${offer.owner.name} avatar`}/>
                     </div>
                     <span className="property__user-name">
-                      {owner.name}
+                      {offer.owner.name}
                     </span>
                   </div>
                   <div className="property__description">
                     <p className="property__text">
-                      {description}
+                      {offer.description}
                     </p>
                   </div>
                 </div>
@@ -137,19 +129,9 @@ export class Property extends React.PureComponent {
             </div>
             <section className="property__map map"/>
           </section>
-          <div className="container">
-            <section className="near-places places">
-              <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <div className="near-places__list places__list">
-                {neighbourhoodOffers.map((nOffer) => (
-                  <PlaceCard
-                    key={nOffer.id}
-                    offer={nOffer}
-                    onClick={this._handleNeighbourhoodOfferClick}/>
-                ))}
-              </div>
-            </section>
-          </div>
+
+          <NearPlaces offers={nearOffers} onClick={this._handleClickNearOffer} />
+
         </main>
       </div>
     );
@@ -163,6 +145,6 @@ Property.propTypes = {
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes),
-  reviews: PropTypes.arrayOf(reviewPropTypes),
+  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
+  reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
 };
