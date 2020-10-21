@@ -4,8 +4,7 @@ import {offerPropTypes} from '../../prop-validation/offer-prop-types';
 import {Header} from '../header/header';
 import {PlacesList} from '../places-list/places-list';
 
-export const MainPage = (props) => {
-  const {offersCount, offers} = props;
+export const MainPage = ({offersCount, offers}) => {
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -84,5 +83,5 @@ export const MainPage = (props) => {
 
 MainPage.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
 };

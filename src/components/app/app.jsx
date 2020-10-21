@@ -10,7 +10,7 @@ import {MainPage} from "../main-page/main-page";
 import {LoginPage} from "../login-page/login-page";
 import {FavoritesPage} from "../favorites-page/favorites-page";
 import {Property} from "../property/property";
-import {UnFoundPage} from "../unfound-page/unfound-page";
+import {NotFoundPage} from "../not-found-page/not-found-page";
 
 export const App = ({offersCount, offers, reviews}) => {
   return (
@@ -36,7 +36,7 @@ export const App = ({offersCount, offers, reviews}) => {
           )}
         />
 
-        <Route component={UnFoundPage}/>
+        <Route component={NotFoundPage}/>
 
       </Switch>
     </BrowserRouter>
