@@ -11,8 +11,5 @@ export function getRatingWidth(rating) {
 };
 
 export function getReviewTimeDateString(date) {
-  /*
-  @return string like "yyyy-mm-dd"
-  */
   return date.toISOString().split(`T`)[0];
 }
