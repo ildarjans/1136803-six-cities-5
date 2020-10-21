@@ -9,10 +9,10 @@ import {
 } from "./utils";
 import {offerTypes} from "../const";
 import {
+  cities,
+  descriptions,
+  features,
   BEDROOMS_RANGE,
-  CITIES,
-  DESCRIPTIONS,
-  FEATURES,
   GUEST_RANGE,
   MAX_FEATURES,
   PRICE_RANGE,
@@ -24,13 +24,13 @@ export function getOffer() {
     images: getRandomImageGallery(),
     premium: Boolean(getRandomInteger(1)),
     price: getRandomInteger(PRICE_RANGE.MAX, PRICE_RANGE.MIN),
-    title: getRandomArrayElement(CITIES),
+    title: getRandomArrayElement(cities),
     type: getRandomArrayElement(offerTypes),
     rating: getRandomInteger(5),
-    description: getRandomArrayElement(DESCRIPTIONS),
+    description: getRandomArrayElement(descriptions),
     bedrooms: getRandomInteger(BEDROOMS_RANGE.MAX, BEDROOMS_RANGE.MIN),
     guests: getRandomInteger(GUEST_RANGE.MAX, GUEST_RANGE.MIN),
-    features: getRandomArrayElements(FEATURES, MAX_FEATURES),
+    features: getRandomArrayElements(features, MAX_FEATURES),
     owner: {
       avatar: getRandomAvatar(),
       name: getRandomFullName(),

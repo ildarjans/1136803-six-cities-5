@@ -4,7 +4,7 @@ import {
   getRandomFullName,
   getRandomInteger,
 } from "./utils";
-import {DESCRIPTIONS} from "./consts";
+import {descriptions} from "./consts";
 
 export function getReview() {
   return {
@@ -12,7 +12,7 @@ export function getReview() {
     name: getRandomFullName(),
     date: new Date(),
     rating: getRandomInteger(5),
-    review: getRandomArrayElement(DESCRIPTIONS),
+    review: getRandomArrayElement(descriptions),
   };
 }
 
