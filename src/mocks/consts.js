@@ -20,7 +20,7 @@ export const GUEST_RANGE = {
   MAX: 10,
 };
 
-export const AVATAR_SPRITES = [
+export const avatarSprites = [
   `male`,
   `female`,
   `human`,
@@ -30,7 +30,7 @@ export const AVATAR_SPRITES = [
 ];
 
 
-export const NAMES = [
+export const names = [
   `James`,
   `John`,
   `Robert`,
@@ -106,7 +106,7 @@ export const NAMES = [
   `Samantha`,
   `Carolyn`,
 ];
-export const LAST_NAMES = [
+export const lastNames = [
   `Smith`,
   `Brown`,
   `Johnson`,
@@ -151,7 +151,7 @@ export const LAST_NAMES = [
   `Howard`,
 ];
 
-export const FEATURES = [
+export const features = [
   `Wi-fi`,
   `Dishwasher`,
   `Parking`,
@@ -166,7 +166,7 @@ export const FEATURES = [
   `Heating`,
 ];
 
-export const DESCRIPTIONS = [
+export const descriptions = [
   `Lorem ipsum dolor sit amet, consectetur adipiscing…empor incididunt ut labore et dolore magna aliqua`,
   `Odio aenean sed adipiscing diam donec adipiscing tristique risus nec`,
   `Ut ornare lectus sit amet est placerat`,
@@ -189,7 +189,7 @@ export const DESCRIPTIONS = [
   `Id faucibus nisl tincidunt eget nullam non nisi est sit.`,
 ];
 
-export const CITIES = [
+export const cities = [
   `Amsterdam`,
   `Geneva`,
   `Chamonix`,

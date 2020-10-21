@@ -1,8 +1,8 @@
 import {
   AVATAR_URL,
-  AVATAR_SPRITES,
-  LAST_NAMES,
-  NAMES,
+  avatarSprites,
+  lastNames,
+  names,
   IMAGE_GALLERY,
 } from "./consts";
 
@@ -33,12 +33,12 @@ export function getRandomArrayElement(arr) {
 
 export function getRandomFullName() {
   return (
-    `${getRandomArrayElement(NAMES)} ${getRandomArrayElement(LAST_NAMES)}`
+    `${getRandomArrayElement(names)} ${getRandomArrayElement(lastNames)}`
   );
 }
 
 export function getRandomAvatar() {
-  return `${AVATAR_URL}/${getRandomArrayElement(AVATAR_SPRITES)}/${Math.random()}.svg`;
+  return `${AVATAR_URL}/${getRandomArrayElement(avatarSprites)}/${Math.random()}.svg`;
 }
 
 export function getRandomImageGallery() {

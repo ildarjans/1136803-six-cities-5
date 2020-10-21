@@ -7,7 +7,7 @@ import {
   getRandomImageGallery,
   getRandomInteger,
 } from "./utils";
-import {OFFER_TYPES} from "../const";
+import {offerTypes} from "../const";
 import {
   BEDROOMS_RANGE,
   CITIES,
@@ -25,7 +25,7 @@ export function getOffer() {
     premium: Boolean(getRandomInteger(1)),
     price: getRandomInteger(PRICE_RANGE.MAX, PRICE_RANGE.MIN),
     title: getRandomArrayElement(CITIES),
-    type: getRandomArrayElement(OFFER_TYPES),
+    type: getRandomArrayElement(offerTypes),
     rating: getRandomInteger(5),
     description: getRandomArrayElement(DESCRIPTIONS),
     bedrooms: getRandomInteger(BEDROOMS_RANGE.MAX, BEDROOMS_RANGE.MIN),
