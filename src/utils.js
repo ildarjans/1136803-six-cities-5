@@ -1,4 +1,4 @@
-import {RATING_STARS_COUNT} from "./const";
+import {Settings} from "./const";
 
 export function getReviewDateString(date) {
   return (
@@ -7,7 +7,7 @@ export function getReviewDateString(date) {
 }
 
 export function getRatingWidth(rating) {
-  return Math.round(100 / RATING_STARS_COUNT * rating);
+  return Math.round(100 / Settings.RATING_STARS_COUNT * rating);
 }
 
 export function getReviewTimeDateString(date) {

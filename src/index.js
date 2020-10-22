@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {App} from "./components/app/app";
-import {Settings} from "./const";
 import {getOffer} from "./mocks/offer";
 import {getReview} from "./mocks/review";
 import {
@@ -16,7 +15,6 @@ const reviews = Array(MOCK_REVIEWS_COUNT).fill(``).map(getReview);
 
 ReactDOM.render(
     <App
-      offersCount={Settings.OFFERS_COUNT}
       offers={offers}
       reviews={reviews}
     />,
