@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PlaceCard} from "../place-card/place-card";
+import {NearPlaceCard} from "../near-place-card/near-place-card";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 
 export const NearPlaces = ({onClick, offers}) => {
@@ -10,7 +10,7 @@ export const NearPlaces = ({onClick, offers}) => {
         <h2 className="near-places__title">Other places in the neighbourhood</h2>
         <div className="near-places__list places__list">
           {offers.map((offer) => (
-            <PlaceCard
+            <NearPlaceCard
               key={offer.id}
               offer={offer}
               onClick={onClick}/>

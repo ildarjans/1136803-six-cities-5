@@ -5,20 +5,22 @@ import {
   Switch,
 } from "react-router-dom";
 import PropTypes from "prop-types";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {MainPage} from "../main-page/main-page";
 import {LoginPage} from "../login-page/login-page";
 import {FavoritesPage} from "../favorites-page/favorites-page";
 import {Property} from "../property/property";
 import {NotFoundPage} from "../not-found-page/not-found-page";
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {cities} from "../../const";
 
-export const App = ({offersCount, offers, reviews}) => {
+export const App = ({offers, reviews}) => {
+  const activeCity = cities[0];
   return (
     <BrowserRouter>
       <Switch>
 
         <Route exact path="/">
-          <MainPage offersCount={offersCount} offers={offers}/>
+          <MainPage activeCity={activeCity} offers={offers}/>
         </Route>
 
         <Route exact path="/login">
@@ -45,7 +47,6 @@ export const App = ({offersCount, offers, reviews}) => {
 
 
 App.propTypes = {
-  offersCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes),
+  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.array.isRequired,
 };

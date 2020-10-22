@@ -1,6 +1,6 @@
 import React from "react";
-import {Settings} from "../../const";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {Settings} from "../../const";
 
 
 export const PropertyGallery = ({offer}) => {
