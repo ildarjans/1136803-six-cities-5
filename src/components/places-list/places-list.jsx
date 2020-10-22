@@ -4,11 +4,11 @@ import {CitiesPlaceCard} from "../cities-place-card/cities-place-card";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 
 export const PlacesList = ({offers}) => {
-  const handleClickPlaceCard = () => {};
+  const handlePlaceCardClick = () => {};
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <CitiesPlaceCard onClick={handleClickPlaceCard} key={offer.id} offer={offer} />
+        <CitiesPlaceCard onClick={handlePlaceCardClick} key={offer.id} offer={offer} />
       ))}
     </div>
   );

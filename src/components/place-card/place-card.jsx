@@ -5,7 +5,7 @@ import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {getRatingWidth} from "../../utils";
 
 export const PlaceCard = ({onClick, offer, block, element}) => {
-  const handleClickPlaceCard = onClick.bind(null, offer.id);
+  const handlePlaceCardClick = onClick.bind(null, offer.id);
 
   return (
     <article className={`${block}__${element} place-card`}>
@@ -17,7 +17,7 @@ export const PlaceCard = ({onClick, offer, block, element}) => {
             width="260"
             height="200"
             alt={offer.title}
-            onClick={handleClickPlaceCard}
+            onClick={handlePlaceCardClick}
           />
         </Link>
 

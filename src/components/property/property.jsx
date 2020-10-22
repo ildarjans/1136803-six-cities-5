@@ -18,10 +18,10 @@ export class Property extends React.PureComponent {
       id: props.match.params.id
     };
 
-    this._handleClickNearOffer = this._handleClickNearOffer.bind(this);
+    this._handleNearOfferClick = this._handleNearOfferClick.bind(this);
   }
 
-  _handleClickNearOffer(id) {
+  _handleNearOfferClick(id) {
     this.setState({
       id
     });
@@ -130,7 +130,7 @@ export class Property extends React.PureComponent {
             <section className="property__map map"/>
           </section>
 
-          <NearPlaces offers={nearOffers} onClick={this._handleClickNearOffer} />
+          <NearPlaces offers={nearOffers} onClick={this._handleNearOfferClick} />
 
         </main>
       </div>
