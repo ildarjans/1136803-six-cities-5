@@ -2,20 +2,20 @@ export const MOCK_OFFERS_COUNT = 100;
 export const MOCK_REVIEWS_COUNT = 5;
 export const AVATAR_URL = `https://avatars.dicebear.com/api`;
 export const MAX_FEATURES = 3;
-export const IMAGE_GALLERY = {
+export const imageGallery = {
   MIN: 2,
   MAX: 8,
 };
 
-export const PRICE_RANGE = {
+export const priceRange = {
   MIN: 19,
   MAX: 4999,
 };
-export const BEDROOMS_RANGE = {
+export const bedroomsRange = {
   MIN: 1,
   MAX: 6,
 };
-export const GUEST_RANGE = {
+export const guestRange = {
   MIN: 1,
   MAX: 10,
 };

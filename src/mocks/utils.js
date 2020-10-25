@@ -3,7 +3,7 @@ import {
   avatarSprites,
   lastNames,
   names,
-  IMAGE_GALLERY,
+  imageGallery,
 } from "./consts";
 
 import {CityCoords} from "../const";
@@ -51,7 +51,7 @@ export function getRandomAvatar() {
 }
 
 export function getRandomImageGallery() {
-  const gallerySize = getRandomInteger(IMAGE_GALLERY.MAX, IMAGE_GALLERY.MIN);
+  const gallerySize = getRandomInteger(imageGallery.MAX, imageGallery.MIN);
   return Array(gallerySize).fill().map(getRandomPhoto);
 }
 
