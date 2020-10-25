@@ -10,6 +10,10 @@ import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {reviewPropTypes} from "../../prop-validation/review-prop-types";
 import {Settings} from "../../const";
 
+function getDecimalRating(offer) {
+  return Math.round(offer * 10) / 10;
+}
+
 export class Property extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -27,14 +31,10 @@ export class Property extends React.PureComponent {
     });
   }
 
-  _getDecimalRating(offer) {
-    return Math.round(offer * 10) / 10;
-  }
 
   render() {
     const {offers, reviews} = this.props;
-    const {id} = this.state;
-    const offer = offers.filter((off) => off.id === id)[0];
+    const offer = offers.find((it) => it.id === this.state.id);
 
     if (!offer) {
       return (
@@ -73,7 +73,7 @@ export class Property extends React.PureComponent {
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">
-                    {this._getDecimalRating(offer.rating)}
+                    {getDecimalRating(offer.rating)}
                   </span>
                 </div>
                 <ul className="property__features">
