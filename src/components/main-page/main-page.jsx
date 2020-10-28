@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {cities} from "../../const";
+
 import {Header} from "../header/header";
 import {Tabs} from "../tabs/tabs";
 import {Cities} from "../cities/cities";
-import {cities} from "../../const";
 
 export const MainPage = (props) => {
   const {activeCity, offers} = props;
@@ -14,7 +16,7 @@ export const MainPage = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <Tabs activeCity={activeCity}/>
-        <Cities {...props} offers={offers} activeCity={activeCity}/>
+        <Cities offers={offers} activeCity={activeCity}/>
       </main>
     </div>
   );

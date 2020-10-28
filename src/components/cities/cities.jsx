@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PlacesList} from "../places-list/places-list";
-import {Map} from "../map/map";
+
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {cities} from "../../const";
 
+import {Map} from "../map/map";
+import {PlacesList} from "../places-list/places-list";
 
-export const Cities = (props) => {
-  const {activeCity, offers} = props;
+
+export const Cities = ({activeCity, offers}) => {
   const activeCityOffers = offers.filter((offer) => offer.city === activeCity);
   const offersCount = activeCityOffers.length;
   return (
@@ -33,7 +34,7 @@ export const Cities = (props) => {
 
           </form>
 
-          <PlacesList {...props} offers={activeCityOffers}/>
+          <PlacesList offers={activeCityOffers}/>
 
         </section>
         <div className="cities__right-section">

@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
+
 import {CityCoords} from "../../const";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+
 import "leaflet/dist/leaflet.css";
 
 const PIN_SIZE = [30, 30];

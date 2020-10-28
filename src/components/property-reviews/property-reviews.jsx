@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PropertyReview} from "../property-review/property-review";
+
 import {reviewPropTypes} from "../../prop-validation/review-prop-types";
 import {
   RatingTitle,
   Settings,
   Title,
 } from "../../const";
+
+import {PropertyReview} from "../property-review/property-review";
 
 export const PropertyReviews = ({reviews}) => {
   const formRef = React.createRef();
