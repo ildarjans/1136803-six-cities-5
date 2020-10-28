@@ -72,3 +72,18 @@ export const cities = [
   `HAMBURG`,
   `DUSSELDORF`
 ];
+
+export const placeCardClassNames = {
+  nearPlaces: {
+    article: `near-places__card place-card`,
+    wrapper: `near-places__image-wrapper place-card__image-wrapper`,
+  },
+  citiesPlaces: {
+    article: `cities__place-card place-card`,
+    wrapper: `cities__image-wrapper place-card__image-wrapper`,
+  },
+  favoritesPlaces: {
+    article: `favorites__card place-card`,
+    wrapper: `favorites__image-wrapper place-card__image-wrapper`,
+  },
+};
