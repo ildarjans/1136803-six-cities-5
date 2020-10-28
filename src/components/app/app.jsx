@@ -5,13 +5,15 @@ import {
   Switch,
 } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {cities} from "../../const";
+
 import {MainPage} from "../main-page/main-page";
 import {LoginPage} from "../login-page/login-page";
 import {FavoritesPage} from "../favorites-page/favorites-page";
 import {Property} from "../property/property";
 import {NotFoundPage} from "../not-found-page/not-found-page";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {cities} from "../../const";
 
 export const App = ({offers, reviews}) => {
   const activeCity = cities[0];
@@ -33,8 +35,8 @@ export const App = ({offers, reviews}) => {
 
         <Route
           exact path="/offer/:id"
-          render={(props) => (
-            <Property {...props} reviews={reviews} offers={offers}/>
+          render={({match}) => (
+            <Property id={match.params.id} reviews={reviews} offers={offers}/>
           )}
         />
 
