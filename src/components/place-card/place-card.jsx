@@ -1,15 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+
 import {getRatingWidth} from "../../utils";
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 
-export const PlaceCard = ({onClick, offer, block, element}) => {
-  const handlePlaceCardClick = onClick.bind(null, offer.id);
-
+export const PlaceCard = ({offer, classNames}) => {
   return (
-    <article className={`${block}__${element} place-card`}>
-      <div className={`${block}__image-wrapper place-card__image-wrapper`}>
+    <article className={`${classNames.article}`}>
+      <div className={`${classNames.wrapper}`}>
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
@@ -17,7 +16,6 @@ export const PlaceCard = ({onClick, offer, block, element}) => {
             width="260"
             height="200"
             alt={offer.title}
-            onClick={handlePlaceCardClick}
           />
         </Link>
 
@@ -52,9 +50,7 @@ export const PlaceCard = ({onClick, offer, block, element}) => {
 };
 
 PlaceCard.propTypes = {
-  onClick: PropTypes.func.isRequired,
   offer: offerPropTypes.isRequired,
-  block: PropTypes.string.isRequired,
-  element: PropTypes.string.isRequired
+  classNames: PropTypes.shape(PropTypes.string.isRequired).isRequired,
 };
 
