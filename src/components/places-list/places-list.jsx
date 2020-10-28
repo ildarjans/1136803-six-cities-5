@@ -10,7 +10,7 @@ export const PlacesList = ({offers}) => {
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <PlaceCard key={offer.id} offer={offer} classNames={placeCardClassNames.citiesPlaces}  />
+        <PlaceCard key={offer.id} offer={offer} classNames={placeCardClassNames.citiesPlaces} />
       ))}
     </div>
   );
