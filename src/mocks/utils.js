@@ -3,8 +3,17 @@ import {
   avatarSprites,
   lastNames,
   names,
-  IMAGE_GALLERY,
+  imageGallery,
 } from "./consts";
+
+import {CityCoords} from "../const";
+
+function getCoordsRandomDeviation() {
+  return {
+    lng: getRandomInteger(5, -5) / 100,
+    lat: getRandomInteger(3, -3) / 100
+  };
+}
 
 export function getRandomInteger(max, min = 0) {
   return min + Math.floor(Math.random() * (max + 1 - min));
@@ -42,7 +51,7 @@ export function getRandomAvatar() {
 }
 
 export function getRandomImageGallery() {
-  const gallerySize = getRandomInteger(IMAGE_GALLERY.MAX, IMAGE_GALLERY.MIN);
+  const gallerySize = getRandomInteger(imageGallery.MAX, imageGallery.MIN);
   return Array(gallerySize).fill().map(getRandomPhoto);
 }
 
@@ -52,4 +61,12 @@ function getRandomPhoto() {
 
 export function generateId() {
   return getRandomInteger(Date.now()).toString(16);
+}
+
+export function getLocationCoords(city) {
+  const {lat, lng} = getCoordsRandomDeviation();
+  const coords = Object.assign({}, CityCoords[city]);
+  coords.lat += lat;
+  coords.lng += lng;
+  return coords;
 }

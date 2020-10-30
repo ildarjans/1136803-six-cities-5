@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 export const offerPropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   premium: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
@@ -12,6 +13,10 @@ export const offerPropTypes = PropTypes.shape({
   bedrooms: PropTypes.number.isRequired,
   guests: PropTypes.number.isRequired,
   features: PropTypes.array.isRequired,
+  coords: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }),
   owner: PropTypes.shape({
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,

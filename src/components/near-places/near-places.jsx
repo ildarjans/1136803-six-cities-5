@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PlaceCard} from "../place-card/place-card";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 
-export const NearPlaces = ({onClick, offers}) => {
+import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {placeCardClassNames} from "../../const";
+
+import {PlaceCard} from "../place-card/place-card";
+
+export const NearPlaces = ({offers}) => {
   return (
     <div className="container">
       <section className="near-places places">
@@ -13,7 +16,8 @@ export const NearPlaces = ({onClick, offers}) => {
             <PlaceCard
               key={offer.id}
               offer={offer}
-              onClick={onClick}/>
+              classNames={placeCardClassNames.nearPlaces}
+            />
           ))}
         </div>
       </section>
@@ -22,6 +26,5 @@ export const NearPlaces = ({onClick, offers}) => {
 };
 
 NearPlaces.propTypes = {
-  onClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired
 };
