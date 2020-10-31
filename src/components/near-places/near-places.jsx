@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {placeCardClassNames} from "../../const";
 
 import {PlaceCard} from "../place-card/place-card";
 
@@ -16,7 +15,8 @@ export const NearPlaces = ({offers}) => {
             <PlaceCard
               key={offer.id}
               offer={offer}
-              classNames={placeCardClassNames.nearPlaces}
+              classNameArticle={`near-places__card`}
+              classNameWrapper={`near-places__image-wrapper`}
             />
           ))}
         </div>
