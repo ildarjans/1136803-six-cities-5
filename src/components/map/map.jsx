@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
+import {connect} from "react-redux";
 
 import {CityCoords} from "../../const";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-
 import "leaflet/dist/leaflet.css";
 
 const PIN_SIZE = [30, 30];
@@ -16,17 +16,14 @@ const ATTRIBUTION = (
   <a href="https://carto.com/attributions">CARTO</a>`
 );
 
-export class Map extends React.PureComponent {
+class MapComponent extends React.PureComponent {
   constructor(props) {
     super(props);
     this._map = null;
-    this._activeCity = this.props.activeCity;
-    this._activeCityCoords = [CityCoords[this._activeCity].lat, CityCoords[this._activeCity].lng];
     this._icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: PIN_SIZE,
     });
-
     this._mapRef = React.createRef();
   }
 
@@ -41,8 +38,9 @@ export class Map extends React.PureComponent {
   }
 
   componentDidMount() {
+    const cityCoords = CityCoords[this.props.activeCity];
     this._map = leaflet.map(`map`, {
-      center: this._activeCityCoords,
+      center: cityCoords,
       zoom: ZOOM,
       zoomControl: false,
       marker: true
@@ -51,11 +49,10 @@ export class Map extends React.PureComponent {
 
     this._addMarkers();
 
-    this._map.setView(this._activeCityCoords, ZOOM);
+    this._map.setView(cityCoords, ZOOM);
   }
 
   componentWillUnmount() {
-    this._mapRef.current.remove();
     this._map = null;
   }
 
@@ -66,7 +63,14 @@ export class Map extends React.PureComponent {
   }
 }
 
-Map.propTypes = {
+MapComponent.propTypes = {
   activeCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired
 };
+
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  activeCity: state.activeCity
+});
+
+export const Map = connect(mapStateToProps)(MapComponent);
