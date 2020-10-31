@@ -4,19 +4,25 @@ import PropTypes from "prop-types";
 
 import {cities} from "../../const";
 
-
-export const Tabs = ({activeCity}) => {
+export const Tabs = ({activeCity, onTabClick}) => {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {cities.map((city, i) => {
             const isActive = city === activeCity;
+            const handleTabClick = () => {
+              if (!isActive) {
+                onTabClick(city);
+              }
+            };
             return (
               <li key={`${city}-${i}`} className="locations__item">
                 <Link
                   className={`locations__item-link tabs__item ${isActive ? `tabs__item--active` : ``}`}
-                  to={isActive ? `/` : `#`}>
+                  to={isActive ? `/` : `#`}
+                  onClick={handleTabClick}
+                >
                   <span>{city}</span>
                 </Link>
               </li>
@@ -31,4 +37,5 @@ export const Tabs = ({activeCity}) => {
 
 Tabs.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
+  onTabClick: PropTypes.func.isRequired
 };
