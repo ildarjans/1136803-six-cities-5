@@ -19,3 +19,7 @@ export function getReviewTimeDateString(date) {
   }
   return date.toISOString().split(`T`)[0];
 }
+
+export function extend(obj1, obj2) {
+  return Object.assign({}, obj1, obj2);
+}
