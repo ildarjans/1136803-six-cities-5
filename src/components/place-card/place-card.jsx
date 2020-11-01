@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import {getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 
-export const PlaceCard = ({offer, classNames}) => {
+export const PlaceCard = ({offer, classNameArticle, classNameWrapper}) => {
   return (
-    <article className={`${classNames.article}`}>
-      <div className={`${classNames.wrapper}`}>
+    <article className={`${classNameArticle} place-card`}>
+      <div className={`${classNameWrapper} place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
@@ -51,6 +51,7 @@ export const PlaceCard = ({offer, classNames}) => {
 
 PlaceCard.propTypes = {
   offer: offerPropTypes.isRequired,
-  classNames: PropTypes.shape(PropTypes.string.isRequired).isRequired,
+  classNameArticle: PropTypes.string.isRequired,
+  classNameWrapper: PropTypes.string.isRequired,
 };
 

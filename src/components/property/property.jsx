@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {reviewPropTypes} from "../../prop-validation/review-prop-types";
-import {getRatingWidth} from "../../utils";
 import {Settings} from "../../const";
+import {getRatingWidth} from "../../utils";
 
 import {Header} from "../header/header";
 import {NearPlaces} from "../near-places/near-places";
@@ -16,7 +17,7 @@ function getDecimalRating(offer) {
   return Math.round(offer * 10) / 10;
 }
 
-export const Property = ({offers, reviews, id}) => {
+export const PropertyComponent = ({offers, reviews, id}) => {
   const offer = offers.find((it) => it.id === id);
 
   if (!offer) {
@@ -121,8 +122,15 @@ export const Property = ({offers, reviews, id}) => {
 };
 
 
-Property.propTypes = {
+PropertyComponent.propTypes = {
   id: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  reviews: state.reviews,
+});
+
+export const Property = connect(mapStateToProps)(PropertyComponent);

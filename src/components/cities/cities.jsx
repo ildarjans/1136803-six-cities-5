@@ -4,19 +4,16 @@ import PropTypes from "prop-types";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {cities} from "../../const";
 
-import {Map} from "../map/map";
 import {PlacesList} from "../places-list/places-list";
+import {Map} from "../map/map";
 
-
-export const Cities = ({activeCity, offers}) => {
-  const activeCityOffers = offers.filter((offer) => offer.city === activeCity);
-  const offersCount = activeCityOffers.length;
+export const Cities = ({offers, activeCity}) => {
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offersCount} places to stay in {activeCity}</b>
+          <b className="places__found">{offers.length} places to stay in {activeCity}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex="0">
@@ -34,12 +31,12 @@ export const Cities = ({activeCity, offers}) => {
 
           </form>
 
-          <PlacesList offers={activeCityOffers}/>
+          <PlacesList offers={offers}/>
 
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map activeCity={activeCity} offers={activeCityOffers}/>
+            <Map key={activeCity}/>
           </section>
         </div>
       </div>
