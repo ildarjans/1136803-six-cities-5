@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import {CityCoords} from "../../const";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import "leaflet/dist/leaflet.css";
-import {actionCreator} from "../../store/action";
 
 const PIN_SIZE = [30, 30];
 const ZOOM = 12;

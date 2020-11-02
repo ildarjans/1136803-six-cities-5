@@ -7,8 +7,7 @@ import {cities} from "../../const";
 import {PlacesList} from "../places-list/places-list";
 import {Map} from "../map/map";
 
-export const Cities = ({offers, activeCity, activeOffer}) => {
-
+export const Cities = ({offers, activeCity}) => {
   return (
     <div className="cities">
       <div className="cities__places-container container">
