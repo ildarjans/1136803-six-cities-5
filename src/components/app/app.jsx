@@ -14,7 +14,6 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-
         <Route exact path="/">
           <MainPage/>
         </Route>
@@ -29,13 +28,10 @@ export const App = () => {
 
         <Route
           exact path="/offer/:id"
-          render={({match}) => (
-            <Property id={match.params.id}/>
-          )}
+          component={Property}
         />
 
         <Route component={NotFoundPage}/>
-
       </Switch>
     </BrowserRouter>
   );
