@@ -7,7 +7,8 @@ import {cities} from "../../const";
 import {PlacesList} from "../places-list/places-list";
 import {Map} from "../map/map";
 
-export const Cities = ({offers, activeCity}) => {
+export const Cities = ({offers, activeCity, activeOffer}) => {
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -36,7 +37,7 @@ export const Cities = ({offers, activeCity}) => {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map key={activeCity}/>
+            <Map key={activeCity} offers={offers}/>
           </section>
         </div>
       </div>
@@ -46,6 +47,7 @@ export const Cities = ({offers, activeCity}) => {
 
 Cities.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
-  activeCity: PropTypes.oneOf(cities).isRequired
+  activeCity: PropTypes.oneOf(cities).isRequired,
+  activeOffer: PropTypes.any
 };
 

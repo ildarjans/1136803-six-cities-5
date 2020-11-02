@@ -136,7 +136,7 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.943332999999996,
+      "lat": 50.933332999999996,
       "lng": 6.97
     }
   },
@@ -563,37 +563,6 @@ export const offers = [
     "coords": {
       "lat": 50.963333,
       "lng": 6.99
-    }
-  },
-  {
-    "city": `DUSSELDORF`,
-    "id": `279073558f`,
-    "images": [
-      `http://picsum.photos/248/152?r=0.21901000411528226`,
-      `http://picsum.photos/248/152?r=0.7794990306800045`,
-      `http://picsum.photos/248/152?r=0.7791534927288253`
-    ],
-    "premium": false,
-    "price": 2110,
-    "title": `Couples particularly like this location `,
-    "type": `room`,
-    "rating": 3,
-    "description": `Ut ornare lectus sit amet est placerat`,
-    "bedrooms": 2,
-    "guests": 7,
-    "features": [
-      `Towels`,
-      `Parking`,
-      `Wi-fi`
-    ],
-    "owner": {
-      "avatar": `https://avatars.dicebear.com/api/female/0.009669942373727869.svg`,
-      "name": `Nicole Jackson`,
-      "super": true
-    },
-    "coords": {
-      "lat": 51.218304,
-      "lng": 6.833849
     }
   },
   {
