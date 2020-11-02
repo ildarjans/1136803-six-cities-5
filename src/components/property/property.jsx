@@ -12,12 +12,15 @@ import {NearPlaces} from "../near-places/near-places";
 import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
 import {PropertyReviews} from "../property-reviews/property-reviews";
+import {Map} from "../map/map";
 
 function getDecimalRating(offer) {
   return Math.round(offer * 10) / 10;
 }
 
-export const PropertyComponent = ({offers, reviews, id}) => {
+export const PropertyComponent = (props) => {
+  const {offers, reviews} = props;
+  const {id} = props.match.params;
   const offer = offers.find((it) => it.id === id);
 
   if (!offer) {
@@ -111,7 +114,9 @@ export const PropertyComponent = ({offers, reviews, id}) => {
 
             </div>
           </div>
-          <section className="property__map map"/>
+          <section className="property__map map">
+            <Map key={id} offers={nearOffers}/>
+          </section>
         </section>
 
         <NearPlaces offers={nearOffers}/>
@@ -123,14 +128,20 @@ export const PropertyComponent = ({offers, reviews, id}) => {
 
 
 PropertyComponent.propTypes = {
-  id: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
+  activeCity: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: state.offers.get(state.activeCity),
   reviews: state.reviews,
+  activeCity: state.activeCity
 });
 
 export const Property = connect(mapStateToProps)(PropertyComponent);
