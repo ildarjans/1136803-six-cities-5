@@ -1,7 +1,4 @@
-import {
-  CityCoords,
-  Settings
-} from "../const";
+import {CityCoords} from "../const";
 import {createSelector} from "reselect";
 
 export const getCityOffers = (state) => {
