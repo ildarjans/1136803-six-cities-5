@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {connect} from "react-redux";
-
-import {CityCoords} from "../../const";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import "leaflet/dist/leaflet.css";
+import {getMapPropsSelector} from "../../store/props-to-state-selectors";
+import {mapPropTypes} from "../../prop-validation/map-prop-types";
+import {Settings} from "../../const";
 
 const PIN_SIZE = [30, 30];
-const ZOOM = 12;
 const TILE_LAYER = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`;
 const ATTRIBUTION = (
   `<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
@@ -28,26 +27,29 @@ class MapComponent extends React.PureComponent {
       iconUrl: `/img/pin-active.svg`,
       iconSize: PIN_SIZE,
     });
-    this._mapRef = React.createRef();
 
     this._markers = [];
+
   }
 
   _addMarkers() {
-    this.props.offers
-      .forEach((offer) => {
+    const {options} = this.props.propsForMap;
+    const {onlyNearOffers} = this.props;
+    options
+      .slice(0, onlyNearOffers ? Settings.NEAR_OFFERS_DISPLAY_LIMIT : options.length)
+      .forEach((option) => {
         const marker = leaflet.marker(
-            [offer.coords.lat, offer.coords.lng],
-            {icon: this._icon, id: offer.id});
+            [option.lat, option.lng],
+            {icon: this._icon, id: option.id});
         marker.addTo(this._map);
         this._markers.push(marker);
       });
   }
 
-  _activateSingleIcon(offer) {
+  _activateSingleIcon(id) {
     this._markers
       .forEach((marker) => {
-        if (marker.options.id === offer.id) {
+        if (marker.options.id === id) {
           marker.setIcon(this._activeIcon);
         } else {
           marker.setIcon(this._icon);
@@ -63,23 +65,22 @@ class MapComponent extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {activeOffer: prevOffer} = prevProps;
-    const {activeOffer: nextOffer} = this.props;
+    const {activeOfferId: prevActiveOfferId} = prevProps.propsForMap;
+    const {activeOfferId: nextActiveOfferId} = this.props.propsForMap;
 
-    if (!prevOffer || prevOffer && nextOffer) {
-      this._activateSingleIcon(nextOffer);
+    if (!prevActiveOfferId || prevActiveOfferId && nextActiveOfferId) {
+      this._activateSingleIcon(nextActiveOfferId);
     }
 
-    if (!nextOffer) {
+    if (!nextActiveOfferId) {
       this._resetAllIcons();
     }
   }
 
   componentDidMount() {
-    const cityCoords = CityCoords[this.props.activeCity];
     this._map = leaflet.map(`map`, {
-      center: cityCoords,
-      zoom: ZOOM,
+      center: this.props.propsForMap.center,
+      zoom: this.props.propsForMap.zoom,
       zoomControl: false,
       marker: true
     });
@@ -87,8 +88,10 @@ class MapComponent extends React.PureComponent {
 
     this._addMarkers();
 
-    this._map.setView(cityCoords, ZOOM);
-
+    this._map.setView(
+        this.props.propsForMap.center,
+        this.props.propsForMap.zoom
+    );
   }
 
   componentWillUnmount() {
@@ -98,23 +101,20 @@ class MapComponent extends React.PureComponent {
 
   render() {
     return (
-      <div id="map" ref={this._mapRef} style={{height: `100%`}}/>
+      <div id="map" style={{height: `100%`}}/>
     );
   }
 }
 
 MapComponent.propTypes = {
-  activeCity: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
-  activeOffer: PropTypes.oneOfType([
-    PropTypes.oneOf([null]).isRequired,
-    offerPropTypes.isRequired
-  ])
+  onlyNearOffers: PropTypes.bool.isRequired,
+  propsForMap: mapPropTypes
 };
 
 const mapStateToProps = (state) => ({
-  activeCity: state.activeCity,
-  activeOffer: state.activeOffer,
+  propsForMap: getMapPropsSelector(state),
 });
 
 export const Map = connect(mapStateToProps)(MapComponent);
+
+
