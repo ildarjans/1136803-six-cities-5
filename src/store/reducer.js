@@ -5,11 +5,16 @@ import {offers} from "../mocks/offer";
 import {reviews} from "../mocks/review";
 
 const getCityOffers = (offersList) => {
-  const cityOffers = new Map(cities.map((city) => [city, []]));
+  const cityOffers = {};
+
+  cities.forEach((city) => {
+    cityOffers[city] = [];
+  });
 
   offersList.forEach((offer) => {
-    cityOffers.get(offer.city).push(offer);
+    cityOffers[offer.city].push(offer);
   });
+
   return cityOffers;
 };
 
@@ -19,7 +24,7 @@ const initialState = {
   activeCity: cities[0],
   offers: cityOffers,
   reviews: reviews.slice(40),
-  activeOffer: null,
+  activeOfferId: ``
 };
 
 export function reducer(state = initialState, action) {
@@ -28,8 +33,8 @@ export function reducer(state = initialState, action) {
       return extend(state, {activeCity: action.payload});
     case ActionType.GET_OFFERS:
       return extend(state, {offers: action.payload});
-    case ActionType.CHANGE_ACTIVE_OFFER:
-      return extend(state, {activeOffer: action.payload});
+    case ActionType.CHANGE_ACTIVE_OFFER_ID:
+      return extend(state, {activeOfferId: action.payload});
   }
   return state;
 }
