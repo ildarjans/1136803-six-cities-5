@@ -9,6 +9,7 @@ import {cities} from "../../const";
 import {Header} from "../header/header";
 import {Tabs} from "../tabs/tabs";
 import {Cities} from "../cities/cities";
+import {getCityOffers} from "../../store/props-to-state-selectors";
 
 const MainPageComponent = ({activeCity, offers, onCityChange}) => {
   return (
@@ -30,7 +31,7 @@ MainPageComponent.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.get(state.activeCity),
+  offers: getCityOffers(state),
   activeCity: state.activeCity,
 });
 
@@ -41,3 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export const MainPage = connect(mapStateToProps, mapDispatchToProps)(MainPageComponent);
+
