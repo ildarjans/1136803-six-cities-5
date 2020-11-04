@@ -72,8 +72,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.923333,
-      "lng": 7
+      "latitude": 50.923333,
+      "longitude": 7
     }
   },
   {
@@ -102,8 +102,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.208304,
-      "lng": 6.833849
+      "latitude": 51.208304,
+      "longitude": 6.833849
     }
   },
   {
@@ -136,8 +136,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.933332999999996,
-      "lng": 6.97
+      "latitude": 50.933332999999996,
+      "longitude": 6.97
     }
   },
   {
@@ -166,8 +166,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.836667,
-      "lng": 2.363333
+      "latitude": 48.836667,
+      "longitude": 2.363333
     }
   },
   {
@@ -199,8 +199,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.913332999999994,
-      "lng": 6.99
+      "latitude": 50.913332999999994,
+      "longitude": 6.99
     }
   },
   {
@@ -232,8 +232,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.953333,
-      "lng": 6.94
+      "latitude": 50.953333,
+      "longitude": 6.94
     }
   },
   {
@@ -264,8 +264,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.565323,
-      "lng": 9.98534
+      "latitude": 53.565323,
+      "longitude": 9.98534
     }
   },
   {
@@ -299,8 +299,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.833333,
-      "lng": 4.283333
+      "latitude": 50.833333,
+      "longitude": 4.283333
     }
   },
   {
@@ -335,8 +335,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.555322999999994,
-      "lng": 9.98534
+      "latitude": 53.555322999999994,
+      "longitude": 9.98534
     }
   },
   {
@@ -366,8 +366,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.833333,
-      "lng": 4.323333
+      "latitude": 50.833333,
+      "longitude": 4.323333
     }
   },
   {
@@ -396,8 +396,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.545322999999996,
-      "lng": 9.975340000000001
+      "latitude": 53.545322999999996,
+      "longitude": 9.975340000000001
     }
   },
   {
@@ -430,8 +430,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.545322999999996,
-      "lng": 9.96534
+      "latitude": 53.545322999999996,
+      "longitude": 9.96534
     }
   },
   {
@@ -462,8 +462,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.565323,
-      "lng": 9.99534
+      "latitude": 53.565323,
+      "longitude": 9.99534
     }
   },
   {
@@ -494,8 +494,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.555322999999994,
-      "lng": 9.975340000000001
+      "latitude": 53.555322999999994,
+      "longitude": 9.975340000000001
     }
   },
   {
@@ -527,8 +527,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.39333,
-      "lng": 4.930000000000001
+      "latitude": 52.39333,
+      "longitude": 4.930000000000001
     }
   },
   {
@@ -561,8 +561,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.963333,
-      "lng": 6.99
+      "latitude": 50.963333,
+      "longitude": 6.99
     }
   },
   {
@@ -593,8 +593,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.853333000000006,
-      "lng": 4.283333
+      "latitude": 50.853333000000006,
+      "longitude": 4.283333
     }
   },
   {
@@ -625,8 +625,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.39333,
-      "lng": 4.880000000000001
+      "latitude": 52.39333,
+      "longitude": 4.880000000000001
     }
   },
   {
@@ -655,8 +655,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.933333,
-      "lng": 6.95
+      "latitude": 50.933333,
+      "longitude": 6.95
     }
   },
   {
@@ -690,8 +690,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.208304,
-      "lng": 6.773849
+      "latitude": 51.208304,
+      "longitude": 6.773849
     }
   },
   {
@@ -725,8 +725,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.953333,
-      "lng": 6.96
+      "latitude": 50.953333,
+      "longitude": 6.96
     }
   },
   {
@@ -755,8 +755,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.363333
+      "latitude": 50.863333000000004,
+      "longitude": 4.363333
     }
   },
   {
@@ -790,8 +790,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.218304,
-      "lng": 6.833849
+      "latitude": 51.218304,
+      "longitude": 6.833849
     }
   },
   {
@@ -823,8 +823,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.575323,
-      "lng": 10.03534
+      "latitude": 53.575323,
+      "longitude": 10.03534
     }
   },
   {
@@ -856,8 +856,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.846667,
-      "lng": 2.333333
+      "latitude": 48.846667,
+      "longitude": 2.333333
     }
   },
   {
@@ -889,8 +889,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.846667,
-      "lng": 2.373333
+      "latitude": 48.846667,
+      "longitude": 2.373333
     }
   },
   {
@@ -924,8 +924,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.923333,
-      "lng": 6.94
+      "latitude": 50.923333,
+      "longitude": 6.94
     }
   },
   {
@@ -955,8 +955,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.238304,
-      "lng": 6.843849
+      "latitude": 51.238304,
+      "longitude": 6.843849
     }
   },
   {
@@ -990,8 +990,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.833333,
-      "lng": 4.313333
+      "latitude": 50.833333,
+      "longitude": 4.313333
     }
   },
   {
@@ -1024,8 +1024,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.555322999999994,
-      "lng": 10.03534
+      "latitude": 53.555322999999994,
+      "longitude": 10.03534
     }
   },
   {
@@ -1056,8 +1056,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.555322999999994,
-      "lng": 9.99534
+      "latitude": 53.555322999999994,
+      "longitude": 9.99534
     }
   },
   {
@@ -1090,8 +1090,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.555322999999994,
-      "lng": 9.975340000000001
+      "latitude": 53.555322999999994,
+      "longitude": 9.975340000000001
     }
   },
   {
@@ -1123,8 +1123,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.545322999999996,
-      "lng": 10.01534
+      "latitude": 53.545322999999996,
+      "longitude": 10.01534
     }
   },
   {
@@ -1158,8 +1158,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.35333,
-      "lng": 4.9
+      "latitude": 52.35333,
+      "longitude": 4.9
     }
   },
   {
@@ -1191,8 +1191,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.228304,
-      "lng": 6.843849
+      "latitude": 51.228304,
+      "longitude": 6.843849
     }
   },
   {
@@ -1227,8 +1227,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.803333,
-      "lng": 4.353332999999999
+      "latitude": 50.803333,
+      "longitude": 4.353332999999999
     }
   },
   {
@@ -1257,8 +1257,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.943332999999996,
-      "lng": 6.9
+      "latitude": 50.943332999999996,
+      "longitude": 6.9
     }
   },
   {
@@ -1291,8 +1291,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.953333,
-      "lng": 6.99
+      "latitude": 50.953333,
+      "longitude": 6.99
     }
   },
   {
@@ -1321,8 +1321,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.803333,
-      "lng": 4.333333
+      "latitude": 50.803333,
+      "longitude": 4.333333
     }
   },
   {
@@ -1353,8 +1353,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.36333,
-      "lng": 4.880000000000001
+      "latitude": 52.36333,
+      "longitude": 4.880000000000001
     }
   },
   {
@@ -1386,8 +1386,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.836667,
-      "lng": 2.383333
+      "latitude": 48.836667,
+      "longitude": 2.383333
     }
   },
   {
@@ -1420,8 +1420,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.803333,
-      "lng": 4.3433329999999994
+      "latitude": 50.803333,
+      "longitude": 4.3433329999999994
     }
   },
   {
@@ -1455,8 +1455,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.823333000000005,
-      "lng": 4.283333
+      "latitude": 50.823333000000005,
+      "longitude": 4.283333
     }
   },
   {
@@ -1488,8 +1488,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.35333,
-      "lng": 4.87
+      "latitude": 52.35333,
+      "longitude": 4.87
     }
   },
   {
@@ -1518,8 +1518,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.283333
+      "latitude": 50.863333000000004,
+      "longitude": 4.283333
     }
   },
   {
@@ -1553,8 +1553,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.38333,
-      "lng": 4.890000000000001
+      "latitude": 52.38333,
+      "longitude": 4.890000000000001
     }
   },
   {
@@ -1588,8 +1588,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.933333,
-      "lng": 6.930000000000001
+      "latitude": 50.933333,
+      "longitude": 6.930000000000001
     }
   },
   {
@@ -1620,8 +1620,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.896667,
-      "lng": 2.383333
+      "latitude": 48.896667,
+      "longitude": 2.383333
     }
   },
   {
@@ -1652,8 +1652,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.836667,
-      "lng": 2.313333
+      "latitude": 48.836667,
+      "longitude": 2.313333
     }
   },
   {
@@ -1682,8 +1682,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.38333,
-      "lng": 4.880000000000001
+      "latitude": 52.38333,
+      "longitude": 4.880000000000001
     }
   },
   {
@@ -1714,8 +1714,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.258304,
-      "lng": 6.833849
+      "latitude": 51.258304,
+      "longitude": 6.833849
     }
   },
   {
@@ -1744,8 +1744,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.836667,
-      "lng": 2.2833330000000003
+      "latitude": 48.836667,
+      "longitude": 2.2833330000000003
     }
   },
   {
@@ -1778,8 +1778,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.943332999999996,
-      "lng": 6.94
+      "latitude": 50.943332999999996,
+      "longitude": 6.94
     }
   },
   {
@@ -1811,8 +1811,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.595323,
-      "lng": 10.02534
+      "latitude": 53.595323,
+      "longitude": 10.02534
     }
   },
   {
@@ -1842,8 +1842,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.303332999999999
+      "latitude": 50.863333000000004,
+      "longitude": 4.303332999999999
     }
   },
   {
@@ -1874,8 +1874,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.198304,
-      "lng": 6.843849
+      "latitude": 51.198304,
+      "longitude": 6.843849
     }
   },
   {
@@ -1908,8 +1908,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.198304,
-      "lng": 6.783849
+      "latitude": 51.198304,
+      "longitude": 6.783849
     }
   },
   {
@@ -1941,8 +1941,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.565323,
-      "lng": 9.96534
+      "latitude": 53.565323,
+      "longitude": 9.96534
     }
   },
   {
@@ -1975,8 +1975,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.545322999999996,
-      "lng": 10.02534
+      "latitude": 53.545322999999996,
+      "longitude": 10.02534
     }
   },
   {
@@ -2005,8 +2005,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.803333,
-      "lng": 4.293333
+      "latitude": 50.803333,
+      "longitude": 4.293333
     }
   },
   {
@@ -2040,8 +2040,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.35333,
-      "lng": 4.87
+      "latitude": 52.35333,
+      "longitude": 4.87
     }
   },
   {
@@ -2076,8 +2076,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.876667,
-      "lng": 2.2833330000000003
+      "latitude": 48.876667,
+      "longitude": 2.2833330000000003
     }
   },
   {
@@ -2108,8 +2108,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.595323,
-      "lng": 10.01534
+      "latitude": 53.595323,
+      "longitude": 10.01534
     }
   },
   {
@@ -2144,8 +2144,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.3433329999999994
+      "latitude": 50.863333000000004,
+      "longitude": 4.3433329999999994
     }
   },
   {
@@ -2180,8 +2180,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.198304,
-      "lng": 6.833849
+      "latitude": 51.198304,
+      "longitude": 6.833849
     }
   },
   {
@@ -2212,8 +2212,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.886667,
-      "lng": 2.343333
+      "latitude": 48.886667,
+      "longitude": 2.343333
     }
   },
   {
@@ -2242,8 +2242,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 53.585322999999995,
-      "lng": 9.96534
+      "latitude": 53.585322999999995,
+      "longitude": 9.96534
     }
   },
   {
@@ -2274,8 +2274,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.903332999999996,
-      "lng": 6.96
+      "latitude": 50.903332999999996,
+      "longitude": 6.96
     }
   },
   {
@@ -2309,8 +2309,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.37333,
-      "lng": 4.890000000000001
+      "latitude": 52.37333,
+      "longitude": 4.890000000000001
     }
   },
   {
@@ -2342,8 +2342,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.565323,
-      "lng": 10.06534
+      "latitude": 53.565323,
+      "longitude": 10.06534
     }
   },
   {
@@ -2375,8 +2375,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.41333,
-      "lng": 4.87
+      "latitude": 52.41333,
+      "longitude": 4.87
     }
   },
   {
@@ -2406,8 +2406,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.886667,
-      "lng": 2.333333
+      "latitude": 48.886667,
+      "longitude": 2.333333
     }
   },
   {
@@ -2438,8 +2438,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.228304,
-      "lng": 6.813848999999999
+      "latitude": 51.228304,
+      "longitude": 6.813848999999999
     }
   },
   {
@@ -2474,8 +2474,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.403330000000004,
-      "lng": 4.8500000000000005
+      "latitude": 52.403330000000004,
+      "longitude": 4.8500000000000005
     }
   },
   {
@@ -2504,8 +2504,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 48.886667,
-      "lng": 2.343333
+      "latitude": 48.886667,
+      "longitude": 2.343333
     }
   },
   {
@@ -2540,8 +2540,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.218304,
-      "lng": 6.753849
+      "latitude": 51.218304,
+      "longitude": 6.753849
     }
   },
   {
@@ -2570,8 +2570,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.258304,
-      "lng": 6.773849
+      "latitude": 51.258304,
+      "longitude": 6.773849
     }
   },
   {
@@ -2601,8 +2601,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.833333,
-      "lng": 4.323333
+      "latitude": 50.833333,
+      "longitude": 4.323333
     }
   },
   {
@@ -2637,8 +2637,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.198304,
-      "lng": 6.763849
+      "latitude": 51.198304,
+      "longitude": 6.763849
     }
   },
   {
@@ -2673,8 +2673,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.923333,
-      "lng": 6.92
+      "latitude": 50.923333,
+      "longitude": 6.92
     }
   },
   {
@@ -2707,8 +2707,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.37333,
-      "lng": 4.880000000000001
+      "latitude": 52.37333,
+      "longitude": 4.880000000000001
     }
   },
   {
@@ -2738,8 +2738,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.37333,
-      "lng": 4.94
+      "latitude": 52.37333,
+      "longitude": 4.94
     }
   },
   {
@@ -2769,8 +2769,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 48.846667,
-      "lng": 2.313333
+      "latitude": 48.846667,
+      "longitude": 2.313333
     }
   },
   {
@@ -2803,8 +2803,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.39333,
-      "lng": 4.92
+      "latitude": 52.39333,
+      "longitude": 4.92
     }
   },
   {
@@ -2834,8 +2834,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 52.39333,
-      "lng": 4.95
+      "latitude": 52.39333,
+      "longitude": 4.95
     }
   },
   {
@@ -2865,8 +2865,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.38333,
-      "lng": 4.91
+      "latitude": 52.38333,
+      "longitude": 4.91
     }
   },
   {
@@ -2896,8 +2896,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.363333
+      "latitude": 50.863333000000004,
+      "longitude": 4.363333
     }
   },
   {
@@ -2927,8 +2927,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 53.545322999999996,
-      "lng": 10.03534
+      "latitude": 53.545322999999996,
+      "longitude": 10.03534
     }
   },
   {
@@ -2959,8 +2959,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.3833329999999995
+      "latitude": 50.863333000000004,
+      "longitude": 4.3833329999999995
     }
   },
   {
@@ -2991,8 +2991,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.823333000000005,
-      "lng": 4.283333
+      "latitude": 50.823333000000005,
+      "longitude": 4.283333
     }
   },
   {
@@ -3021,8 +3021,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.863333000000004,
-      "lng": 4.373333
+      "latitude": 50.863333000000004,
+      "longitude": 4.373333
     }
   },
   {
@@ -3055,8 +3055,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.238304,
-      "lng": 6.833849
+      "latitude": 51.238304,
+      "longitude": 6.833849
     }
   },
   {
@@ -3086,8 +3086,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 51.208304,
-      "lng": 6.793849
+      "latitude": 51.208304,
+      "longitude": 6.793849
     }
   },
   {
@@ -3116,8 +3116,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 52.41333,
-      "lng": 4.94
+      "latitude": 52.41333,
+      "longitude": 4.94
     }
   },
   {
@@ -3149,8 +3149,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.833333,
-      "lng": 4.333333
+      "latitude": 50.833333,
+      "longitude": 4.333333
     }
   },
   {
@@ -3182,8 +3182,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.943332999999996,
-      "lng": 6.97
+      "latitude": 50.943332999999996,
+      "longitude": 6.97
     }
   },
   {
@@ -3212,8 +3212,8 @@ export const offers = [
       "super": true
     },
     "coords": {
-      "lat": 50.813333,
-      "lng": 4.363333
+      "latitude": 50.813333,
+      "longitude": 4.363333
     }
   },
   {
@@ -3242,8 +3242,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 51.228304,
-      "lng": 6.793849
+      "latitude": 51.228304,
+      "longitude": 6.793849
     }
   },
   {
@@ -3277,8 +3277,8 @@ export const offers = [
       "super": false
     },
     "coords": {
-      "lat": 50.943332999999996,
-      "lng": 6.98
+      "latitude": 50.943332999999996,
+      "longitude": 6.98
     }
   }
 
