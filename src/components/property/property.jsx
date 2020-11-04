@@ -13,6 +13,11 @@ import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
 import {PropertyReviews} from "../property-reviews/property-reviews";
 import {Map} from "../map/map";
+import {
+  getMapPropsSelector,
+  getOffers
+} from "../../store/props-to-state-selectors";
+import {mapPropTypes} from "../../prop-validation/map-prop-types";
 
 function getDecimalRating(offer) {
   return Math.round(offer * 10) / 10;
@@ -115,7 +120,7 @@ export const PropertyComponent = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <Map key={id} offers={nearOffers}/>
+            <Map key={id} onlyNearOffers={true}/>
           </section>
         </section>
 
@@ -136,12 +141,16 @@ PropertyComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
   activeCity: PropTypes.string.isRequired,
+  propsForMap: mapPropTypes
+
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.get(state.activeCity),
+  offers: getOffers(state),
   reviews: state.reviews,
-  activeCity: state.activeCity
+  activeCity: state.activeCity,
+  propsForMap: getMapPropsSelector(state),
+
 });
 
 export const Property = connect(mapStateToProps)(PropertyComponent);

@@ -36,7 +36,7 @@ export const Cities = ({offers, activeCity}) => {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map key={activeCity} offers={offers}/>
+            <Map key={activeCity} onlyNearOffers={false}/>
           </section>
         </div>
       </div>
@@ -47,6 +47,4 @@ export const Cities = ({offers, activeCity}) => {
 Cities.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   activeCity: PropTypes.oneOf(cities).isRequired,
-  activeOffer: PropTypes.any
 };
-
