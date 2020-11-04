@@ -13,10 +13,10 @@ export const PlaceCardComponent = (props) => {
     <article
       className={`${classNameArticle} place-card`}
       onMouseOver={() => {
-        onActiveOfferChange(offer);
+        onActiveOfferChange(offer.id);
       }}
       onMouseOut={() => {
-        onActiveOfferChange();
+        onActiveOfferChange(``);
       }}
     >
       <div className={`${classNameWrapper} place-card__image-wrapper`}>
@@ -62,19 +62,19 @@ export const PlaceCardComponent = (props) => {
 
 PlaceCardComponent.propTypes = {
   offer: offerPropTypes.isRequired,
+  // activeOfferId: PropTypes.string.isRequired,
   classNameArticle: PropTypes.string.isRequired,
   classNameWrapper: PropTypes.string.isRequired,
   onActiveOfferChange: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeOffer: state.activeOffer
+const mapStateToProps = () => ({
 });
 
 
 const mapDispatchToProps = (dispatch) => ({
-  onActiveOfferChange: (offer) => {
-    dispatch(actionCreator.changeActiveOffer(offer));
+  onActiveOfferChange: (id) => {
+    dispatch(actionCreator.changeActiveOfferId(id));
   }
 });
 
