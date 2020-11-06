@@ -9,7 +9,7 @@ import {cities} from "../../const";
 import {Header} from "../header/header";
 import {Tabs} from "../tabs/tabs";
 import {Cities} from "../cities/cities";
-import {getCityOffers} from "../../store/props-to-state-selectors";
+import {selectCityOffers} from "../../store/props-to-state-selectors";
 
 const MainPageComponent = ({activeCity, offers, onCityChange}) => {
   return (
@@ -31,7 +31,7 @@ MainPageComponent.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: getCityOffers(state),
+  offers: selectCityOffers(state),
   activeCity: state.activeCity,
 });
 

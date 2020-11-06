@@ -1,43 +1,51 @@
-import {CityCoords} from "../const";
+import {
+  CityCoords,
+  Settings
+} from "../const";
 import {createSelector} from "reselect";
 
-export const getCityOffers = (state) => {
-  return state.offers[state.activeCity];
+const selectActiveCity = (state) => {
+  return state.activeCity;
 };
 
-const getMapCenter = (state) => {
+const selectMapCenter = (activeCity) => {
+  return CityCoords[activeCity];
+};
+
+const getMapOptions = (offers, activeCity) => {
   return {
-    lat: CityCoords[state.activeCity].latitude,
-    lng: CityCoords[state.activeCity].longitude,
+    center: selectMapCenter(activeCity),
+    options: offers.map((offer) => ({
+      id: offer.id,
+      latitude: offer.coords.latitude,
+      longitude: offer.coords.longitude,
+    }))
   };
 };
 
-const getMapZoom = (state) => {
-  return CityCoords[state.activeCity].zoom;
-};
-
-export const getOffersOptions = (state) => {
-  return state.offers[state.activeCity].map((offer) => ({
-    id: offer.id,
-    lat: offer.coords.latitude,
-    lng: offer.coords.longitude,
-  }));
-};
-
-export const getOffers = (state) => {
+export const selectCityOffers = (state) => {
   return state.offers[state.activeCity];
 };
 
-export const getActiveOfferId = (state) => {
-  return state.activeOfferId;
+export const selectNearCityOffers = (state) => {
+  return state
+    .offers[state.activeCity]
+    .slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
 };
 
-export const getMapPropsSelector = createSelector([getMapCenter, getMapZoom, getOffersOptions, getActiveOfferId],
-    (center, zoom, options, activeOfferId) => {
-      return {
-        center,
-        zoom,
-        options,
-        activeOfferId,
-      };
-    });
+
+export const makeSelectCitiesMapProps = () => createSelector(
+    selectActiveCity,
+    selectCityOffers,
+    (activeCity, offers) => {
+      return getMapOptions(offers, activeCity);
+    }
+);
+
+export const selectPropertyMapProps = createSelector(
+    selectActiveCity,
+    selectNearCityOffers,
+    (activeCity, offers) => {
+      return getMapOptions(offers, activeCity);
+    }
+);
