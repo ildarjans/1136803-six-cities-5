@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {connect} from "react-redux";
 import "leaflet/dist/leaflet.css";
-import {getMapPropsSelector} from "../../store/props-to-state-selectors";
+
 import {mapPropTypes} from "../../prop-validation/map-prop-types";
-import {Settings} from "../../const";
 
 const PIN_SIZE = [30, 30];
 const TILE_LAYER = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`;
@@ -34,12 +33,10 @@ class MapComponent extends React.PureComponent {
 
   _addMarkers() {
     const {options} = this.props.propsForMap;
-    const {onlyNearOffers} = this.props;
     options
-      .slice(0, onlyNearOffers ? Settings.NEAR_OFFERS_DISPLAY_LIMIT : options.length)
       .forEach((option) => {
         const marker = leaflet.marker(
-            [option.lat, option.lng],
+            [option.latitude, option.longitude],
             {icon: this._icon, id: option.id});
         marker.addTo(this._map);
         this._markers.push(marker);
@@ -65,8 +62,8 @@ class MapComponent extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {activeOfferId: prevActiveOfferId} = prevProps.propsForMap;
-    const {activeOfferId: nextActiveOfferId} = this.props.propsForMap;
+    const {activeOfferId: prevActiveOfferId} = prevProps;
+    const {activeOfferId: nextActiveOfferId} = this.props;
 
     if (!prevActiveOfferId || prevActiveOfferId && nextActiveOfferId) {
       this._activateSingleIcon(nextActiveOfferId);
@@ -78,9 +75,10 @@ class MapComponent extends React.PureComponent {
   }
 
   componentDidMount() {
+    const {latitude: lat, longitude: lng, zoom} = this.props.propsForMap.center;
     this._map = leaflet.map(`map`, {
-      center: this.props.propsForMap.center,
-      zoom: this.props.propsForMap.zoom,
+      center: {lat, lng},
+      zoom,
       zoomControl: false,
       marker: true
     });
@@ -89,8 +87,8 @@ class MapComponent extends React.PureComponent {
     this._addMarkers();
 
     this._map.setView(
-        this.props.propsForMap.center,
-        this.props.propsForMap.zoom
+        {lat, lng},
+        zoom
     );
   }
 
@@ -107,12 +105,12 @@ class MapComponent extends React.PureComponent {
 }
 
 MapComponent.propTypes = {
-  onlyNearOffers: PropTypes.bool.isRequired,
+  activeOfferId: PropTypes.string.isRequired,
   propsForMap: mapPropTypes
 };
 
 const mapStateToProps = (state) => ({
-  propsForMap: getMapPropsSelector(state),
+  activeOfferId: state.activeOfferId,
 });
 
 export const Map = connect(mapStateToProps)(MapComponent);

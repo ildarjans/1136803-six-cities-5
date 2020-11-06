@@ -4,8 +4,13 @@ import {connect} from "react-redux";
 
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {reviewPropTypes} from "../../prop-validation/review-prop-types";
-import {Settings} from "../../const";
+import {mapPropTypes} from "../../prop-validation/map-prop-types";
 import {getRatingWidth} from "../../utils";
+import {
+  selectCityOffers,
+  selectNearCityOffers,
+  selectPropertyMapProps
+} from "../../store/props-to-state-selectors";
 
 import {Header} from "../header/header";
 import {NearPlaces} from "../near-places/near-places";
@@ -13,18 +18,13 @@ import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
 import {PropertyReviews} from "../property-reviews/property-reviews";
 import {Map} from "../map/map";
-import {
-  getMapPropsSelector,
-  getOffers
-} from "../../store/props-to-state-selectors";
-import {mapPropTypes} from "../../prop-validation/map-prop-types";
 
 function getDecimalRating(offer) {
   return Math.round(offer * 10) / 10;
 }
 
 export const PropertyComponent = (props) => {
-  const {offers, reviews} = props;
+  const {offers, nearOffers, reviews, propsForMap} = props;
   const {id} = props.match.params;
   const offer = offers.find((it) => it.id === id);
 
@@ -34,7 +34,6 @@ export const PropertyComponent = (props) => {
     );
   }
 
-  const nearOffers = offers.slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
   return (
     <div className="page">
       <Header/>
@@ -120,7 +119,7 @@ export const PropertyComponent = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <Map key={id} onlyNearOffers={true}/>
+            <Map key={id} propsForMap={propsForMap}/>
           </section>
         </section>
 
@@ -139,17 +138,17 @@ PropertyComponent.propTypes = {
     }),
   }).isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
+  nearOffers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
-  activeCity: PropTypes.string.isRequired,
   propsForMap: mapPropTypes
 
 };
 
 const mapStateToProps = (state) => ({
-  offers: getOffers(state),
+  offers: selectCityOffers(state),
+  nearOffers: selectNearCityOffers(state),
   reviews: state.reviews,
-  activeCity: state.activeCity,
-  propsForMap: getMapPropsSelector(state),
+  propsForMap: selectPropertyMapProps(state),
 
 });
 
