@@ -7,24 +7,21 @@ import {reviews} from "../mocks/review";
 const getCityOffers = (offersList) => {
   const cityOffers = {};
 
-  cities.forEach((city) => {
-    cityOffers[city] = [];
-  });
-
   offersList.forEach((offer) => {
+    if (!cityOffers[offer.city]) {
+      cityOffers[offer.city] = [];
+    }
     cityOffers[offer.city].push(offer);
   });
 
   return cityOffers;
 };
 
-const cityOffers = getCityOffers(offers);
-
 const initialState = {
   activeCity: cities[0],
-  offers: cityOffers,
+  offers: getCityOffers(offers),
   reviews: reviews.slice(40),
-  activeOfferId: ``
+  activeOfferId: ``,
 };
 
 export function reducer(state = initialState, action) {
