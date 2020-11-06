@@ -3,7 +3,8 @@ export const Settings = {
   OFFERS_IMAGES_DISPLAY_LIMIT: 6,
   NEAR_OFFERS_DISPLAY_LIMIT: 3,
   REVIEW_TEXT_MIN_LENGTH: 50,
-  RATING_STARS_COUNT: 5
+  RATING_STARS_COUNT: 5,
+  MAP_PIN_DEBOUNCE_DELAY: 500
 };
 
 export const offerTypes = [
@@ -41,32 +42,32 @@ export const CityCoords = {
   AMSTERDAM: {
     latitude: 52.38333,
     longitude: 4.9,
-    zoom: 10,
+    zoom: 12,
   },
   PARIS: {
     latitude: 48.866667,
     longitude: 2.333333,
-    zoom: 10,
+    zoom: 12,
   },
   COLOGNE: {
     latitude: 50.933333,
     longitude: 6.95,
-    zoom: 10,
+    zoom: 12,
   },
   BRUSSELS: {
     latitude: 50.833333,
     longitude: 4.333333,
-    zoom: 10,
+    zoom: 12,
   },
   HAMBURG: {
     latitude: 53.575323,
     longitude: 10.01534,
-    zoom: 10,
+    zoom: 12,
   },
   DUSSELDORF: {
     latitude: 51.228304,
     longitude: 6.793849,
-    zoom: 10,
+    zoom: 12,
   },
 };
 

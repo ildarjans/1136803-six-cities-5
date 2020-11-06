@@ -3,20 +3,28 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {getRatingWidth} from "../../utils";
+import {Settings} from "../../const";
+import {
+  debounce,
+  getRatingWidth
+} from "../../utils";
 import {offerPropTypes} from "../../prop-validation/offer-prop-types";
 import {actionCreator} from "../../store/action";
 
 export const PlaceCardComponent = (props) => {
   const {offer, classNameArticle, classNameWrapper, onActiveOfferChange} = props;
+  const handleDebouncedActiveOfferChange = debounce(
+      onActiveOfferChange,
+      Settings.MAP_PIN_DEBOUNCE_DELAY
+  );
   return (
     <article
       className={`${classNameArticle} place-card`}
       onMouseOver={() => {
-        onActiveOfferChange(offer.id);
+        handleDebouncedActiveOfferChange(offer.id);
       }}
       onMouseOut={() => {
-        onActiveOfferChange(``);
+        handleDebouncedActiveOfferChange(``);
       }}
     >
       <div className={`${classNameWrapper} place-card__image-wrapper`}>
@@ -62,7 +70,6 @@ export const PlaceCardComponent = (props) => {
 
 PlaceCardComponent.propTypes = {
   offer: offerPropTypes.isRequired,
-  // activeOfferId: PropTypes.string.isRequired,
   classNameArticle: PropTypes.string.isRequired,
   classNameWrapper: PropTypes.string.isRequired,
   onActiveOfferChange: PropTypes.func.isRequired,
