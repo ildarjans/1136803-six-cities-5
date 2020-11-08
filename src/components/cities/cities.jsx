@@ -5,8 +5,8 @@ import {connect} from "react-redux";
 import {cities} from "../../const";
 import {offerPropTypes} from "../../prop-types/offer";
 import {
-  mapCenter,
-  mapIcons
+  mapCenterPropTypes,
+  mapIconPropTypes
 } from "../../prop-types/map";
 import {
   selectCitiesMapIcons,
@@ -44,8 +44,8 @@ const CitiesComponent = ({offers, activeCity, center, icons}) => {
 CitiesComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   activeCity: PropTypes.oneOf(cities).isRequired,
-  center: mapCenter.isRequired,
-  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
+  center: mapCenterPropTypes.isRequired,
+  icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -6,8 +6,8 @@ import {getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
 import {reviewPropTypes} from "../../prop-types/review";
 import {
-  mapCenter,
-  mapIcons
+  mapCenterPropTypes,
+  mapIconPropTypes
 } from "../../prop-types/map";
 import {
   selectCityOffers,
@@ -144,8 +144,8 @@ PropertyComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   nearOffers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
-  center: mapCenter.isRequired,
-  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
+  center: mapCenterPropTypes.isRequired,
+  icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
