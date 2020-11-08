@@ -1,8 +1,19 @@
 import {
   CityCoords,
-  Settings
+  Settings,
+  SortType
 } from "../const";
 import {createSelector} from "reselect";
+import {
+  sortOffersPriceAsc,
+  sortOffersPriceDes,
+  sortOffersTopRated
+} from "../utils";
+
+
+const selectSortType = (state) => {
+  return state.sortType;
+};
 
 const selectActiveCity = (state) => {
   return state.activeCity;
@@ -41,3 +52,21 @@ export const selectPropertyMapIcons = createSelector(
         lng: offer.coords.longitude,
       }))
 );
+
+export const selectSortedOffersByType = createSelector(
+    selectSortType,
+    selectCityOffers,
+    (sortType, offers) => {
+      switch (sortType) {
+        case (SortType.ASC):
+          return offers.slice().sort(sortOffersPriceAsc);
+        case (SortType.DESC):
+          return offers.slice().sort(sortOffersPriceDes);
+        case (SortType.TOP):
+          return offers.slice().sort(sortOffersTopRated);
+        default:
+          return offers;
+      }
+    }
+);
+
