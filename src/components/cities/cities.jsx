@@ -3,15 +3,20 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {cities} from "../../const";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {mapPropTypes} from "../../prop-validation/map-prop-types";
-import {makeSelectCitiesMapProps} from "../../store/props-to-state-selectors";
+import {offerPropTypes} from "../../prop-types/offer";
+import {
+  mapCenter,
+  mapIcons
+} from "../../prop-types/map";
+import {
+  selectCitiesMapIcons,
+  selectMapCenter
+} from "../../selectors/offers";
 
 import {PlacesList} from "../places-list/places-list";
-
 import {Map} from "../map/map";
 
-const CitiesComponent = ({offers, activeCity, propsForMap}) => {
+const CitiesComponent = ({offers, activeCity, center, icons}) => {
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -40,7 +45,7 @@ const CitiesComponent = ({offers, activeCity, propsForMap}) => {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map key={activeCity} propsForMap={propsForMap}/>
+            <Map center={center} icons={icons}/>
           </section>
         </div>
       </div>
@@ -51,16 +56,13 @@ const CitiesComponent = ({offers, activeCity, propsForMap}) => {
 CitiesComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   activeCity: PropTypes.oneOf(cities).isRequired,
-  propsForMap: mapPropTypes
+  center: mapCenter.isRequired,
+  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
 };
 
-const mapStateToProps = () => {
-  const selectCitiesMapProps = makeSelectCitiesMapProps();
-  return (state) => {
-    return {
-      propsForMap: selectCitiesMapProps(state)
-    };
-  };
-};
+const mapStateToProps = (state) => ({
+  center: selectMapCenter(state),
+  icons: selectCitiesMapIcons(state),
+});
 
 export const Cities = connect(mapStateToProps)(CitiesComponent);

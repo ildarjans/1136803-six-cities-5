@@ -2,15 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
-import {mapPropTypes} from "../../prop-validation/map-prop-types";
 import {getRatingWidth} from "../../utils";
+import {offerPropTypes} from "../../prop-types/offer";
+import {reviewPropTypes} from "../../prop-types/review";
+import {
+  mapCenter,
+  mapIcons
+} from "../../prop-types/map";
 import {
   selectCityOffers,
+  selectMapCenter,
   selectNearCityOffers,
-  selectPropertyMapProps
-} from "../../store/props-to-state-selectors";
+  selectPropertyMapIcons
+} from "../../selectors/offers";
 
 import {Header} from "../header/header";
 import {NearPlaces} from "../near-places/near-places";
@@ -24,7 +28,7 @@ function getDecimalRating(offer) {
 }
 
 export const PropertyComponent = (props) => {
-  const {offers, nearOffers, reviews, propsForMap} = props;
+  const {offers, nearOffers, reviews, center, icons} = props;
   const {id} = props.match.params;
   const offer = offers.find((it) => it.id === id);
 
@@ -119,7 +123,7 @@ export const PropertyComponent = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <Map key={id} propsForMap={propsForMap}/>
+            <Map center={center} icons={icons}/>
           </section>
         </section>
 
@@ -140,16 +144,16 @@ PropertyComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   nearOffers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
-  propsForMap: mapPropTypes
-
+  center: mapCenter.isRequired,
+  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   offers: selectCityOffers(state),
   nearOffers: selectNearCityOffers(state),
   reviews: state.reviews,
-  propsForMap: selectPropertyMapProps(state),
-
+  center: selectMapCenter(state),
+  icons: selectPropertyMapIcons(state),
 });
 
 export const Property = connect(mapStateToProps)(PropertyComponent);
