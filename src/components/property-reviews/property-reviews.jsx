@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
+import {reviewPropTypes} from "../../prop-types/review";
 import {
   RatingTitle,
   Settings,

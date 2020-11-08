@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {offerPropTypes} from "../../prop-types/offer";
 
 import {PlaceCard} from "../place-card/place-card";
 

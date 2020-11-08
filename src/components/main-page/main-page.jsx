@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {offerPropTypes} from "../../prop-types/offer";
 import {actionCreator} from "../../store/action";
 import {cities} from "../../const";
+import {selectCityOffers} from "../../selectors/offers";
 
 import {Header} from "../header/header";
 import {Tabs} from "../tabs/tabs";
 import {Cities} from "../cities/cities";
-import {selectCityOffers} from "../../store/props-to-state-selectors";
 
 const MainPageComponent = ({activeCity, offers, onCityChange}) => {
   return (

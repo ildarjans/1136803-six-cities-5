@@ -8,7 +8,7 @@ import {
   debounce,
   getRatingWidth
 } from "../../utils";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {offerPropTypes} from "../../prop-types/offer";
 import {actionCreator} from "../../store/action";
 
 export const PlaceCardComponent = (props) => {
@@ -75,15 +75,10 @@ PlaceCardComponent.propTypes = {
   onActiveOfferChange: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({
-});
-
-
 const mapDispatchToProps = (dispatch) => ({
   onActiveOfferChange: (id) => {
     dispatch(actionCreator.changeActiveOfferId(id));
   }
 });
 
-
-export const PlaceCard = connect(mapStateToProps, mapDispatchToProps)(PlaceCardComponent);
+export const PlaceCard = connect(null, mapDispatchToProps)(PlaceCardComponent);

@@ -1,6 +1,6 @@
 import React from "react";
 
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
+import {reviewPropTypes} from "../../prop-types/review";
 import {
   getReviewDateString,
   getReviewTimeDateString,
