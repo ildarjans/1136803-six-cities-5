@@ -23,3 +23,11 @@ export function getReviewTimeDateString(date) {
 export function extend(obj1, obj2) {
   return Object.assign({}, obj1, obj2);
 }
+
+export const debounce = (fn, delay) => {
+  let timeout;
+  return (id) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(fn.bind(null, id), delay);
+  };
+};

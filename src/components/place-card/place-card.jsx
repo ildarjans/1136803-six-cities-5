@@ -1,13 +1,32 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-import {getRatingWidth} from "../../utils";
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {Settings} from "../../const";
+import {
+  debounce,
+  getRatingWidth
+} from "../../utils";
+import {offerPropTypes} from "../../prop-types/offer";
+import {actionCreator} from "../../store/action";
 
-export const PlaceCard = ({offer, classNameArticle, classNameWrapper}) => {
+export const PlaceCardComponent = (props) => {
+  const {offer, classNameArticle, classNameWrapper, onActiveOfferChange} = props;
+  const handleDebouncedActiveOfferChange = debounce(
+      onActiveOfferChange,
+      Settings.MAP_PIN_DEBOUNCE_DELAY
+  );
   return (
-    <article className={`${classNameArticle} place-card`}>
+    <article
+      className={`${classNameArticle} place-card`}
+      onMouseOver={() => {
+        handleDebouncedActiveOfferChange(offer.id);
+      }}
+      onMouseOut={() => {
+        handleDebouncedActiveOfferChange(``);
+      }}
+    >
       <div className={`${classNameWrapper} place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
           <img
@@ -49,9 +68,17 @@ export const PlaceCard = ({offer, classNameArticle, classNameWrapper}) => {
 
 };
 
-PlaceCard.propTypes = {
+PlaceCardComponent.propTypes = {
   offer: offerPropTypes.isRequired,
   classNameArticle: PropTypes.string.isRequired,
   classNameWrapper: PropTypes.string.isRequired,
+  onActiveOfferChange: PropTypes.func.isRequired,
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onActiveOfferChange: (id) => {
+    dispatch(actionCreator.changeActiveOfferId(id));
+  }
+});
+
+export const PlaceCard = connect(null, mapDispatchToProps)(PlaceCardComponent);

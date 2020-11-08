@@ -1,6 +1,6 @@
 import React from "react";
 
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
+import {offerPropTypes} from "../../prop-types/offer";
 import {Settings} from "../../const";
 
 

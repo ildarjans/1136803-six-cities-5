@@ -14,8 +14,8 @@ export const offerPropTypes = PropTypes.shape({
   guests: PropTypes.number.isRequired,
   features: PropTypes.array.isRequired,
   coords: PropTypes.shape({
-    lat: PropTypes.number.isRequired,
-    lng: PropTypes.number.isRequired,
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
   }),
   owner: PropTypes.shape({
     avatar: PropTypes.string.isRequired,

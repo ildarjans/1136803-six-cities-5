@@ -2,22 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {offerPropTypes} from "../../prop-validation/offer-prop-types";
-import {reviewPropTypes} from "../../prop-validation/review-prop-types";
-import {Settings} from "../../const";
 import {getRatingWidth} from "../../utils";
+import {offerPropTypes} from "../../prop-types/offer";
+import {reviewPropTypes} from "../../prop-types/review";
+import {
+  mapCenter,
+  mapIcons
+} from "../../prop-types/map";
+import {
+  selectCityOffers,
+  selectMapCenter,
+  selectNearCityOffers,
+  selectPropertyMapIcons
+} from "../../selectors/offers";
 
 import {Header} from "../header/header";
 import {NearPlaces} from "../near-places/near-places";
 import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
 import {PropertyReviews} from "../property-reviews/property-reviews";
+import {Map} from "../map/map";
 
 function getDecimalRating(offer) {
   return Math.round(offer * 10) / 10;
 }
 
-export const PropertyComponent = ({offers, reviews, id}) => {
+export const PropertyComponent = (props) => {
+  const {offers, nearOffers, reviews, center, icons} = props;
+  const {id} = props.match.params;
   const offer = offers.find((it) => it.id === id);
 
   if (!offer) {
@@ -26,7 +38,6 @@ export const PropertyComponent = ({offers, reviews, id}) => {
     );
   }
 
-  const nearOffers = offers.slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
   return (
     <div className="page">
       <Header/>
@@ -111,7 +122,9 @@ export const PropertyComponent = ({offers, reviews, id}) => {
 
             </div>
           </div>
-          <section className="property__map map"/>
+          <section className="property__map map">
+            <Map center={center} icons={icons}/>
+          </section>
         </section>
 
         <NearPlaces offers={nearOffers}/>
@@ -123,14 +136,24 @@ export const PropertyComponent = ({offers, reviews, id}) => {
 
 
 PropertyComponent.propTypes = {
-  id: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
+  nearOffers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
+  center: mapCenter.isRequired,
+  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: selectCityOffers(state),
+  nearOffers: selectNearCityOffers(state),
   reviews: state.reviews,
+  center: selectMapCenter(state),
+  icons: selectPropertyMapIcons(state),
 });
 
 export const Property = connect(mapStateToProps)(PropertyComponent);
