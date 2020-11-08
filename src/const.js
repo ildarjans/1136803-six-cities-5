@@ -40,33 +40,33 @@ export const Title = {
 
 export const CityCoords = {
   AMSTERDAM: {
-    latitude: 52.38333,
-    longitude: 4.9,
+    lat: 52.38333,
+    lng: 4.9,
     zoom: 12,
   },
   PARIS: {
-    latitude: 48.866667,
-    longitude: 2.333333,
+    lat: 48.866667,
+    lng: 2.333333,
     zoom: 12,
   },
   COLOGNE: {
-    latitude: 50.933333,
-    longitude: 6.95,
+    lat: 50.933333,
+    lng: 6.95,
     zoom: 12,
   },
   BRUSSELS: {
-    latitude: 50.833333,
-    longitude: 4.333333,
+    lat: 50.833333,
+    lng: 4.333333,
     zoom: 12,
   },
   HAMBURG: {
-    latitude: 53.575323,
-    longitude: 10.01534,
+    lat: 53.575323,
+    lng: 10.01534,
     zoom: 12,
   },
   DUSSELDORF: {
-    latitude: 51.228304,
-    longitude: 6.793849,
+    lat: 51.228304,
+    lng: 6.793849,
     zoom: 12,
   },
 };
