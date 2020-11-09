@@ -87,7 +87,7 @@ export const SortType = {
   TOP: `top`
 };
 
-export const sortTypeTitle = {
+export const sortTypeTitles = {
   popular: `Popular`,
   asc: `Price: low to high`,
   desc: `Price: high to low`,

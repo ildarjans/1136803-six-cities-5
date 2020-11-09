@@ -1,7 +1,7 @@
 import React from "react";
 
 export const withCollapseToggle = (Component) => {
-  class SortPlacesComponent extends React.PureComponent {
+  class CollapseToggle extends React.PureComponent {
     constructor(props) {
       super(props);
       this.state = {
@@ -12,8 +12,9 @@ export const withCollapseToggle = (Component) => {
     }
 
     handleCollapseToggle() {
-      const {collapsed} = this.state;
-      this.setState({collapsed: !collapsed});
+      this.setState((state) => ({
+        collapsed: !state.collapsed
+      }));
     }
 
     render() {
@@ -26,5 +27,5 @@ export const withCollapseToggle = (Component) => {
     }
   }
 
-  return SortPlacesComponent;
+  return CollapseToggle;
 };
