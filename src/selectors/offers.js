@@ -15,7 +15,7 @@ const selectSortType = (state) => {
   return state.sortType;
 };
 
-const selectActiveCity = (state) => {
+export const selectActiveCity = (state) => {
   return state.activeCity;
 };
 
