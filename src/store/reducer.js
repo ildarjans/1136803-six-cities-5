@@ -1,4 +1,7 @@
-import {cities} from "../const";
+import {
+  cities,
+  SortType
+} from "../const";
 import {ActionType} from "./action";
 import {extend} from "../utils";
 import {offers} from "../mocks/offer";
@@ -22,6 +25,7 @@ const initialState = {
   offers: getCityOffers(offers),
   reviews: reviews.slice(40),
   activeOfferId: ``,
+  sortType: SortType.POPULAR,
 };
 
 export function reducer(state = initialState, action) {
@@ -32,6 +36,8 @@ export function reducer(state = initialState, action) {
       return extend(state, {offers: action.payload});
     case ActionType.CHANGE_ACTIVE_OFFER_ID:
       return extend(state, {activeOfferId: action.payload});
+    case ActionType.CHANGE_SORT_TYPE:
+      return extend(state, {sortType: action.payload});
   }
   return state;
 }

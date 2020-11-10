@@ -31,3 +31,10 @@ export const debounce = (fn, delay) => {
     timeout = setTimeout(fn.bind(null, id), delay);
   };
 };
+
+export const sortOffersPriceAsc = (offerA, offerB) => offerA.price - offerB.price;
+
+export const sortOffersPriceDes = (offerA, offerB) => offerB.price - offerA.price;
+
+export const sortOffersTopRated = (offerA, offerB) => offerB.rating - offerA.rating;
+

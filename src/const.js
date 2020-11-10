@@ -79,3 +79,18 @@ export const cities = [
   `HAMBURG`,
   `DUSSELDORF`
 ];
+
+export const SortType = {
+  POPULAR: `popular`,
+  ASC: `asc`,
+  DESC: `desc`,
+  TOP: `top`
+};
+
+export const sortTypeTitles = {
+  popular: `Popular`,
+  asc: `Price: low to high`,
+  desc: `Price: high to low`,
+  top: `Top rated first`
+};
+

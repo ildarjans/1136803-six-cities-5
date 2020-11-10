@@ -2,23 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {offerPropTypes} from "../../prop-types/offer";
 import {actionCreator} from "../../store/action";
 import {cities} from "../../const";
-import {selectCityOffers} from "../../selectors/offers";
 
 import {Header} from "../header/header";
 import {Tabs} from "../tabs/tabs";
 import {Cities} from "../cities/cities";
 
-const MainPageComponent = ({activeCity, offers, onCityChange}) => {
+const MainPageComponent = ({activeCity, onCityChange}) => {
   return (
     <div className="page page--gray page--main">
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <Tabs activeCity={activeCity} onTabClick={onCityChange}/>
-        <Cities offers={offers} activeCity={activeCity}/>
+        <Cities activeCity={activeCity}/>
       </main>
     </div>
   );
@@ -26,12 +24,10 @@ const MainPageComponent = ({activeCity, offers, onCityChange}) => {
 
 MainPageComponent.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   onCityChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offers: selectCityOffers(state),
   activeCity: state.activeCity,
 });
 

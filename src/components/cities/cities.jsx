@@ -5,15 +5,17 @@ import {connect} from "react-redux";
 import {cities} from "../../const";
 import {offerPropTypes} from "../../prop-types/offer";
 import {
-  mapCenter,
-  mapIcons
+  mapCenterPropTypes,
+  mapIconPropTypes
 } from "../../prop-types/map";
 import {
   selectCitiesMapIcons,
-  selectMapCenter
+  selectMapCenter,
+  selectSortedOffersByType
 } from "../../selectors/offers";
 
 import {PlacesList} from "../places-list/places-list";
+import {PlacesSorting} from "../places-sorting/places-sorting";
 import {Map} from "../map/map";
 
 const CitiesComponent = ({offers, activeCity, center, icons}) => {
@@ -23,22 +25,8 @@ const CitiesComponent = ({offers, activeCity, center, icons}) => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{offers.length} places to stay in {activeCity}</b>
-          <form className="places__sorting" action="#" method="get">
-            <span className="places__sorting-caption">Sort by</span>
-            <span className="places__sorting-type" tabIndex="0">
-                  Popular
-              <svg className="places__sorting-arrow" width="7" height="4">
-                <use xlinkHref="#icon-arrow-select"/>
-              </svg>
-            </span>
-            <ul className="places__options places__options--custom places__options--opened">
-              <li className="places__option places__option--active" tabIndex="0">Popular</li>
-              <li className="places__option" tabIndex="0">Price: low to high</li>
-              <li className="places__option" tabIndex="0">Price: high to low</li>
-              <li className="places__option" tabIndex="0">Top rated first</li>
-            </ul>
 
-          </form>
+          <PlacesSorting/>
 
           <PlacesList offers={offers}/>
 
@@ -56,11 +44,12 @@ const CitiesComponent = ({offers, activeCity, center, icons}) => {
 CitiesComponent.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   activeCity: PropTypes.oneOf(cities).isRequired,
-  center: mapCenter.isRequired,
-  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
+  center: mapCenterPropTypes.isRequired,
+  icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  offers: selectSortedOffersByType(state),
   center: selectMapCenter(state),
   icons: selectCitiesMapIcons(state),
 });

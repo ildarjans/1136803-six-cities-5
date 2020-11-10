@@ -5,8 +5,8 @@ import {connect} from "react-redux";
 import "leaflet/dist/leaflet.css";
 
 import {
-  mapCenter,
-  mapIcons
+  mapCenterPropTypes,
+  mapIconPropTypes
 } from "../../prop-types/map";
 
 const PIN_SIZE = [30, 30];
@@ -79,8 +79,8 @@ class MapComponent extends React.PureComponent {
 
 MapComponent.propTypes = {
   activeOfferId: PropTypes.string.isRequired,
-  center: mapCenter.isRequired,
-  icons: PropTypes.arrayOf(mapIcons.isRequired).isRequired,
+  center: mapCenterPropTypes.isRequired,
+  icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
