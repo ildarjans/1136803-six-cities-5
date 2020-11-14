@@ -6,7 +6,7 @@ import {cities} from "../../const";
 import {actionCreator} from "../../store/action";
 import {connect} from "react-redux";
 
-const TabsComponent = ({activeCity, onCityChange}) => {
+const LocationsTabs = ({activeCity, onCityChange}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -37,7 +37,7 @@ const TabsComponent = ({activeCity, onCityChange}) => {
 
 };
 
-TabsComponent.propTypes = {
+LocationsTabs.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
   onCityChange: PropTypes.func.isRequired,
 };
@@ -52,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const Tabs = connect(mapStateToProps, mapDispatchToProps)(TabsComponent);
+export const Tabs = connect(mapStateToProps, mapDispatchToProps)(LocationsTabs);

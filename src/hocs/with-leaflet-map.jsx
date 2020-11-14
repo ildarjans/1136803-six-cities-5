@@ -27,8 +27,8 @@ const getIcon = (icon, activeIconId) => {
   return icon.id === activeIconId ? activeIcon : plainIcon;
 };
 
-export const withMapLeaflet = (Component) => {
-  class MapLeaflet extends React.PureComponent {
+export const withLeafletMap = (Component) => {
+  class LeafletMap extends React.PureComponent {
     constructor(props) {
       super(props);
       this._map = null;
@@ -74,12 +74,12 @@ export const withMapLeaflet = (Component) => {
     }
   }
 
-  MapLeaflet.propTypes = {
+  LeafletMap.propTypes = {
     activeOfferId: PropTypes.string.isRequired,
     center: mapCenterPropTypes.isRequired,
     icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
   };
 
-  return MapLeaflet;
+  return LeafletMap;
 
 };
