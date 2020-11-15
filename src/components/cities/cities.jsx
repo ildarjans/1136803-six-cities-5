@@ -9,6 +9,7 @@ import {
   mapIconPropTypes
 } from "../../prop-types/map";
 import {
+  selectActiveCity,
   selectCitiesMapIcons,
   selectMapCenter,
   selectSortedOffersByType
@@ -49,6 +50,7 @@ CitiesComponent.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  activeCity: selectActiveCity(state),
   offers: selectSortedOffersByType(state),
   center: selectMapCenter(state),
   icons: selectCitiesMapIcons(state),

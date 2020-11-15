@@ -3,8 +3,10 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {cities} from "../../const";
+import {actionCreator} from "../../store/action";
+import {connect} from "react-redux";
 
-export const Tabs = ({activeCity, onTabClick}) => {
+const LocationsTabs = ({activeCity, onCityChange}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -13,7 +15,7 @@ export const Tabs = ({activeCity, onTabClick}) => {
             const isActive = city === activeCity;
             const handleTabClick = () => {
               if (!isActive) {
-                onTabClick(city);
+                onCityChange(city);
               }
             };
             return (
@@ -35,7 +37,19 @@ export const Tabs = ({activeCity, onTabClick}) => {
 
 };
 
-Tabs.propTypes = {
+LocationsTabs.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
-  onTabClick: PropTypes.func.isRequired
+  onCityChange: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  activeCity: state.activeCity,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityChange: (city) => {
+    dispatch(actionCreator.changeCity(city));
+  }
+});
+
+export const Tabs = connect(mapStateToProps, mapDispatchToProps)(LocationsTabs);
