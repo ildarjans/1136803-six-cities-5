@@ -1,12 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-
-import {cities} from "../../const";
-import {actionCreator} from "../../store/action";
 import {connect} from "react-redux";
 
-const LocationsTabs = ({activeCity, onCityChange}) => {
+import {cities} from "../../const";
+import {actionCreator} from "../../store/actions";
+import {selectActiveCity} from "../../selectors/offers";
+
+const LocationsTabsComponent = ({activeCity, onCityChange}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -37,13 +38,13 @@ const LocationsTabs = ({activeCity, onCityChange}) => {
 
 };
 
-LocationsTabs.propTypes = {
+LocationsTabsComponent.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
   onCityChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  activeCity: state.activeCity,
+  activeCity: selectActiveCity(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -52,4 +53,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const Tabs = connect(mapStateToProps, mapDispatchToProps)(LocationsTabs);
+export const LocationsTabs = connect(mapStateToProps, mapDispatchToProps)(LocationsTabsComponent);

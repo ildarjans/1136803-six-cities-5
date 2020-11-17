@@ -4,14 +4,11 @@ import {connect} from "react-redux";
 
 import {cities} from "../../const";
 import {offerPropTypes} from "../../prop-types/offer";
-import {
-  mapCenterPropTypes,
-  mapIconPropTypes
-} from "../../prop-types/map";
+import {mapCenterPropTypes, mapIconPropTypes} from "../../prop-types/map";
 import {
   selectActiveCity,
-  selectCitiesMapIcons,
   selectMapCenter,
+  selectCitiesMapIcons,
   selectSortedOffersByType
 } from "../../selectors/offers";
 
