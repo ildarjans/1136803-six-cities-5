@@ -1,5 +1,4 @@
 export const Settings = {
-  OFFERS_COUNT: 969,
   OFFERS_IMAGES_DISPLAY_LIMIT: 6,
   NEAR_OFFERS_DISPLAY_LIMIT: 3,
   REVIEW_TEXT_MIN_LENGTH: 50,
@@ -92,5 +91,18 @@ export const sortTypeTitles = {
   asc: `Price: low to high`,
   desc: `Price: high to low`,
   top: `Top rated first`
+};
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  FAVORITES: `/favorites`,
+  ROOT: `/`,
+  OFFER: `/offer/`
+};
+
+export const ApiRoute = {
+  HOTELS: `/hotels`,
+  REVIEWS: `/comments`,
+  NEAR_OFFERS: `/hotels/id/nearby`
 };
 
