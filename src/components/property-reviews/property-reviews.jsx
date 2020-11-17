@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 import {reviewPropTypes} from "../../prop-types/review";
-import {
-  RatingTitle,
-  Settings,
-  Title,
-} from "../../const";
+import {RatingTitle, Settings, Title} from "../../const";
+import {selectMemoizeHotelReviews} from "../../selectors/offers";
 
 import {PropertyReview} from "../property-review/property-review";
 
-export const PropertyReviews = ({reviews}) => {
+export const PropertyReviewsComponent = ({reviews}) => {
   const formRef = React.createRef();
   return (
     <section className="property__reviews reviews">
@@ -22,8 +20,8 @@ export const PropertyReviews = ({reviews}) => {
       </h2>
       <ul className="reviews__list">
         {
-          reviews.map((review, i) => (
-            <PropertyReview key={`${review.date}-${i}`} review={review}/>
+          reviews.map((review) => (
+            <PropertyReview key={`${review.id}`} review={review}/>
           ))
         }
       </ul>
@@ -81,6 +79,12 @@ export const PropertyReviews = ({reviews}) => {
   );
 };
 
-PropertyReviews.propTypes = {
+PropertyReviewsComponent.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired
 };
+
+const mapStateToProps = (state) => ({
+  reviews: selectMemoizeHotelReviews(state),
+});
+
+export const PropertyReviews = connect(mapStateToProps)(PropertyReviewsComponent);
