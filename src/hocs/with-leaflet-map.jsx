@@ -5,6 +5,7 @@ import {
   mapCenterPropTypes,
   mapIconPropTypes
 } from "../prop-types/map";
+import {idPropType} from "../prop-types/id";
 
 const PIN_SIZE = [30, 30];
 const TILE_LAYER = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`;
@@ -75,7 +76,7 @@ export const withLeafletMap = (Component) => {
   }
 
   LeafletMap.propTypes = {
-    activeOfferId: PropTypes.string.isRequired,
+    activeOfferId: idPropType.isRequired,
     center: mapCenterPropTypes.isRequired,
     icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
   };
