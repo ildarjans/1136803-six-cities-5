@@ -1,22 +1,22 @@
+import {CityCoords, SortType} from "../const";
+import {createSelector, createSelectorCreator, defaultMemoize} from "reselect";
 import {
-  CityCoords,
-  Settings,
-  SortType
-} from "../const";
-import {createSelector} from "reselect";
-import {
+  isEqualListsIds,
   sortOffersPriceAsc,
   sortOffersPriceDes,
   sortOffersTopRated
 } from "../utils";
 
+export const selectSortType = (state) => {
+  return state.PROCESS.sortType;
+};
 
-const selectSortType = (state) => {
-  return state.sortType;
+export const selectActiveOfferId = (state) => {
+  return state.PROCESS.activeOfferId;
 };
 
 export const selectActiveCity = (state) => {
-  return state.activeCity;
+  return state.PROCESS.activeCity;
 };
 
 export const selectMapCenter = (state) => {
@@ -24,33 +24,47 @@ export const selectMapCenter = (state) => {
 };
 
 export const selectCityOffers = (state) => {
-  return state.offers[state.activeCity];
+  return state.DATA.offers[state.PROCESS.activeCity];
 };
 
 export const selectNearCityOffers = (state) => {
-  return state
-    .offers[state.activeCity]
-    .slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
+  return state.DATA.nearOffers;
 };
+
+export const selectHotelReviews = (state) => {
+  return state.DATA.reviews;
+};
+
+const createIdEqualSelector = createSelectorCreator(defaultMemoize, isEqualListsIds);
 
 export const selectCitiesMapIcons = createSelector(
     selectCityOffers,
     (offers) => offers
       .map((offer) => ({
         id: offer.id,
-        lat: offer.coords.latitude,
-        lng: offer.coords.longitude,
+        lat: offer.location.latitude,
+        lng: offer.location.longitude,
       }))
 );
 
-export const selectPropertyMapIcons = createSelector(
+export const selectMemoizePropertyMapIcons = createIdEqualSelector(
     selectNearCityOffers,
     (offers) => offers
       .map((offer) => ({
         id: offer.id,
-        lat: offer.coords.latitude,
-        lng: offer.coords.longitude,
+        lat: offer.location.latitude,
+        lng: offer.location.longitude,
       }))
+);
+
+export const selectMemoizeNearOffers = createIdEqualSelector(
+    selectNearCityOffers,
+    (offers) => offers
+);
+
+export const selectMemoizeHotelReviews = createIdEqualSelector(
+    selectHotelReviews,
+    (reviews) => reviews
 );
 
 export const selectSortedOffersByType = createSelector(
@@ -69,4 +83,5 @@ export const selectSortedOffersByType = createSelector(
       }
     }
 );
+
 
