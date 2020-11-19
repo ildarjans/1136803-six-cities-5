@@ -52,34 +52,43 @@ export const isEqualListsIds = (current, previous) => {
 };
 
 export const adaptHotelToClient = (hotel) => {
-  const clientHotel = Object.assign({}, hotel, {
-    previewImage: hotel[`preview_image`],
+  return {
+    bedrooms: hotel[`bedrooms`],
+    city: hotel[`city`],
+    description: hotel[`description`],
+    goods: hotel[`goods`],
+    id: hotel[`id`],
+    images: hotel[`images`],
     isFavorite: hotel[`is_favorite`],
     isPremium: hotel[`is_premium`],
-    maxAdults: hotel[`max_adults`],
     host: {
       id: hotel.host[`id`],
       isPro: hotel.host[`is_pro`],
       avatarUrl: `/${hotel.host[`avatar_url`]}`,
       name: hotel.host[`name`],
-    }
-  });
-
-  delete clientHotel[`preview_image`];
-  delete clientHotel[`is_favorite`];
-  delete clientHotel[`is_premium`];
-  delete clientHotel[`max_adults`];
-
-  return clientHotel;
+    },
+    location: hotel[`location`],
+    maxAdults: hotel[`max_adults`],
+    title: hotel[`title`],
+    type: hotel[`type`],
+    previewImage: hotel[`preview_image`],
+    price: hotel[`price`],
+    rating: hotel[`rating`]
+  };
 };
 
 export const adaptReviewToClient = (review) => {
-  return Object.assign({}, review, {
+  return {
+    comment: review[`comment`],
+    date: review[`date`],
+    id: review[`id`],
+    rating: review[`rating`],
     user: {
       isPro: review.user[`is_pro`],
       avatarUrl: review.user[`avatar_url`],
       name: review.user.name,
       id: review.user.id,
     },
-  });
+  };
 };
+
