@@ -5,10 +5,12 @@ import {connect} from "react-redux";
 import {offerPropTypes} from "../../prop-types/offer";
 
 import {PlaceCard} from "../place-card/place-card";
-import {selectMemoizeNearOffers} from "../../selectors/offers";
+import {selectNearCityOffers} from "../../selectors/offers";
 
 const NearPlacesComponent = ({nearOffers}) => {
   return (
+    nearOffers.length > 0
+    &&
     <div className="container">
       <section className="near-places places">
         <h2 className="near-places__title">Other places in the neighbourhood</h2>
@@ -28,11 +30,11 @@ const NearPlacesComponent = ({nearOffers}) => {
 };
 
 NearPlacesComponent.propTypes = {
-  nearOffers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired
+  nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 const mapStateToProps = (state) => ({
-  nearOffers: selectMemoizeNearOffers(state)
+  nearOffers: selectNearCityOffers(state)
 });
 
 export const NearPlaces = connect(mapStateToProps)(NearPlacesComponent);

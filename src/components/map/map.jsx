@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import "leaflet/dist/leaflet.css";
 
 import {withLeafletMap} from "../../hocs/with-leaflet-map";
-import {selectActiveOfferId} from "../../selectors/offers";
+import {selectHoveredOfferId} from "../../selectors/offers";
 
 const MapComponent = React.forwardRef((props, ref) => {
   return (
@@ -14,7 +14,7 @@ const MapComponent = React.forwardRef((props, ref) => {
 MapComponent.displayName = `MapComponent`;
 
 const mapStateToProps = (state) => ({
-  activeOfferId: selectActiveOfferId(state),
+  hoveredOfferId: selectHoveredOfferId(state),
 });
 
 export const Map = connect(mapStateToProps)(withLeafletMap(MapComponent));

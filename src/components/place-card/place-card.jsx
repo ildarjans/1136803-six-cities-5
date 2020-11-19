@@ -74,7 +74,7 @@ PlaceCardComponent.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onActiveOfferChange: (id) => {
-    dispatch(actionCreator.changeActiveOfferId(id));
+    dispatch(actionCreator.changeHoveredOfferId(id));
   }
 });
 

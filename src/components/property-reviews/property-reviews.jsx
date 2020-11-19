@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import {reviewPropTypes} from "../../prop-types/review";
 import {RatingTitle, Settings, Title} from "../../const";
-import {selectMemoizeHotelReviews} from "../../selectors/offers";
+import {selectHotelReviews} from "../../selectors/offers";
 
 import {PropertyReview} from "../property-review/property-review";
 
@@ -84,7 +84,7 @@ PropertyReviewsComponent.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  reviews: selectMemoizeHotelReviews(state),
+  reviews: selectHotelReviews(state),
 });
 
 export const PropertyReviews = connect(mapStateToProps)(PropertyReviewsComponent);

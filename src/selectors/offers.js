@@ -1,7 +1,6 @@
+import {createSelector} from "reselect";
 import {CityCoords, SortType} from "../const";
-import {createSelector, createSelectorCreator, defaultMemoize} from "reselect";
 import {
-  isEqualListsIds,
   sortOffersPriceAsc,
   sortOffersPriceDes,
   sortOffersTopRated
@@ -11,8 +10,8 @@ export const selectSortType = (state) => {
   return state.PROCESS.sortType;
 };
 
-export const selectActiveOfferId = (state) => {
-  return state.PROCESS.activeOfferId;
+export const selectHoveredOfferId = (state) => {
+  return state.PROCESS.hoveredOfferId;
 };
 
 export const selectActiveCity = (state) => {
@@ -35,37 +34,23 @@ export const selectHotelReviews = (state) => {
   return state.DATA.reviews;
 };
 
-const createIdEqualSelector = createSelectorCreator(defaultMemoize, isEqualListsIds);
+export const selectCitiesMapIcons = (state) => {
+  return selectCityOffers(state)
+    .map((offer) => ({
+      id: offer.id,
+      lat: offer.location.latitude,
+      lng: offer.location.longitude,
+    }));
+};
 
-export const selectCitiesMapIcons = createSelector(
-    selectCityOffers,
-    (offers) => offers
-      .map((offer) => ({
-        id: offer.id,
-        lat: offer.location.latitude,
-        lng: offer.location.longitude,
-      }))
-);
-
-export const selectMemoizePropertyMapIcons = createIdEqualSelector(
-    selectNearCityOffers,
-    (offers) => offers
-      .map((offer) => ({
-        id: offer.id,
-        lat: offer.location.latitude,
-        lng: offer.location.longitude,
-      }))
-);
-
-export const selectMemoizeNearOffers = createIdEqualSelector(
-    selectNearCityOffers,
-    (offers) => offers
-);
-
-export const selectMemoizeHotelReviews = createIdEqualSelector(
-    selectHotelReviews,
-    (reviews) => reviews
-);
+export const selectPropertyMapIcons = (state) => {
+  return selectNearCityOffers(state)
+    .map((offer) => ({
+      id: offer.id,
+      lat: offer.location.latitude,
+      lng: offer.location.longitude,
+    }));
+};
 
 export const selectSortedOffersByType = createSelector(
     selectSortType,
