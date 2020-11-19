@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import {idPropType} from "./id";
 import {userPropTypes} from "./user";
 
 const locationPropTypes = PropTypes.shape({
@@ -9,7 +8,7 @@ const locationPropTypes = PropTypes.shape({
 });
 
 export const offerPropTypes = PropTypes.shape({
-  id: idPropType.isRequired,
+  id: PropTypes.number.isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
     location: locationPropTypes.isRequired,

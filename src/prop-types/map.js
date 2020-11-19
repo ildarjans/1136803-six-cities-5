@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
-import {idPropType} from "./id";
 
 export const mapIconPropTypes = PropTypes.shape({
-  id: idPropType.isRequired,
+  id: PropTypes.number.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired
 });

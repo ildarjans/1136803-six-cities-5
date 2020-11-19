@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
-import {idPropType} from "./id";
 import {userPropTypes} from "./user";
 
 export const reviewPropTypes = PropTypes.shape({
-  id: idPropType,
+  id: PropTypes.number.isRequired,
   user: userPropTypes.isRequired,
   date: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
