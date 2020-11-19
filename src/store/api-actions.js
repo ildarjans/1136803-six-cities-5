@@ -19,7 +19,7 @@ export const fetchHotelReviews = (id) => (dispatch, getState, api) => {
 
 export const fetchNearOffersById = (id) => (dispatch, getState, api) => {
   return api
-    .get(`${ApiRoute.NEAR_OFFERS.replace(`id`, id)}`)
+    .get(`${ApiRoute.NEAR_OFFERS.replace(`:id`, id)}`)
     .then(({data}) => {
       dispatch(actionCreator.getNearHotels(data));
     });
