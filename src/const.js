@@ -97,12 +97,12 @@ export const AppRoute = {
   LOGIN: `/login`,
   FAVORITES: `/favorites`,
   ROOT: `/`,
-  OFFER: `/offer/`
+  OFFER: `/offer/:id`
 };
 
 export const ApiRoute = {
   HOTELS: `/hotels`,
   REVIEWS: `/comments`,
-  NEAR_OFFERS: `/hotels/id/nearby`
+  NEAR_OFFERS: `/hotels/:id/nearby`
 };
 
