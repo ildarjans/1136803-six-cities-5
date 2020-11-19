@@ -13,22 +13,13 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={AppRoute.ROOT}>
-          <MainPage/>
-        </Route>
+        <Route exact path={AppRoute.ROOT} component={MainPage}/>
 
-        <Route exact path={AppRoute.LOGIN}>
-          <LoginPage/>
-        </Route>
+        <Route exact path={AppRoute.LOGIN} component={LoginPage}/>
 
-        <Route exact path={AppRoute.FAVORITES}>
-          <FavoritesPage/>
-        </Route>
+        <Route exact path={AppRoute.FAVORITES} component={FavoritesPage}/>
 
-        <Route
-          exact path={`${AppRoute.OFFER}:id`}
-          component={Property}
-        />
+        <Route exact path={AppRoute.OFFER} component={Property}/>
 
         <Route component={NotFoundPage}/>
       </Switch>
