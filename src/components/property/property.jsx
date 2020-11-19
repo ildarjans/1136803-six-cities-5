@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {getRatingWidth, getDecimalRating} from "../../utils";
+import {getDecimalRating, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
 import {mapCenterPropTypes, mapIconPropTypes} from "../../prop-types/map";
 import {
   selectCityOffers,
   selectMapCenter,
-  selectMemoizePropertyMapIcons
+  selectPropertyMapIcons
 } from "../../selectors/offers";
 import {fetchHotelReviews, fetchNearOffersById} from "../../store/api-actions";
 
@@ -24,17 +24,18 @@ export const PropertyComponent = (props) => {
   const {id} = props.match.params;
   const offer = offers.find((it) => it.id === +id);
 
-  fetchReviews(id);
-  fetchNearOffers(id);
-
   if (!offer) {
-    return (
-      <NotFoundPage/>
-    );
+    return <NotFoundPage/>;
   }
+
+  useEffect(() => {
+    fetchReviews(id);
+    fetchNearOffers(id);
+  }, []);
 
   return (
     <div className="page">
+
       <Header/>
 
       <main className="page__main page__main--property">
@@ -44,14 +45,16 @@ export const PropertyComponent = (props) => {
             <div className="property__wrapper">
 
               {offer.isPremium &&
-                (<div className="property__mark">
-                  <span>Premium</span>
-                </div>)}
+              (<div className="property__mark">
+                <span>Premium</span>
+              </div>)}
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{offer.title}</h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
+                <button className="property__bookmark-button button"
+                  type="button">
+                  <svg className="property__bookmark-icon" width="31"
+                    height="33">
                     <use xlinkHref="#icon-bookmark"/>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
@@ -87,7 +90,8 @@ export const PropertyComponent = (props) => {
 
                   {offer.goods.map((good, i) => {
                     return (
-                      <li className="property__inside-item" key={`${good}-${i}`}>
+                      <li className="property__inside-item"
+                        key={`${good}-${i}`}>
                         {good}
                       </li>
                     );
@@ -98,8 +102,10 @@ export const PropertyComponent = (props) => {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74"
+                  <div
+                    className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                    <img className="property__avatar user__avatar"
+                      src={offer.host.avatarUrl} width="74" height="74"
                       alt={`${offer.host.name} avatar`}/>
                   </div>
                   <span className="property__user-name">
@@ -113,7 +119,7 @@ export const PropertyComponent = (props) => {
                 </div>
               </div>
 
-              <PropertyReviews />
+              <PropertyReviews/>
 
             </div>
           </div>
@@ -145,7 +151,7 @@ PropertyComponent.propTypes = {
 const mapStateToProps = (state) => ({
   offers: selectCityOffers(state),
   center: selectMapCenter(state),
-  icons: selectMemoizePropertyMapIcons(state),
+  icons: selectPropertyMapIcons(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -154,7 +160,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchNearOffers(hotelId) {
     dispatch(fetchNearOffersById(hotelId));
-  }
+  },
 });
 
 export const Property = connect(mapStateToProps, mapDispatchToProps)(PropertyComponent);
