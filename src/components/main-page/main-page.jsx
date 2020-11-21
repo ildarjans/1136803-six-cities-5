@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Header} from "../header/header";
-import {Tabs} from "../tabs/tabs";
+import {LocationsTabs} from "../locations-tabs/locations-tabs";
 import {Cities} from "../cities/cities";
 
 export const MainPage = () => {
@@ -10,7 +10,7 @@ export const MainPage = () => {
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <Tabs />
+        <LocationsTabs />
         <Cities />
       </main>
     </div>

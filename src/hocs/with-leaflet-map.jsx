@@ -1,10 +1,7 @@
 import React from "react";
 import leaflet from "leaflet";
 import PropTypes from "prop-types";
-import {
-  mapCenterPropTypes,
-  mapIconPropTypes
-} from "../prop-types/map";
+import {mapCenterPropTypes, mapIconPropTypes} from "../prop-types/map";
 
 const PIN_SIZE = [30, 30];
 const TILE_LAYER = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`;
@@ -37,9 +34,9 @@ export const withLeafletMap = (Component) => {
     }
 
     _renderMarkers() {
-      const {icons, activeOfferId} = this.props;
+      const {icons, hoveredOfferId} = this.props;
       this._layerGroup = leaflet.layerGroup(icons.map((it) => {
-        const icon = getIcon(it, activeOfferId);
+        const icon = getIcon(it, hoveredOfferId);
         return leaflet.marker(
             [it.lat, it.lng], {icon});
       }));
@@ -75,7 +72,7 @@ export const withLeafletMap = (Component) => {
   }
 
   LeafletMap.propTypes = {
-    activeOfferId: PropTypes.string.isRequired,
+    hoveredOfferId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     center: mapCenterPropTypes.isRequired,
     icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
   };

@@ -2,12 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {
-  SortType,
-  sortTypeTitles
-} from "../../const";
-import {actionCreator} from "../../store/action";
+import {SortType, sortTypeTitles} from "../../const";
+import {actionCreator} from "../../store/actions";
 import {withCollapseToggle} from "../../hocs/with-collapse-toggle";
+import {selectSortType} from "../../selectors/offers";
 
 export const PlacesSortingComponent = ({sortType, onSortTypeChange, collapsed, onCollapseToggle}) => {
   const handlePlacesOptionClick = (evt) => {
@@ -61,7 +59,7 @@ PlacesSortingComponent.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  sortType: state.sortType,
+  sortType: selectSortType(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

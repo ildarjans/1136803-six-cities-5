@@ -1,22 +1,21 @@
-import {
-  CityCoords,
-  Settings,
-  SortType
-} from "../const";
 import {createSelector} from "reselect";
+import {CityCoords, SortType} from "../const";
 import {
   sortOffersPriceAsc,
   sortOffersPriceDes,
   sortOffersTopRated
 } from "../utils";
 
+export const selectSortType = (state) => {
+  return state.PROCESS.sortType;
+};
 
-const selectSortType = (state) => {
-  return state.sortType;
+export const selectHoveredOfferId = (state) => {
+  return state.PROCESS.hoveredOfferId;
 };
 
 export const selectActiveCity = (state) => {
-  return state.activeCity;
+  return state.PROCESS.activeCity;
 };
 
 export const selectMapCenter = (state) => {
@@ -24,34 +23,34 @@ export const selectMapCenter = (state) => {
 };
 
 export const selectCityOffers = (state) => {
-  return state.offers[state.activeCity];
+  return state.DATA.offers[state.PROCESS.activeCity];
 };
 
 export const selectNearCityOffers = (state) => {
-  return state
-    .offers[state.activeCity]
-    .slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT);
+  return state.DATA.nearOffers;
 };
 
-export const selectCitiesMapIcons = createSelector(
-    selectCityOffers,
-    (offers) => offers
-      .map((offer) => ({
-        id: offer.id,
-        lat: offer.coords.latitude,
-        lng: offer.coords.longitude,
-      }))
-);
+export const selectHotelReviews = (state) => {
+  return state.DATA.reviews;
+};
 
-export const selectPropertyMapIcons = createSelector(
-    selectNearCityOffers,
-    (offers) => offers
-      .map((offer) => ({
-        id: offer.id,
-        lat: offer.coords.latitude,
-        lng: offer.coords.longitude,
-      }))
-);
+export const selectCitiesMapIcons = (state) => {
+  return selectCityOffers(state)
+    .map((offer) => ({
+      id: offer.id,
+      lat: offer.location.latitude,
+      lng: offer.location.longitude,
+    }));
+};
+
+export const selectPropertyMapIcons = (state) => {
+  return selectNearCityOffers(state)
+    .map((offer) => ({
+      id: offer.id,
+      lat: offer.location.latitude,
+      lng: offer.location.longitude,
+    }));
+};
 
 export const selectSortedOffersByType = createSelector(
     selectSortType,
@@ -69,4 +68,5 @@ export const selectSortedOffersByType = createSelector(
       }
     }
 );
+
 

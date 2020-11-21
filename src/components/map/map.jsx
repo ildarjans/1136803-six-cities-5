@@ -3,32 +3,18 @@ import {connect} from "react-redux";
 import "leaflet/dist/leaflet.css";
 
 import {withLeafletMap} from "../../hocs/with-leaflet-map";
+import {selectHoveredOfferId} from "../../selectors/offers";
 
-const MapContainer = (props, ref) => {
+const MapComponent = React.forwardRef((props, ref) => {
   return (
     <div ref={ref} style={{height: `100%`}}/>
   );
-};
-
-const mapStateToProps = (state) => ({
-  activeOfferId: state.activeOfferId,
 });
 
-export const Map = connect(mapStateToProps)(withLeafletMap(React.forwardRef(MapContainer)));
+MapComponent.displayName = `MapComponent`;
 
-// ===========================================================
-// THE FURTHER IMPLEMENTATION IS BETTER, MAYBE?
-//
-// const MapComponent = React.forwardRef((props, ref) => {
-//   return (
-//     <div ref={ref} style={{height: `100%`}}/>
-//   );
-// });
-//
-// MapComponent.displayName = `MapComponent`;
-//
-// const mapStateToProps = (state) => ({
-//   activeOfferId: state.activeOfferId,
-// });
-//
-// export const Map = connect(mapStateToProps)(withLeafletMap(MapComponent));
+const mapStateToProps = (state) => ({
+  hoveredOfferId: selectHoveredOfferId(state),
+});
+
+export const Map = connect(mapStateToProps)(withLeafletMap(MapComponent));
