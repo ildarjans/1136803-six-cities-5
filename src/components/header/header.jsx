@@ -1,7 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {AuthorizationStatus} from "../../const";
+import {userWithEmailPropTypes} from "../../prop-types/user";
 
-export const Header = () => {
+const HeaderComponent = ({user, authorizationStatus}) => {
   return (
     <header className="header">
       <div className="container">
@@ -17,7 +21,9 @@ export const Header = () => {
                 <Link className="header__nav-link header__nav-link--profile" to="/login">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__login">Sign in</span>
+                  <span className="header__login">
+                    {authorizationStatus === AuthorizationStatus.AUTH ? `${user.email}` : `Sign in`}
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -27,3 +33,15 @@ export const Header = () => {
     </header>
   );
 };
+
+HeaderComponent.propTypes = ({
+  user: PropTypes.oneOfType([userWithEmailPropTypes, PropTypes.string]).isRequired,
+  authorizationStatus: PropTypes.string.isRequired
+});
+
+const mapStateToProps = ({USER}) => ({
+  user: USER.user,
+  authorizationStatus: USER.authorizationStatus
+});
+
+export const Header = connect(mapStateToProps)(HeaderComponent);
