@@ -93,6 +93,11 @@ export const sortTypeTitles = {
   top: `Top rated first`
 };
 
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 export const AppRoute = {
   LOGIN: `/login`,
   FAVORITES: `/favorites`,
@@ -103,6 +108,7 @@ export const AppRoute = {
 export const ApiRoute = {
   HOTELS: `/hotels`,
   REVIEWS: `/comments`,
+  LOGIN: `/login`,
   NEAR_OFFERS: `/hotels/:id/nearby`
 };
 
