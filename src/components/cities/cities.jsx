@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
@@ -15,8 +15,12 @@ import {
 import {PlacesList} from "../places-list/places-list";
 import {PlacesSorting} from "../places-sorting/places-sorting";
 import {Map} from "../map/map";
+import {actionCreator} from "../../store/actions";
 
-const CitiesComponent = ({offers, activeCity, center, icons}) => {
+const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer}) => {
+  useEffect(() => {
+    restoreHoveredOffer();
+  }, []);
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -44,6 +48,7 @@ CitiesComponent.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
   center: mapCenterPropTypes.isRequired,
   icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
+  restoreHoveredOffer: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -53,4 +58,10 @@ const mapStateToProps = (state) => ({
   icons: selectCitiesMapIcons(state),
 });
 
-export const Cities = connect(mapStateToProps)(CitiesComponent);
+const mapDispatchToProps = (dispatch) => ({
+  restoreHoveredOffer() {
+    dispatch(actionCreator.changeHoveredOfferId(``));
+  }
+});
+
+export const Cities = connect(mapStateToProps, mapDispatchToProps)(CitiesComponent);
