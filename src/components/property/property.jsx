@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
@@ -6,32 +6,26 @@ import {getDecimalRating, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
 import {mapCenterPropTypes, mapIconPropTypes} from "../../prop-types/map";
 import {
-  selectCityOffers,
   selectMapCenter,
+  selectOffer,
   selectPropertyMapIcons
 } from "../../selectors/offers";
-import {fetchHotelReviews, fetchNearOffersById} from "../../store/api-actions";
 
 import {Header} from "../header/header";
-import {NearPlaces} from "../near-places/near-places";
 import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
-import {PropertyReviews} from "../property-reviews/property-reviews";
 import {Map} from "../map/map";
+import {PropertyReviews} from "../property-reviews/property-reviews";
+import {NearPlaces} from "../near-places/near-places";
 
 export const PropertyComponent = (props) => {
-  const {offers, center, icons, fetchNearOffers, fetchReviews} = props;
+  const {offers, center, icons} = props;
   const {id} = props.match.params;
-  const offer = offers.find((it) => it.id === +id);
+  const offer = offers[id];
 
   if (!offer) {
     return <NotFoundPage/>;
   }
-
-  useEffect(() => {
-    fetchReviews(id);
-    fetchNearOffers(id);
-  }, []);
 
   return (
     <div className="page">
@@ -119,7 +113,7 @@ export const PropertyComponent = (props) => {
                 </div>
               </div>
 
-              <PropertyReviews/>
+              <PropertyReviews id={id}/>
 
             </div>
           </div>
@@ -128,7 +122,7 @@ export const PropertyComponent = (props) => {
           </section>
         </section>
 
-        <NearPlaces/>
+        <NearPlaces id={id}/>
 
       </main>
     </div>
@@ -141,26 +135,15 @@ PropertyComponent.propTypes = {
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
+  offers: PropTypes.objectOf(offerPropTypes.isRequired).isRequired,
   center: mapCenterPropTypes.isRequired,
   icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
-  fetchReviews: PropTypes.func.isRequired,
-  fetchNearOffers: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offers: selectCityOffers(state),
+  offers: selectOffer(state),
   center: selectMapCenter(state),
   icons: selectPropertyMapIcons(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchReviews(hotelId) {
-    dispatch(fetchHotelReviews(hotelId));
-  },
-  fetchNearOffers(hotelId) {
-    dispatch(fetchNearOffersById(hotelId));
-  },
-});
-
-export const Property = connect(mapStateToProps, mapDispatchToProps)(PropertyComponent);
+export const Property = connect(mapStateToProps)(PropertyComponent);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
@@ -7,9 +7,15 @@ import {RatingTitle, Settings, Title} from "../../const";
 import {selectHotelReviews} from "../../selectors/offers";
 
 import {PropertyReview} from "../property-review/property-review";
+import {fetchReviews} from "../../middleware/thunk-api";
 
-export const PropertyReviewsComponent = ({reviews}) => {
+export const PropertyReviewsComponent = ({reviews, id, fetchReviewsById}) => {
   const formRef = React.createRef();
+
+  useEffect(() => {
+    fetchReviewsById(id);
+  }, [id]);
+
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
@@ -80,6 +86,8 @@ export const PropertyReviewsComponent = ({reviews}) => {
 };
 
 PropertyReviewsComponent.propTypes = {
+  id: PropTypes.string.isRequired,
+  fetchReviewsById: PropTypes.func.isRequired,
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired
 };
 
@@ -87,4 +95,10 @@ const mapStateToProps = (state) => ({
   reviews: selectHotelReviews(state),
 });
 
-export const PropertyReviews = connect(mapStateToProps)(PropertyReviewsComponent);
+const mapDispatchToProps = (dispatch) => ({
+  fetchReviewsById(id) {
+    dispatch(fetchReviews(id));
+  }
+});
+
+export const PropertyReviews = connect(mapStateToProps, mapDispatchToProps)(PropertyReviewsComponent);
