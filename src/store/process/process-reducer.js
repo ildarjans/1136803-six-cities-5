@@ -1,6 +1,6 @@
-import {cities, SortType} from "../../../const";
-import {ActionType} from "../../actions";
-import {extend} from "../../../utils";
+import {cities, SortType} from "../../const";
+import {ActionType} from "../action-type";
+import {extend} from "../../utils";
 
 const initialState = {
   activeCity: cities[0],

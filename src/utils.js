@@ -42,7 +42,7 @@ export const sortOffersPriceDes = (offerA, offerB) => offerB.price - offerA.pric
 
 export const sortOffersTopRated = (offerA, offerB) => offerB.rating - offerA.rating;
 
-export const adaptHotelToClient = (hotel) => {
+export const adaptOfferToClient = (hotel) => {
   return {
     bedrooms: hotel[`bedrooms`],
     city: hotel[`city`],

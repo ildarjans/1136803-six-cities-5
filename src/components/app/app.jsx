@@ -16,17 +16,9 @@ export const App = () => {
     <Router history={browserHistory}>
       <Switch>
         <Route exact path={AppRoute.ROOT} component={MainPage}/>
-
         <Route exact path={AppRoute.LOGIN} component={LoginPage}/>
-
         <Route exact path={AppRoute.OFFER} component={Property}/>
-
-        <PrivateRoute
-          isExact
-          path={AppRoute.FAVORITES}
-          render={() => <FavoritesPage/> }
-        />
-
+        <PrivateRoute isExact path={AppRoute.FAVORITES} render={() => <FavoritesPage/> }/>
         <Route component={NotFoundPage}/>
       </Switch>
     </Router>

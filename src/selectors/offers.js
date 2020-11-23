@@ -22,35 +22,42 @@ export const selectMapCenter = (state) => {
   return CityCoords[selectActiveCity(state)];
 };
 
-export const selectCityOffers = (state) => {
-  return state.DATA.offers[state.PROCESS.activeCity];
+export const selectOffer = ({OFFERS}) => {
+  return OFFERS.offers;
+};
+
+export const selectCityOffers = ({OFFERS, PROCESS}) => {
+  return OFFERS.cityOffers[PROCESS.activeCity];
 };
 
 export const selectNearCityOffers = (state) => {
-  return state.DATA.nearOffers;
+  return state.NEAR_OFFERS.nearOffers;
 };
 
 export const selectHotelReviews = (state) => {
-  return state.DATA.reviews;
+  return state.REVIEWS.reviews;
 };
 
-export const selectCitiesMapIcons = (state) => {
-  return selectCityOffers(state)
-    .map((offer) => ({
+export const selectCitiesMapIcons = createSelector(
+    selectCityOffers,
+    (offers) => offers.map((offer) => (
+      {
+        id: offer.id,
+        lat: offer.location.latitude,
+        lng: offer.location.longitude,
+      }
+    ))
+);
+
+
+export const selectPropertyMapIcons = createSelector(
+    selectNearCityOffers,
+    (offers) => offers.map((offer) => ({
       id: offer.id,
       lat: offer.location.latitude,
       lng: offer.location.longitude,
-    }));
-};
-
-export const selectPropertyMapIcons = (state) => {
-  return selectNearCityOffers(state)
-    .map((offer) => ({
-      id: offer.id,
-      lat: offer.location.latitude,
-      lng: offer.location.longitude,
-    }));
-};
+    }))
+);
 
 export const selectSortedOffersByType = createSelector(
     selectSortType,
@@ -68,5 +75,3 @@ export const selectSortedOffersByType = createSelector(
       }
     }
 );
-
-

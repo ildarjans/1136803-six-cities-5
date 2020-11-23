@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {cities} from "../../const";
-import {actionCreator} from "../../store/actions";
 import {selectActiveCity} from "../../selectors/offers";
+import {processActionCreator} from "../../store/process/process-action";
 
 const LocationsTabsComponent = ({activeCity, onCityChange}) => {
   return (
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCityChange: (city) => {
-    dispatch(actionCreator.changeCity(city));
+    dispatch(processActionCreator.changeCity(city));
   }
 });
 

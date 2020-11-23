@@ -7,15 +7,15 @@ import {offerPropTypes} from "../../prop-types/offer";
 import {mapCenterPropTypes, mapIconPropTypes} from "../../prop-types/map";
 import {
   selectActiveCity,
-  selectMapCenter,
   selectCitiesMapIcons,
+  selectMapCenter,
   selectSortedOffersByType
 } from "../../selectors/offers";
 
 import {PlacesList} from "../places-list/places-list";
 import {PlacesSorting} from "../places-sorting/places-sorting";
 import {Map} from "../map/map";
-import {actionCreator} from "../../store/actions";
+import {processActionCreator} from "../../store/process/process-action";
 
 const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer}) => {
   useEffect(() => {
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   restoreHoveredOffer() {
-    dispatch(actionCreator.changeHoveredOfferId(``));
+    dispatch(processActionCreator.changeHoveredOfferId(``));
   }
 });
 

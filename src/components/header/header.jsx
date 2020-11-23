@@ -35,7 +35,7 @@ const HeaderComponent = ({user, authorizationStatus}) => {
 };
 
 HeaderComponent.propTypes = ({
-  user: PropTypes.oneOfType([userWithEmailPropTypes, PropTypes.string]).isRequired,
+  user: PropTypes.oneOfType([userWithEmailPropTypes, PropTypes.object]).isRequired,
   authorizationStatus: PropTypes.string.isRequired
 });
 

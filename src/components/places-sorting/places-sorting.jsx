@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {SortType, sortTypeTitles} from "../../const";
-import {actionCreator} from "../../store/actions";
+import {offersActionCreator} from "../../store/offers/offers-action";
 import {withCollapseToggle} from "../../hocs/with-collapse-toggle";
 import {selectSortType} from "../../selectors/offers";
 
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSortTypeChange: (sortType) => {
-    dispatch(actionCreator.changeSortType(sortType));
+    dispatch(offersActionCreator.changeSortType(sortType));
   }
 });
 

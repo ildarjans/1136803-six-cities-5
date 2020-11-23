@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {Settings} from "../../const";
 import {debounce, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
-import {actionCreator} from "../../store/actions";
+import {processActionCreator} from "../../store/process/process-action";
 
 export const PlaceCardComponent = (props) => {
   const {offer, classNameArticle, classNameWrapper, onActiveOfferChange} = props;
@@ -74,7 +74,7 @@ PlaceCardComponent.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onActiveOfferChange: (id) => {
-    dispatch(actionCreator.changeHoveredOfferId(id));
+    dispatch(processActionCreator.changeHoveredOfferId(id));
   }
 });
 

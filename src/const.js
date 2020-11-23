@@ -106,7 +106,7 @@ export const AppRoute = {
 };
 
 export const ApiRoute = {
-  HOTELS: `/hotels`,
+  OFFERS: `/hotels`,
   REVIEWS: `/comments`,
   LOGIN: `/login`,
   NEAR_OFFERS: `/hotels/:id/nearby`

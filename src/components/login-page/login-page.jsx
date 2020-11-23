@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {Header} from "../header/header";
-import {loginUser} from "../../store/api-actions";
+import {loginUser} from "../../middleware/thunk-api";
 
 const LoginPageComponent = ({onSubmit}) => {
   const email = useRef();
