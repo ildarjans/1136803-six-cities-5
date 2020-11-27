@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {SortType, sortTypeTitles} from "../../const";
 import {offersActionCreator} from "../../store/offers/offers-action";
 import {withCollapseToggle} from "../../hocs/with-collapse-toggle";
-import {selectSortType} from "../../selectors/offers";
+import {selectSortType} from "../../selectors/selectors";
+import {processActionCreator} from "../../store/process/process-action";
 
 export const PlacesSortingComponent = ({sortType, onSortTypeChange, collapsed, onCollapseToggle}) => {
   const handlePlacesOptionClick = (evt) => {
@@ -64,7 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSortTypeChange: (sortType) => {
-    dispatch(offersActionCreator.changeSortType(sortType));
+    dispatch(processActionCreator.changeSortType(sortType));
   }
 });
 

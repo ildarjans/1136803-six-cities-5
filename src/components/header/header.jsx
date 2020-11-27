@@ -18,11 +18,13 @@ const HeaderComponent = ({user, authorizationStatus}) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link className="header__nav-link header__nav-link--profile" to="/login">
+                <Link
+                  className="header__nav-link header__nav-link--profile"
+                  to={authorizationStatus === AuthorizationStatus.AUTHORIZED ? `/favorites` : `/login`}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__login">
-                    {authorizationStatus === AuthorizationStatus.AUTH ? `${user.email}` : `Sign in`}
+                    {authorizationStatus === AuthorizationStatus.AUTHORIZED ? `${user.email}` : `Sign in`}
                   </span>
                 </Link>
               </li>

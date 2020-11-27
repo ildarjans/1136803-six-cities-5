@@ -72,7 +72,7 @@ export const withLeafletMap = (Component) => {
   }
 
   LeafletMap.propTypes = {
-    hoveredOfferId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    hoveredOfferId: PropTypes.number.isRequired,
     center: mapCenterPropTypes.isRequired,
     icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
   };

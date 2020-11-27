@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import "leaflet/dist/leaflet.css";
 
 import {withLeafletMap} from "../../hocs/with-leaflet-map";
-import {selectHoveredOfferId} from "../../selectors/offers";
+import {selectHoveredOfferId} from "../../selectors/selectors";
 
 const MapComponent = React.forwardRef((props, ref) => {
   return (

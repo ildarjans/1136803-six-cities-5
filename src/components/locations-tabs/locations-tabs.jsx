@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {cities} from "../../const";
-import {selectActiveCity} from "../../selectors/offers";
+import {selectActiveCity} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 
 const LocationsTabsComponent = ({activeCity, onCityChange}) => {

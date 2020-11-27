@@ -4,6 +4,7 @@ import {userReducer} from "./user/user-reducer";
 import {offersReducer} from "./offers/offers-reducer";
 import {reviewsReducer} from "./reviews/reviews-reducer";
 import {nearOffersReducer} from "./near-offers/near-offers-reducer";
+import {favoritesReducer} from "./favorites/favorites-reducer";
 
 export const NameSpace = {
   OFFERS: `OFFERS`,
@@ -11,6 +12,7 @@ export const NameSpace = {
   NEAR_OFFERS: `NEAR_OFFERS`,
   PROCESS: `PROCESS`,
   USER: `USER`,
+  FAVORITES: `FAVORITES`,
 };
 
 export const rootReducer = combineReducers({
@@ -19,4 +21,5 @@ export const rootReducer = combineReducers({
   [NameSpace.NEAR_OFFERS]: nearOffersReducer,
   [NameSpace.PROCESS]: processReducer,
   [NameSpace.USER]: userReducer,
+  [NameSpace.FAVORITES]: favoritesReducer,
 });

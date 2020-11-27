@@ -1,3 +1,37 @@
+export const FAVORITE_BUTTON_OPTIONS = {
+  PLACE_CARD: {
+    WIDTH: 18,
+    HEIGHT: 19,
+    CLASSNAME_PREFIX: `place-card`
+  },
+  PROPERTY: {
+    WIDTH: 31,
+    HEIGHT: 33,
+    CLASSNAME_PREFIX: `property`
+  },
+};
+
+export const PLACE_CARD_OPTION = {
+  PLACE_LIST: {
+    CLASSNAME_ARTICLE: `cities__place-card`,
+    CLASSNAME_WRAPPER: `cities__place-card`,
+    IMAGE_WIDTH: 260,
+    IMAGE_HEIGHT: 200,
+  },
+  NEAR_LIST: {
+    CLASSNAME_ARTICLE: `near-places__card`,
+    CLASSNAME_WRAPPER: `near-places__image-wrapper`,
+    IMAGE_WIDTH: 260,
+    IMAGE_HEIGHT: 200,
+  },
+  FAVORITE_LIST: {
+    CLASSNAME_ARTICLE: `favorites__card`,
+    CLASSNAME_WRAPPER: `favorites__image-wrapper`,
+    IMAGE_WIDTH: 150,
+    IMAGE_HEIGHT: 110,
+  },
+};
+
 export const Settings = {
   OFFERS_IMAGES_DISPLAY_LIMIT: 6,
   NEAR_OFFERS_DISPLAY_LIMIT: 3,
@@ -94,8 +128,8 @@ export const sortTypeTitles = {
 };
 
 export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`
+  AUTHORIZED: `AUTHORIZED`,
+  NO_AUTHORIZED: `NO_AUTHORIZED`
 };
 
 export const AppRoute = {
@@ -109,6 +143,8 @@ export const ApiRoute = {
   OFFERS: `/hotels`,
   REVIEWS: `/comments`,
   LOGIN: `/login`,
-  NEAR_OFFERS: `/hotels/:id/nearby`
+  NEAR_OFFERS: `/hotels/:id/nearby`,
+  GET_FAVORITE: `/favorite`,
+  POST_FAVORITE: `/favorite/:id/:status`
 };
 

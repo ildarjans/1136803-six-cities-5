@@ -1,41 +1,59 @@
 import {createSelector} from "reselect";
-import {CityCoords, SortType} from "../const";
+import {AuthorizationStatus, CityCoords, SortType} from "../const";
 import {
   sortOffersPriceAsc,
   sortOffersPriceDes,
   sortOffersTopRated
 } from "../utils";
 
-export const selectSortType = (state) => {
-  return state.PROCESS.sortType;
+export const selectSortType = ({PROCESS}) => {
+  return PROCESS.sortType;
 };
 
-export const selectHoveredOfferId = (state) => {
-  return state.PROCESS.hoveredOfferId;
+export const selectHoveredOfferId = ({PROCESS}) => {
+  return Number(PROCESS.hoveredOfferId);
 };
 
-export const selectActiveCity = (state) => {
-  return state.PROCESS.activeCity;
+export const selectActiveCity = ({PROCESS}) => {
+  return PROCESS.activeCity;
+};
+
+export const selectIsAuthStatus = ({USER}) => {
+  return USER.authorizationStatus === AuthorizationStatus.AUTHORIZED;
 };
 
 export const selectMapCenter = (state) => {
   return CityCoords[selectActiveCity(state)];
 };
 
-export const selectOffer = ({OFFERS}) => {
-  return OFFERS.offers;
+export const selectRouteId = (props) => {
+  return Number(props.match.params.id);
+};
+
+export const selectOffer = ({OFFERS}, props) => {
+  return OFFERS.offers[selectRouteId(props)];
 };
 
 export const selectCityOffers = ({OFFERS, PROCESS}) => {
   return OFFERS.cityOffers[PROCESS.activeCity];
 };
 
-export const selectNearCityOffers = (state) => {
-  return state.NEAR_OFFERS.nearOffers;
+export const selectNearCityOffers = ({NEAR_OFFERS}) => {
+  return NEAR_OFFERS.nearOffers;
 };
 
-export const selectHotelReviews = (state) => {
-  return state.REVIEWS.reviews;
+export const selectHotelReviews = ({REVIEWS}) => {
+  return REVIEWS.reviews;
+};
+
+export const selectFavoriteCityOffers = ({FAVORITES}) => {
+  return FAVORITES.favoriteCityOffers;
+};
+
+export const selectIsEmptyFavorites = (state) => {
+  return Object
+        .values(selectFavoriteCityOffers(state))
+        .every((offers) => offers.length === 0);
 };
 
 export const selectCitiesMapIcons = createSelector(
@@ -49,10 +67,10 @@ export const selectCitiesMapIcons = createSelector(
     ))
 );
 
-
 export const selectPropertyMapIcons = createSelector(
     selectNearCityOffers,
-    (offers) => offers.map((offer) => ({
+    selectOffer,
+    (nearOffers, activeOffer) => [...nearOffers, activeOffer].map((offer) => ({
       id: offer.id,
       lat: offer.location.latitude,
       lng: offer.location.longitude,
