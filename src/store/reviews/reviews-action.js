@@ -12,4 +12,11 @@ export const reviewsActionCreator = {
     type: ActionType.REVIEWS_LOADING_FAIL,
     payload: err
   }),
+  reviewPostStart: () => ({
+    type: ActionType.REVIEW_POST_START,
+  }),
+  reviewPostFail: (err) => ({
+    type: ActionType.REVIEW_POST_FAIL,
+    payload: err
+  }),
 };

@@ -1,23 +1,6 @@
 import {ActionType} from "../action-type";
-import {adaptOfferToClient, extend} from "../../utils";
-
-const getOffersDictionaries = (offersList) => {
-  const offers = {};
-  const cityOffers = {};
-  offersList.forEach((offer) => {
-    const city = offer.city.name.toUpperCase();
-    const adaptedOffer = adaptOfferToClient(offer);
-
-    if (!cityOffers[city]) {
-      cityOffers[city] = [];
-    }
-
-    offers[offer.id] = adaptedOffer;
-    cityOffers[city].push(adaptedOffer);
-  });
-
-  return [offers, cityOffers];
-};
+import {extend} from "../../utils";
+import {getOffersDictionaries, updateOffersList} from "../store-utils";
 
 const initialState = {
   offers: {},
@@ -47,6 +30,27 @@ export function offersReducer(state = initialState, action) {
         loading: false,
         error: action.payload
       });
+    case ActionType.UPDATE_OFFER:
+      return extend(
+          state,
+          {
+            offers: extend(state.offers,
+                {[action.payload.id]: action.payload}
+            )
+          }
+      );
+    case ActionType.UPDATE_CITY_OFFER:
+      const city = action.payload.city.name.toUpperCase();
+      const cityOffersList = updateOffersList(state.cityOffers[city], action.payload);
+      return extend(
+          state,
+          {
+            cityOffers: extend(state.cityOffers,
+                {[city]: cityOffersList}
+            )
+          }
+      );
   }
   return state;
 }
+

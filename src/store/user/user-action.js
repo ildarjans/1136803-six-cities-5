@@ -7,8 +7,9 @@ export const authActionCreator = {
   authorizationSuccess: () => ({
     type: ActionType.AUTHORIZATION_SUCCESS,
   }),
-  authorizationFail: () => ({
+  authorizationFail: (err) => ({
     type: ActionType.AUTHORIZATION_FAIL,
+    payload: err,
   }),
   setUserLoginProfile: (data) => ({
     type: ActionType.SET_USER_LOGIN_PROFILE,
