@@ -1,36 +1,47 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 
-import {Settings} from "../../const";
+import {FAVORITE_BUTTON_OPTIONS, Settings} from "../../const";
 import {debounce, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
-import {processActionCreator} from "../../store/process/process-action";
+import {FavoriteButton} from "../favorite-button/favorite-button";
 
-export const PlaceCardComponent = (props) => {
-  const {offer, classNameArticle, classNameWrapper, onActiveOfferChange} = props;
+export const PlaceCard = (props) => {
+  const {
+    offer,
+    options,
+    renderChild,
+    onActiveOfferChange
+  } = props;
+
   const handleDebouncedActiveOfferChange = debounce(
       onActiveOfferChange,
       Settings.MAP_PIN_DEBOUNCE_DELAY
   );
+
+  const handleMouseOver = () => {
+    handleDebouncedActiveOfferChange(offer.id);
+  };
+
+  const handleMouseOut = () => {
+    handleDebouncedActiveOfferChange(``);
+  };
+
   return (
     <article
-      className={`${classNameArticle} place-card`}
-      onMouseOver={() => {
-        handleDebouncedActiveOfferChange(offer.id);
-      }}
-      onMouseOut={() => {
-        handleDebouncedActiveOfferChange(``);
-      }}
+      className={`${options.CLASSNAME_ARTICLE} place-card`}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
-      <div className={`${classNameWrapper} place-card__image-wrapper`}>
+      {renderChild(offer.isPremium)}
+      <div className={`${options.CLASSNAME_WRAPPER} place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
-            width="260"
-            height="200"
+            width={options.IMAGE_WIDTH}
+            height={options.IMAGE_HEIGHT}
             alt={offer.title}
           />
         </Link>
@@ -42,12 +53,13 @@ export const PlaceCardComponent = (props) => {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"/>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+
+          <FavoriteButton
+            id={offer.id}
+            isFavorite={offer.isFavorite}
+            options={FAVORITE_BUTTON_OPTIONS.PLACE_CARD}
+          />
+
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -62,20 +74,16 @@ export const PlaceCardComponent = (props) => {
       </div>
     </article>
   );
-
 };
 
-PlaceCardComponent.propTypes = {
+PlaceCard.propTypes = {
   offer: offerPropTypes.isRequired,
-  classNameArticle: PropTypes.string.isRequired,
-  classNameWrapper: PropTypes.string.isRequired,
-  onActiveOfferChange: PropTypes.func.isRequired,
+  onActiveOfferChange: PropTypes.func,
+  renderChild: PropTypes.func,
+  options: PropTypes.shape({
+    CLASSNAME_ARTICLE: PropTypes.string.isRequired,
+    CLASSNAME_WRAPPER: PropTypes.string.isRequired,
+    IMAGE_WIDTH: PropTypes.number.isRequired,
+    IMAGE_HEIGHT: PropTypes.number.isRequired,
+  })
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  onActiveOfferChange: (id) => {
-    dispatch(processActionCreator.changeHoveredOfferId(id));
-  }
-});
-
-export const PlaceCard = connect(null, mapDispatchToProps)(PlaceCardComponent);

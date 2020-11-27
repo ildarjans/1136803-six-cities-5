@@ -1,15 +1,17 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {getDecimalRating, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
-import {mapCenterPropTypes, mapIconPropTypes} from "../../prop-types/map";
+import {mapIconPropTypes} from "../../prop-types/map";
 import {
-  selectMapCenter,
+  selectIsAuthStatus,
   selectOffer,
-  selectPropertyMapIcons
-} from "../../selectors/offers";
+  selectPropertyMapIcons,
+  selectRouteId
+} from "../../selectors/selectors";
 
 import {Header} from "../header/header";
 import {PropertyGallery} from "../property-gallery/property-gallery";
@@ -17,15 +19,18 @@ import {NotFoundPage} from "../not-found-page/not-found-page";
 import {Map} from "../map/map";
 import {PropertyReviews} from "../property-reviews/property-reviews";
 import {NearPlaces} from "../near-places/near-places";
+import {CityCoords, FAVORITE_BUTTON_OPTIONS} from "../../const";
+import {FavoriteButton} from "../favorite-button/favorite-button";
+import {processActionCreator} from "../../store/process/process-action";
 
-export const PropertyComponent = (props) => {
-  const {offers, center, icons} = props;
-  const {id} = props.match.params;
-  const offer = offers[id];
-
+export const PropertyComponent = ({offer, icons, id, setHoveredIcon}) => {
   if (!offer) {
     return <NotFoundPage/>;
   }
+
+  React.useEffect(() => setHoveredIcon(+id), [id]);
+
+  const center = CityCoords[offer.city.name.toUpperCase()];
 
   return (
     <div className="page">
@@ -45,14 +50,13 @@ export const PropertyComponent = (props) => {
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{offer.title}</h1>
-                <button className="property__bookmark-button button"
-                  type="button">
-                  <svg className="property__bookmark-icon" width="31"
-                    height="33">
-                    <use xlinkHref="#icon-bookmark"/>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+
+                <FavoriteButton
+                  options={FAVORITE_BUTTON_OPTIONS.PROPERTY}
+                  id={id}
+                  isFavorite={offer.isFavorite}
+                />
+
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -130,20 +134,23 @@ export const PropertyComponent = (props) => {
 };
 
 PropertyComponent.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
-  offers: PropTypes.objectOf(offerPropTypes.isRequired).isRequired,
-  center: mapCenterPropTypes.isRequired,
+  offer: offerPropTypes.isRequired,
   icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
+  id: PropTypes.number.isRequired,
+  setHoveredIcon: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: selectOffer(state),
-  center: selectMapCenter(state),
-  icons: selectPropertyMapIcons(state),
+const mapStateToProps = (state, props) => ({
+  isAuth: selectIsAuthStatus(state),
+  id: selectRouteId(props),
+  offer: selectOffer(state, props),
+  icons: selectPropertyMapIcons(state, props),
 });
 
-export const Property = connect(mapStateToProps)(PropertyComponent);
+const mapDispatchToProps = (dispatch) => ({
+  setHoveredIcon(id) {
+    dispatch(processActionCreator.changeHoveredOfferId(id));
+  }
+});
+
+export const Property = connect(mapStateToProps, mapDispatchToProps)(withRouter(PropertyComponent));

@@ -5,10 +5,12 @@ import {connect} from "react-redux";
 import {offerPropTypes} from "../../prop-types/offer";
 
 import {PlaceCard} from "../place-card/place-card";
-import {selectNearCityOffers} from "../../selectors/offers";
+import {selectNearCityOffers} from "../../selectors/selectors";
 import {fetchNearOffers} from "../../middleware/thunk-api";
+import {processActionCreator} from "../../store/process/process-action";
+import {PLACE_CARD_OPTION} from "../../const";
 
-const NearPlacesComponent = ({nearOffers, fetchNearOffersById, id}) => {
+const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById, onActiveOfferChange}) => {
   useEffect(() => {
     fetchNearOffersById(id);
   }, []);
@@ -23,8 +25,9 @@ const NearPlacesComponent = ({nearOffers, fetchNearOffersById, id}) => {
             <PlaceCard
               key={offer.id}
               offer={offer}
-              classNameArticle={`near-places__card`}
-              classNameWrapper={`near-places__image-wrapper`}
+              options={PLACE_CARD_OPTION.NEAR_LIST}
+              renderChild={() => {}}
+              onActiveOfferChange={onActiveOfferChange}
             />
           ))}
         </div>
@@ -34,8 +37,9 @@ const NearPlacesComponent = ({nearOffers, fetchNearOffersById, id}) => {
 };
 
 NearPlacesComponent.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   fetchNearOffersById: PropTypes.func.isRequired,
+  onActiveOfferChange: PropTypes.func.isRequired,
   nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
@@ -46,6 +50,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchNearOffersById(id) {
     dispatch(fetchNearOffers(id));
+  },
+  onActiveOfferChange: (id) => {
+    dispatch(processActionCreator.changeHoveredOfferId(id));
   }
 });
 

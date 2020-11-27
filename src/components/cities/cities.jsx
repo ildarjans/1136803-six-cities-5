@@ -10,14 +10,14 @@ import {
   selectCitiesMapIcons,
   selectMapCenter,
   selectSortedOffersByType
-} from "../../selectors/offers";
+} from "../../selectors/selectors";
 
 import {PlacesList} from "../places-list/places-list";
 import {PlacesSorting} from "../places-sorting/places-sorting";
 import {Map} from "../map/map";
 import {processActionCreator} from "../../store/process/process-action";
 
-const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer}) => {
+const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer, onActiveOfferChange}) => {
   useEffect(() => {
     restoreHoveredOffer();
   }, []);
@@ -30,7 +30,7 @@ const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer
 
           <PlacesSorting/>
 
-          <PlacesList offers={offers}/>
+          <PlacesList offers={offers} onActiveOfferChange={onActiveOfferChange}/>
 
         </section>
         <div className="cities__right-section">
@@ -48,7 +48,8 @@ CitiesComponent.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
   center: mapCenterPropTypes.isRequired,
   icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
-  restoreHoveredOffer: PropTypes.func.isRequired
+  restoreHoveredOffer: PropTypes.func.isRequired,
+  onActiveOfferChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -61,6 +62,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   restoreHoveredOffer() {
     dispatch(processActionCreator.changeHoveredOfferId(``));
+  },
+  onActiveOfferChange(id) {
+    dispatch(processActionCreator.changeHoveredOfferId(id));
   }
 });
 

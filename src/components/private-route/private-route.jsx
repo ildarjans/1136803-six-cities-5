@@ -12,7 +12,7 @@ export const PrivateRouteComponent = (props) => {
       path={path}
       render={() => {
         return (
-          authorizationStatus === AuthorizationStatus.AUTH ?
+          authorizationStatus === AuthorizationStatus.AUTHORIZED ?
             render() :
             <Redirect to={AppRoute.LOGIN}/>
         );
