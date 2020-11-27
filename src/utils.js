@@ -42,15 +42,6 @@ export const sortOffersPriceDes = (offerA, offerB) => offerB.price - offerA.pric
 
 export const sortOffersTopRated = (offerA, offerB) => offerB.rating - offerA.rating;
 
-export const isEqualListsIds = (current, previous) => {
-  return (
-    current.length === previous.length &&
-    current.every((it, i) => (
-      it.id === (previous[i] || 0 ? previous[i].id : undefined)
-    ))
-  );
-};
-
 export const adaptHotelToClient = (hotel) => {
   return {
     bedrooms: hotel[`bedrooms`],
@@ -92,3 +83,12 @@ export const adaptReviewToClient = (review) => {
   };
 };
 
+export const adaptUserToClient = (user) => {
+  return {
+    id: user[`id`],
+    email: user[`email`],
+    name: user[`name`],
+    avatarUrl: user[`avatar_url`],
+    isPro: user[`is_pro`],
+  };
+};
