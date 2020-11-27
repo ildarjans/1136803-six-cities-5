@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {SortType, sortTypeTitles} from "../../const";
-import {offersActionCreator} from "../../store/offers/offers-action";
 import {withCollapseToggle} from "../../hocs/with-collapse-toggle";
 import {selectSortType} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
