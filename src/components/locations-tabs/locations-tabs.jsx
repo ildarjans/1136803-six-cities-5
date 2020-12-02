@@ -7,7 +7,7 @@ import {cities} from "../../const";
 import {selectActiveCity} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 
-const LocationsTabsComponent = ({activeCity, onCityChange}) => {
+export const LocationsTabsComponent = ({activeCity, onCityChange}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCityChange: (city) => {
+  onCityChange(city) {
     dispatch(processActionCreator.changeCity(city));
   }
 });

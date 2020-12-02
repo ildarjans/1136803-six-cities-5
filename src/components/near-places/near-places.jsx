@@ -7,13 +7,12 @@ import {offerPropTypes} from "../../prop-types/offer";
 import {PlaceCard} from "../place-card/place-card";
 import {selectNearCityOffers} from "../../selectors/selectors";
 import {fetchNearOffers} from "../../middleware/thunk-api";
-import {processActionCreator} from "../../store/process/process-action";
 import {PLACE_CARD_OPTION} from "../../const";
 
-const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById, onActiveOfferChange}) => {
+export const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById}) => {
   useEffect(() => {
     fetchNearOffersById(id);
-  }, []);
+  }, [id]);
   return (
     nearOffers.length > 0
     &&
@@ -26,8 +25,6 @@ const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById, onActiveOffer
               key={offer.id}
               offer={offer}
               options={PLACE_CARD_OPTION.NEAR_LIST}
-              renderChild={() => {}}
-              onActiveOfferChange={onActiveOfferChange}
             />
           ))}
         </div>
@@ -39,7 +36,6 @@ const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById, onActiveOffer
 NearPlacesComponent.propTypes = {
   id: PropTypes.number.isRequired,
   fetchNearOffersById: PropTypes.func.isRequired,
-  onActiveOfferChange: PropTypes.func.isRequired,
   nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
@@ -51,9 +47,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchNearOffersById(id) {
     dispatch(fetchNearOffers(id));
   },
-  onActiveOfferChange: (id) => {
-    dispatch(processActionCreator.changeHoveredOfferId(id));
-  }
 });
 
 export const NearPlaces = connect(mapStateToProps, mapDispatchToProps)(NearPlacesComponent);

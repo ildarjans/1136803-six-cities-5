@@ -46,6 +46,14 @@ export const selectHotelReviews = ({REVIEWS}) => {
   return REVIEWS.reviews;
 };
 
+export const selectUserEmail = ({USER}) => {
+  return USER.user.email;
+};
+
+export const selectUserAuthStatus = ({USER}) => {
+  return USER.authorizationStatus;
+};
+
 export const selectFavoriteCityOffers = ({FAVORITES}) => {
   return FAVORITES.favoriteCityOffers;
 };

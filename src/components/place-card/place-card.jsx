@@ -78,12 +78,16 @@ export const PlaceCard = (props) => {
 
 PlaceCard.propTypes = {
   offer: offerPropTypes.isRequired,
-  onActiveOfferChange: PropTypes.func,
-  renderChild: PropTypes.func,
+  onActiveOfferChange: PropTypes.func.isRequired,
+  renderChild: PropTypes.func.isRequired,
   options: PropTypes.shape({
     CLASSNAME_ARTICLE: PropTypes.string.isRequired,
     CLASSNAME_WRAPPER: PropTypes.string.isRequired,
     IMAGE_WIDTH: PropTypes.number.isRequired,
     IMAGE_HEIGHT: PropTypes.number.isRequired,
   })
+};
+PlaceCard.defaultProps = {
+  onActiveOfferChange: () => {},
+  renderChild: () => {},
 };

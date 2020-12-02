@@ -14,7 +14,7 @@ export const FAVORITE_BUTTON_OPTIONS = {
 export const PLACE_CARD_OPTION = {
   PLACE_LIST: {
     CLASSNAME_ARTICLE: `cities__place-card`,
-    CLASSNAME_WRAPPER: `cities__place-card`,
+    CLASSNAME_WRAPPER: `cities__image-wrapper`,
     IMAGE_WIDTH: 260,
     IMAGE_HEIGHT: 200,
   },
@@ -36,6 +36,7 @@ export const Settings = {
   OFFERS_IMAGES_DISPLAY_LIMIT: 6,
   NEAR_OFFERS_DISPLAY_LIMIT: 3,
   REVIEW_TEXT_MIN_LENGTH: 50,
+  REVIEW_TEXT_MAX_LENGTH: 300,
   RATING_STARS_COUNT: 5,
   MAP_PIN_DEBOUNCE_DELAY: 500
 };

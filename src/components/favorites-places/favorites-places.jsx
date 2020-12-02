@@ -14,8 +14,6 @@ export const FavoritesPlaces = ({offers}) => {
           key={offer.id}
           offer={offer}
           options={PLACE_CARD_OPTION.FAVORITE_LIST}
-          renderChild={() => {}}
-          onActiveOfferChange={() => {}}
         />
       ))}
     </div>

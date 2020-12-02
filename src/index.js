@@ -7,11 +7,7 @@ import thunk from "redux-thunk";
 
 import {createAPI} from "./services/api";
 import {rootReducer} from "./store/root-reducer";
-import {
-  checkAuthStatus,
-  fetchFavoritesOffers,
-  fetchOffers
-} from "./middleware/thunk-api";
+import {checkAuthStatus, fetchOffers} from "./middleware/thunk-api";
 
 import {App} from "./components/app/app";
 import {authActionCreator} from "./store/user/user-action";
@@ -32,7 +28,6 @@ const store = createStore(
 Promise.all([
   store.dispatch(fetchOffers()),
   store.dispatch(checkAuthStatus()),
-  store.dispatch(fetchFavoritesOffers()),
 ])
 .then(() => {
   ReactDOM.render(
@@ -42,4 +37,3 @@ Promise.all([
       document.querySelector(`#root`)
   );
 });
-

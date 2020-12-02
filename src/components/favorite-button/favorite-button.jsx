@@ -6,7 +6,7 @@ import {selectIsAuthStatus} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 import {AppRoute} from "../../const";
 
-const FavoriteButtonComponent = (props) => {
+export const FavoriteButtonComponent = (props) => {
   const {
     updateOfferFavoriteField,
     redirectLoginPage,
@@ -23,10 +23,12 @@ const FavoriteButtonComponent = (props) => {
   const handleButtonClick = () => {
     if (!isAuth) {
       redirectLoginPage();
-      return;
+    } else {
+      updateOfferFavoriteField(id, Number(!favoriteState))
+        .then(() => {
+          setFavorite(!favoriteState);
+        });
     }
-    updateOfferFavoriteField(id, Number(!favoriteState))
-      .then((setFavorite(!favoriteState)));
   };
 
   return (

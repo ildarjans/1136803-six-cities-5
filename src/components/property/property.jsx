@@ -7,28 +7,27 @@ import {getDecimalRating, getRatingWidth} from "../../utils";
 import {offerPropTypes} from "../../prop-types/offer";
 import {mapIconPropTypes} from "../../prop-types/map";
 import {
-  selectIsAuthStatus,
   selectOffer,
   selectPropertyMapIcons,
   selectRouteId
 } from "../../selectors/selectors";
+import {processActionCreator} from "../../store/process/process-action";
 
+import Map from "../map/map";
 import {Header} from "../header/header";
 import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
-import {Map} from "../map/map";
 import {PropertyReviews} from "../property-reviews/property-reviews";
 import {NearPlaces} from "../near-places/near-places";
 import {CityCoords, FAVORITE_BUTTON_OPTIONS} from "../../const";
 import {FavoriteButton} from "../favorite-button/favorite-button";
-import {processActionCreator} from "../../store/process/process-action";
 
 export const PropertyComponent = ({offer, icons, id, setHoveredIcon}) => {
   if (!offer) {
     return <NotFoundPage/>;
   }
 
-  React.useEffect(() => setHoveredIcon(+id), [id]);
+  React.useEffect(() => setHoveredIcon(+id), [+id]);
 
   const center = CityCoords[offer.city.name.toUpperCase()];
 
@@ -141,7 +140,6 @@ PropertyComponent.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  isAuth: selectIsAuthStatus(state),
   id: selectRouteId(props),
   offer: selectOffer(state, props),
   icons: selectPropertyMapIcons(state, props),

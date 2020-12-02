@@ -8,9 +8,9 @@ import {offerPropTypes} from "../../prop-types/offer";
 import {LocationsTabs} from "../locations-tabs/locations-tabs";
 import {Header} from "../header/header";
 import {Cities} from "../cities/cities";
-import {MainEmpty} from "../empty-main/empty-main";
+import {MainEmpty} from "../main-empty/empty-main";
 
-const MainPageComponent = ({cityOffers}) => {
+export const MainPageComponent = ({cityOffers}) => {
   return (
     <div className="page page--gray page--main">
       <Header/>

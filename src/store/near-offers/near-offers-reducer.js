@@ -11,7 +11,9 @@ export function nearOffersReducer(state = initialState, action) {
   switch (action.type) {
     case ActionType.NEAR_OFFERS_LOADING_SUCCESS:
       return extend(state, {
-        nearOffers: action.payload.map(adaptOfferToClient),
+        nearOffers: action.payload
+          // .slice(0, Settings.NEAR_OFFERS_DISPLAY_LIMIT)
+          .map(adaptOfferToClient),
         loading: false
       });
     case ActionType.NEAR_OFFERS_LOADING_START:

@@ -3,11 +3,10 @@ import {extend} from "../../utils";
 import {getFavoriteCityOffersDictionary, removeOfferById} from "../store-utils";
 
 const initialState = {
-  favoritesOffersIds: [],
   favoriteCityOffers: {},
   updating: false,
   loading: false,
-  error: ``
+  error: null
 };
 
 const addFavoriteOffer = (state, action) => {
@@ -42,13 +41,11 @@ export const favoritesReducer = (state = initialState, action) => {
       return extend(state, {
         loading: true,
         favoriteCityOffers: {},
-        favoritesOffersIds: []
       });
     case ActionType.FAVORITES_LOADING_SUCCESS:
       return extend(state, {
         loading: false,
         favoriteCityOffers: getFavoriteCityOffersDictionary(action.payload),
-        favoritesOffersIds: action.payload.map((offer) => offer.id),
       });
     case ActionType.FAVORITES_LOADING_FAIL:
       return extend(state, {
@@ -58,7 +55,7 @@ export const favoritesReducer = (state = initialState, action) => {
     case ActionType.FAVORITE_OFFER_UPDATE_START:
       return extend(state, {
         updating: true,
-        error: ``,
+        error: null,
       });
     case ActionType.FAVORITE_OFFER_UPDATE_SUCCESS:
       return extend(state, {

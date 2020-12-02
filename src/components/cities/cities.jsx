@@ -14,10 +14,10 @@ import {
 
 import {PlacesList} from "../places-list/places-list";
 import {PlacesSorting} from "../places-sorting/places-sorting";
-import {Map} from "../map/map";
+import Map from "../map/map";
 import {processActionCreator} from "../../store/process/process-action";
 
-const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer, onActiveOfferChange}) => {
+export const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer, onActiveOfferChange}) => {
   useEffect(() => {
     restoreHoveredOffer();
   }, []);
@@ -26,7 +26,8 @@ const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offers.length} places to stay in {activeCity}</b>
+          <b className="places__found">{offers.length} places to stay
+            in {activeCity}</b>
 
           <PlacesSorting/>
 

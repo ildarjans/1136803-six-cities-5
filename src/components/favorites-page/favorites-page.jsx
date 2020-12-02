@@ -6,7 +6,6 @@ import {
   selectFavoriteCityOffers,
   selectIsEmptyFavorites
 } from "../../selectors/selectors";
-import {fetchFavoritesOffers} from "../../middleware/thunk-api";
 
 import {Header} from "../header/header";
 import {Footer} from "../footer/footer";
@@ -16,12 +15,7 @@ import {offerPropTypes} from "../../prop-types/offer";
 
 const CLASSNAME_EMPTY = `page--favorites-empty`;
 
-const FavoritesPageComponent = ({favoriteCityOffers, fetchFavorites, isEmpty}) => {
-
-  React.useEffect(() => {
-    fetchFavorites();
-  }, []);
-
+const FavoritesPageComponent = ({favoriteCityOffers, isEmpty}) => {
   return (
     <div className={`page ${isEmpty ? CLASSNAME_EMPTY : ``}`}>
 
@@ -67,10 +61,4 @@ const mapStateToProps = (state) => ({
   isEmpty: selectIsEmptyFavorites(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchFavorites() {
-    dispatch(fetchFavoritesOffers());
-  }
-});
-
-export const FavoritesPage = connect(mapStateToProps, mapDispatchToProps)(FavoritesPageComponent);
+export const FavoritesPage = connect(mapStateToProps)(FavoritesPageComponent);

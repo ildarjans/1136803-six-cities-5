@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {AuthorizationStatus} from "../../const";
-import {userWithEmailPropTypes} from "../../prop-types/user";
+import {selectUserAuthStatus, selectUserEmail} from "../../selectors/selectors";
 
-const HeaderComponent = ({user, authorizationStatus}) => {
+export const HeaderComponent = ({email, authorizationStatus}) => {
   return (
     <header className="header">
       <div className="container">
@@ -24,7 +24,7 @@ const HeaderComponent = ({user, authorizationStatus}) => {
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__login">
-                    {authorizationStatus === AuthorizationStatus.AUTHORIZED ? `${user.email}` : `Sign in`}
+                    {authorizationStatus === AuthorizationStatus.AUTHORIZED ? email : `Sign in`}
                   </span>
                 </Link>
               </li>
@@ -37,13 +37,13 @@ const HeaderComponent = ({user, authorizationStatus}) => {
 };
 
 HeaderComponent.propTypes = ({
-  user: PropTypes.oneOfType([userWithEmailPropTypes, PropTypes.object]).isRequired,
+  email: PropTypes.string,
   authorizationStatus: PropTypes.string.isRequired
 });
 
-const mapStateToProps = ({USER}) => ({
-  user: USER.user,
-  authorizationStatus: USER.authorizationStatus
+const mapStateToProps = (state) => ({
+  email: selectUserEmail(state),
+  authorizationStatus: selectUserAuthStatus(state)
 });
 
 export const Header = connect(mapStateToProps)(HeaderComponent);

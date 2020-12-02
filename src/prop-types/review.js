@@ -8,4 +8,3 @@ export const reviewPropTypes = PropTypes.shape({
   rating: PropTypes.number.isRequired,
   comment: PropTypes.string.isRequired,
 });
-

@@ -36,6 +36,7 @@ export const checkAuthStatus = () => (dispatch, _getState, api) => {
   return api
     .get(ApiRoute.LOGIN)
     .then(({data}) => dispatch(authActionCreator.setUserLoginProfile(data)))
+    .then(() => dispatch(fetchFavoritesOffers()))
     .then(() => dispatch(authActionCreator.authorizationSuccess()))
     .catch((err) => dispatch(authActionCreator.authorizationFail(err.message)));
 };
@@ -86,6 +87,7 @@ export const updateFavoriteOffer = (id, status) => (dispatch, _getState, api) =>
         dispatch(favoritesActionCreator.removeFavoriteOffer(adaptedOffer));
       }
     })
+    .then(()=> dispatch(fetchFavoritesOffers()))
     .then(()=> dispatch(favoritesActionCreator.favoriteOfferUpdateSuccess()))
     .catch((err) => dispatch(favoritesActionCreator.favoriteOfferUpdateFail(err.message)));
 };
