@@ -36,7 +36,7 @@ const mockStoreTemplate = {
     authorizationStatus: `NO_AUTHORIZED`,
     waitingAuthorizationResponse: false,
     error: null,
-    user: mockUser[0]
+    user: mockUser
   },
   FAVORITES: {
     favoriteCityOffers: mockFavoritesOffers,
@@ -47,4 +47,3 @@ const mockStoreTemplate = {
 };
 
 export const mockStore = createStore(mockStoreTemplate);
-
