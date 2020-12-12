@@ -9,7 +9,7 @@ import {
   mockCityOffers
 } from "../../mocks/mock-data";
 import {mockStore} from "../../mocks/mock-store";
-import {CitiesComponent} from "./cities";
+import {Cities} from "./cities";
 
 configure({adapter: new Adapter()});
 
@@ -20,7 +20,7 @@ it(`Should Cities correct behavior`, () => {
   mount(
       <Provider store={mockStore}>
         <MemoryRouter>
-          <CitiesComponent
+          <Cities
             activeCity={activeCity}
             offers={mockCityOffers.AMSTERDAM}
             icons={mockAmsterdamIcons}

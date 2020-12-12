@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {BrowserRouter} from "react-router-dom";
-import {PrivateRouteComponent} from "./private-route";
+import {PrivateRoute} from "./private-route";
 
 const isAuthStatus = `AUTHORIZED`;
 const isNotAuthStatus = `NO_AUTHORIZED`;
@@ -11,7 +11,7 @@ describe(`Should PrivateRoute rendered correctly`, () => {
   it(`is Authorized`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <PrivateRouteComponent
+          <PrivateRoute
             authorizationStatus={isAuthStatus}
             path={`/`}
             isExact={true}
@@ -24,7 +24,7 @@ describe(`Should PrivateRoute rendered correctly`, () => {
   it(`is not Authorized`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <PrivateRouteComponent
+          <PrivateRoute
             authorizationStatus={isNotAuthStatus}
             path={`/`}
             isExact={true}

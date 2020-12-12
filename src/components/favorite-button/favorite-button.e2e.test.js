@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {FavoriteButtonComponent} from "./favorite-button";
+import {FavoriteButton} from "./favorite-button";
 import {FAVORITE_BUTTON_OPTIONS} from "../../mocks/mock-data";
 
 configure({adapter: new Adapter()});
@@ -16,7 +16,7 @@ describe(`Should FavoriteButton behavior correct`, () => {
 
   it(`then is auth favorite button clicked`, () => {
     const button = shallow(
-        <FavoriteButtonComponent
+        <FavoriteButton
           updateOfferFavoriteField={updateOfferFavoriteField}
           redirectLoginPage={redirectLoginPage}
           options={FAVORITE_BUTTON_OPTIONS.PLACE_CARD}
@@ -31,7 +31,7 @@ describe(`Should FavoriteButton behavior correct`, () => {
   });
   it(`then is not auth favorite button clicked`, () => {
     const button = shallow(
-        <FavoriteButtonComponent
+        <FavoriteButton
           updateOfferFavoriteField={updateOfferFavoriteField}
           redirectLoginPage={redirectLoginPage}
           options={FAVORITE_BUTTON_OPTIONS.PLACE_CARD}

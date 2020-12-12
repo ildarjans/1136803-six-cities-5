@@ -8,16 +8,16 @@ import {
   mockAmsterdamMapCenter
 } from "../../mocks/mock-data";
 import {mockStore} from "../../mocks/mock-store";
-import {CitiesComponent} from "./cities";
+import Cities from "./cities";
 
 const noop = () => {};
 const activeCity = `AMSTERDAM`;
 
-it(`Should CitiesComponent rendered correctly`, () => {
+it(`Should Cities rendered correctly`, () => {
   const tree = renderer.create(
       <Provider store={mockStore}>
         <MemoryRouter>
-          <CitiesComponent
+          <Cities
             activeCity={activeCity}
             offers={mockCityOffers.AMSTERDAM}
             icons={mockAmsterdamIcons}

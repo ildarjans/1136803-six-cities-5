@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {PlacesSortingComponent} from "./places-sorting";
+import {PlacesSorting} from "./places-sorting";
 
 const popularSortType = `popular`;
 
@@ -9,7 +9,7 @@ const noop = () => {};
 describe(`Should PlacesSortingComponent render correctly`, () => {
   it(`then collapsed`, () => {
     const tree = renderer.create(
-        <PlacesSortingComponent
+        <PlacesSorting
           sortType={popularSortType}
           collapsed={true}
           onSortTypeChange={noop}
@@ -20,7 +20,7 @@ describe(`Should PlacesSortingComponent render correctly`, () => {
   });
   it(`then expanded`, () => {
     const tree = renderer.create(
-        <PlacesSortingComponent
+        <PlacesSorting
           sortType={popularSortType}
           collapsed={false}
           onSortTypeChange={noop}

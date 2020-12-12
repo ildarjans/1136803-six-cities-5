@@ -1,14 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {PropertyReviewsComponent} from "./property-reviews";
+import {PropertyReviews} from "./property-reviews";
 import {mockReviews} from "../../mocks/mock-data";
 
 const noop = () => {};
 
-describe(`Should PropertyReviewsComponent render correctly`, () => {
+describe(`Should PropertyReviews render correctly`, () => {
   it(`(1) then user is auth`, () => {
     const tree = renderer.create(
-        <PropertyReviewsComponent
+        <PropertyReviews
           fetchReviewsById={noop}
           postUserReview={noop}
           reviews={mockReviews}
@@ -20,7 +20,7 @@ describe(`Should PropertyReviewsComponent render correctly`, () => {
   });
   it(`(2) then user is not auth`, () => {
     const tree = renderer.create(
-        <PropertyReviewsComponent
+        <PropertyReviews
           fetchReviewsById={noop}
           postUserReview={noop}
           reviews={mockReviews}
@@ -32,7 +32,7 @@ describe(`Should PropertyReviewsComponent render correctly`, () => {
   });
   it(`(3) then user is auth and no reviews`, () => {
     const tree = renderer.create(
-        <PropertyReviewsComponent
+        <PropertyReviews
           fetchReviewsById={noop}
           postUserReview={noop}
           reviews={[]}
@@ -44,7 +44,7 @@ describe(`Should PropertyReviewsComponent render correctly`, () => {
   });
   it(`(4) then user is no auth and no reviews`, () => {
     const tree = renderer.create(
-        <PropertyReviewsComponent
+        <PropertyReviews
           fetchReviewsById={noop}
           postUserReview={noop}
           reviews={[]}

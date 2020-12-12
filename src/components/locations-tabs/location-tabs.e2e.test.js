@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {LocationsTabsComponent} from "./locations-tabs";
+import {LocationsTabs} from "./locations-tabs";
 
 configure({adapter: new Adapter()});
 const CLASSNAME = `.locations__item-link.tabs__item`;
@@ -10,7 +10,7 @@ const ACTIVE_CITY = `AMSTERDAM`;
 it(`Should LocationTabs has correct behavior`, () => {
   const onCityChange = jest.fn();
   const tabs = shallow(
-      <LocationsTabsComponent
+      <LocationsTabs
         activeCity={ACTIVE_CITY}
         onCityChange={onCityChange}/>
   );

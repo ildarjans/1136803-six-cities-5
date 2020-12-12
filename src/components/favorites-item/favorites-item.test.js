@@ -8,7 +8,7 @@ import {mockFavoritesOffers} from "../../mocks/mock-data";
 
 import {FavoritesItem} from "./favorites-item";
 
-const city = `DUSSELDORF`;
+const city = `AMSTERDAM`;
 
 it(`Should Favorites item rendered correctly`, () => {
   const tree = renderer
@@ -17,7 +17,7 @@ it(`Should Favorites item rendered correctly`, () => {
           <MemoryRouter>
             <FavoritesItem
               city={city}
-              offers={mockFavoritesOffers.DUSSELDORF}
+              offers={mockFavoritesOffers.AMSTERDAM}
             />
           </MemoryRouter>
         </Provider>

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {BrowserRouter} from "react-router-dom";
-import {mockOffersList} from "../../mocks/mock-data";
+import {mockCityOffers} from "../../mocks/mock-data";
 import {PlaceCard} from "./place-card";
 
 const PLACE_CARD_OPTION = {
@@ -35,7 +35,7 @@ describe(`Should PlaceCard rendered correctly`, () => {
       .create(
           <BrowserRouter>
             <PlaceCard
-              offer={mockOffersList[0]}
+              offer={mockCityOffers.AMSTERDAM[0]}
               options={PLACE_CARD_OPTION.FAVORITE_LIST}
             />
           </BrowserRouter>
@@ -47,7 +47,7 @@ describe(`Should PlaceCard rendered correctly`, () => {
       .create(
           <BrowserRouter>
             <PlaceCard
-              offer={mockOffersList[0]}
+              offer={mockCityOffers.AMSTERDAM[0]}
               options={PLACE_CARD_OPTION.NEAR_LIST}
               onActiveOfferChange={noop}
             />
@@ -60,7 +60,7 @@ describe(`Should PlaceCard rendered correctly`, () => {
       .create(
           <BrowserRouter>
             <PlaceCard
-              offer={mockOffersList[0]}
+              offer={mockCityOffers.AMSTERDAM[0]}
               options={PLACE_CARD_OPTION.PLACE_LIST}
               renderChild={noop}
               onActiveOfferChange={noop}

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should CollapseToggle HOC render correctly 1`] = `
+<button
+  id="btn"
+  onClick={[Function]}
+  type="button"
+>
+  Initial collapsed state is true
+</button>
+`;

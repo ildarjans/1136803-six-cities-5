@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should PropertyGallery render correctly (1) then user is auth 1`] = `
+<div
+  className="property__gallery-container container"
+>
+  <div
+    className="property__gallery"
+  >
+    <div
+      className="property__image-wrapper"
+    >
+      <img
+        alt="Big company apartment-0"
+        className="property__image"
+        src="http://picsum.photos/248/152?r=0.0922933754368811"
+      />
+    </div>
+    <div
+      className="property__image-wrapper"
+    >
+      <img
+        alt="Big company apartment-1"
+        className="property__image"
+        src="http://picsum.photos/248/152?r=0.897019347231856"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should PropertyGallery render correctly (2) then no images 1`] = `
+<div
+  className="property__gallery-container container"
+>
+  <div
+    className="property__gallery"
+  />
+</div>
+`;

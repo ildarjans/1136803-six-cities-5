@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should PrivateRoute rendered correctly is Authorized 1`] = `null`;
+
+exports[`Should PrivateRoute rendered correctly is not Authorized 1`] = `null`;

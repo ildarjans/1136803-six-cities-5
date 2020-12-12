@@ -3,14 +3,14 @@ import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 
 import {AuthorizationStatus} from "../../const";
-import {HeaderComponent} from "./header";
+import {Header} from "./header";
 
 describe(`Should Header rendered correctly`, () => {
   it(`(1) render with email`, () => {
     const tree = renderer
       .create(
           <BrowserRouter>
-            <HeaderComponent
+            <Header
               email={``}
               authorizationStatus={AuthorizationStatus.NO_AUTHORIZED}
             />
@@ -22,7 +22,7 @@ describe(`Should Header rendered correctly`, () => {
     const tree = renderer
       .create(
           <BrowserRouter>
-            <HeaderComponent
+            <Header
               email={`user100500@yahoo.com`}
               authorizationStatus={AuthorizationStatus.AUTHORIZED}
             />

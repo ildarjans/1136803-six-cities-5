@@ -8,13 +8,13 @@ import {mockStore} from "../../mocks/mock-store";
 
 import {FavoritesPlaces} from "./favorites-places";
 
-it(`Should Favorites list rendered correctly`, () => {
+it(`Should FavoritesPlaces rendered correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={mockStore}>
           <MemoryRouter>
             <FavoritesPlaces
-              offers={mockFavoritesOffers.DUSSELDORF}
+              offers={mockFavoritesOffers.AMSTERDAM}
             />
           </MemoryRouter>
         </Provider>

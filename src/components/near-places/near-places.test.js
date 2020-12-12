@@ -11,7 +11,7 @@ import {NearPlaces} from "./near-places";
 const noop = () => {};
 const CARDS_DISPLAY_LIMIT = 3;
 
-it(`Should NearList rendered correctly`, () => {
+it(`Should NearPlaces rendered correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={mockStore}>

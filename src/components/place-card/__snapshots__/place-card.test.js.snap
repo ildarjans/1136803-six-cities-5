@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should PlaceCard rendered correctly (1) render Favorites list implementation 1`] = `
+<article
+  className="favorites__card place-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="favorites__image-wrapper place-card__image-wrapper"
+  >
+    <a
+      href="/offer/73"
+      onClick={[Function]}
+    >
+      <img
+        alt="Big company apartment"
+        className="place-card__image"
+        height={110}
+        src="http://picsum.photos/248/152?r=0.16844568825898554"
+        width={150}
+      />
+    </a>
+  </div>
+  <div
+    className="place-card__info"
+  >
+    <div
+      className="place-card__price-wrapper"
+    >
+      <div
+        className="place-card__price"
+      >
+        <b
+          className="place-card__price-value"
+        >
+          €
+          2523
+        </b>
+        <span
+          className="place-card__price-text"
+        >
+          / night
+        </span>
+      </div>
+    </div>
+    <div
+      className="place-card__rating rating"
+    >
+      <div
+        className="place-card__stars rating__stars"
+      >
+        <span
+          style={
+            Object {
+              "width": "20%",
+            }
+          }
+        />
+        <span
+          className="visually-hidden"
+        >
+          Rating
+        </span>
+      </div>
+    </div>
+    <h2
+      className="place-card__name"
+    >
+      <a
+        href="/offer/73"
+        onClick={[Function]}
+      >
+        Big company apartment
+      </a>
+    </h2>
+    <p
+      className="place-card__type"
+    >
+      apartment
+    </p>
+  </div>
+</article>
+`;
+
+exports[`Should PlaceCard rendered correctly (2) render Near list implementation 1`] = `
+<article
+  className="near-places__card place-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="near-places__image-wrapper place-card__image-wrapper"
+  >
+    <a
+      href="/offer/73"
+      onClick={[Function]}
+    >
+      <img
+        alt="Big company apartment"
+        className="place-card__image"
+        height={200}
+        src="http://picsum.photos/248/152?r=0.16844568825898554"
+        width={260}
+      />
+    </a>
+  </div>
+  <div
+    className="place-card__info"
+  >
+    <div
+      className="place-card__price-wrapper"
+    >
+      <div
+        className="place-card__price"
+      >
+        <b
+          className="place-card__price-value"
+        >
+          €
+          2523
+        </b>
+        <span
+          className="place-card__price-text"
+        >
+          / night
+        </span>
+      </div>
+    </div>
+    <div
+      className="place-card__rating rating"
+    >
+      <div
+        className="place-card__stars rating__stars"
+      >
+        <span
+          style={
+            Object {
+              "width": "20%",
+            }
+          }
+        />
+        <span
+          className="visually-hidden"
+        >
+          Rating
+        </span>
+      </div>
+    </div>
+    <h2
+      className="place-card__name"
+    >
+      <a
+        href="/offer/73"
+        onClick={[Function]}
+      >
+        Big company apartment
+      </a>
+    </h2>
+    <p
+      className="place-card__type"
+    >
+      apartment
+    </p>
+  </div>
+</article>
+`;
+
+exports[`Should PlaceCard rendered correctly (3) render Places list implementation 1`] = `
+<article
+  className="cities__place-card place-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="cities__place-card place-card__image-wrapper"
+  >
+    <a
+      href="/offer/73"
+      onClick={[Function]}
+    >
+      <img
+        alt="Big company apartment"
+        className="place-card__image"
+        height={200}
+        src="http://picsum.photos/248/152?r=0.16844568825898554"
+        width={260}
+      />
+    </a>
+  </div>
+  <div
+    className="place-card__info"
+  >
+    <div
+      className="place-card__price-wrapper"
+    >
+      <div
+        className="place-card__price"
+      >
+        <b
+          className="place-card__price-value"
+        >
+          €
+          2523
+        </b>
+        <span
+          className="place-card__price-text"
+        >
+          / night
+        </span>
+      </div>
+    </div>
+    <div
+      className="place-card__rating rating"
+    >
+      <div
+        className="place-card__stars rating__stars"
+      >
+        <span
+          style={
+            Object {
+              "width": "20%",
+            }
+          }
+        />
+        <span
+          className="visually-hidden"
+        >
+          Rating
+        </span>
+      </div>
+    </div>
+    <h2
+      className="place-card__name"
+    >
+      <a
+        href="/offer/73"
+        onClick={[Function]}
+      >
+        Big company apartment
+      </a>
+    </h2>
+    <p
+      className="place-card__type"
+    >
+      apartment
+    </p>
+  </div>
+</article>
+`;

@@ -4,7 +4,7 @@ import {MemoryRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {mockFavoritesOffers} from "../../mocks/mock-data";
 import {mockStore} from "../../mocks/mock-store";
-import {FavoritesPage} from "./favorites-page";
+import FavoritesPage, {FavoritesPage as FavoritePageComponent} from "./favorites-page";
 
 describe(`Should FavoritePage rendered correctly`, () => {
   it(`rendered empty favorites page correctly`, () => {
@@ -12,7 +12,7 @@ describe(`Should FavoritePage rendered correctly`, () => {
       .create(
           <Provider store={mockStore}>
             <MemoryRouter>
-              <FavoritesPage
+              <FavoritePageComponent
                 favoriteCityOffers={{}}
                 isEmpty={true}
               />

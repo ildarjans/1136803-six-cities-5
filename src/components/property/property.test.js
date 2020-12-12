@@ -6,16 +6,16 @@ import renderer from "react-test-renderer";
 import {mockAmsterdamIcons, mockCityOffers} from "../../mocks/mock-data";
 import {mockStore} from "../../mocks/mock-store";
 
-import {PropertyComponent} from "./property";
+import {Property} from "./property";
 
 const noop = () => {};
 
-it(`Should PropertyComponent rendered correctly`, () => {
+it(`Should Property rendered correctly`, () => {
   const offer = mockCityOffers.AMSTERDAM[0];
   const tree = renderer.create(
       <Provider store={mockStore}>
         <MemoryRouter>
-          <PropertyComponent
+          <Property
             setHoveredIcon={noop}
             id={offer.id}
             icons={mockAmsterdamIcons}
