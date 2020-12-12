@@ -4,12 +4,13 @@ import {connect} from "react-redux";
 
 import {offerPropTypes} from "../../prop-types/offer";
 
-import {PlaceCard} from "../place-card/place-card";
 import {selectNearCityOffers} from "../../selectors/selectors";
 import {fetchNearOffers} from "../../middleware/thunk-api";
 import {PLACE_CARD_OPTION} from "../../const";
 
-export const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById}) => {
+import {PlaceCard} from "../place-card/place-card";
+
+export const NearPlaces = ({id, nearOffers, fetchNearOffersById}) => {
   useEffect(() => {
     fetchNearOffersById(id);
   }, [id]);
@@ -33,7 +34,7 @@ export const NearPlacesComponent = ({id, nearOffers, fetchNearOffersById}) => {
   );
 };
 
-NearPlacesComponent.propTypes = {
+NearPlaces.propTypes = {
   id: PropTypes.number.isRequired,
   fetchNearOffersById: PropTypes.func.isRequired,
   nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired
@@ -49,4 +50,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export const NearPlaces = connect(mapStateToProps, mapDispatchToProps)(NearPlacesComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(NearPlaces);

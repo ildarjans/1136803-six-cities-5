@@ -11,18 +11,18 @@ import {
   selectPropertyMapIcons,
   selectRouteId
 } from "../../selectors/selectors";
+import {CityCoords, FAVORITE_BUTTON_OPTIONS} from "../../const";
 import {processActionCreator} from "../../store/process/process-action";
 
 import Map from "../map/map";
-import {Header} from "../header/header";
+import Header from "../header/header";
 import {PropertyGallery} from "../property-gallery/property-gallery";
 import {NotFoundPage} from "../not-found-page/not-found-page";
-import {PropertyReviews} from "../property-reviews/property-reviews";
-import {NearPlaces} from "../near-places/near-places";
-import {CityCoords, FAVORITE_BUTTON_OPTIONS} from "../../const";
-import {FavoriteButton} from "../favorite-button/favorite-button";
+import PropertyReviews from "../property-reviews/property-reviews";
+import NearPlaces from "../near-places/near-places";
+import FavoriteButton from "../favorite-button/favorite-button";
 
-export const PropertyComponent = ({offer, icons, id, setHoveredIcon}) => {
+export const Property = ({offer, icons, id, setHoveredIcon}) => {
   if (!offer) {
     return <NotFoundPage/>;
   }
@@ -132,7 +132,7 @@ export const PropertyComponent = ({offer, icons, id, setHoveredIcon}) => {
   );
 };
 
-PropertyComponent.propTypes = {
+Property.propTypes = {
   offer: offerPropTypes.isRequired,
   icons: PropTypes.arrayOf(mapIconPropTypes.isRequired).isRequired,
   id: PropTypes.number.isRequired,
@@ -151,4 +151,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const Property = connect(mapStateToProps, mapDispatchToProps)(withRouter(PropertyComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Property));

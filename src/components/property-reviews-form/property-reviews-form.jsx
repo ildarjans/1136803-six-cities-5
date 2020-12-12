@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {RatingTitle, Settings, Title} from "../../const";
+import './property-reviews-form.css';
 
 const COMMENT_ERROR = `Unexpected comment length`;
 const RATING_ERROR = `Expected rating between 1 and 5`;
@@ -11,11 +12,13 @@ export class PropertyReviewsForm extends React.PureComponent {
     super(props);
     this._formRef = React.createRef();
     this._commentRef = React.createRef();
+    this._button = React.createRef();
     this._ratingRefs = [];
 
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
     this._handleRatingChange = this._handleRatingChange.bind(this);
     this._handleFormChange = this._handleFormChange.bind(this);
+    this._setFailShakeNotification = this._setFailShakeNotification.bind(this);
   }
 
   _handleFormSubmit(evt) {
@@ -26,10 +29,13 @@ export class PropertyReviewsForm extends React.PureComponent {
         rating: this._getRatingValue(),
       };
 
-      this.props.postUserReview(reviewData, this.props.id);
-      this._formRef.current.reset();
+      this.props
+        .postUserReview(reviewData, this.props.id)
+        .then(() => this._formRef.current.reset())
+        .catch(() => this._setFailShakeNotification());
     }
   }
+
   _isValidInput(input, isValid, error) {
     if (isValid) {
       input.setCustomValidity(``);
@@ -77,6 +83,13 @@ export class PropertyReviewsForm extends React.PureComponent {
 
   _handleFormChange() {
     this._isFormValid();
+  }
+
+  _setFailShakeNotification() {
+    this._button.current.classList.add(`fail-notification`);
+    setTimeout(() => this._button.current.classList.remove(`fail-notification`),
+        2000
+    );
   }
 
   render() {
@@ -140,7 +153,10 @@ export class PropertyReviewsForm extends React.PureComponent {
             and describe your stay with at least
             <b className="reviews__text-amount">50 characters</b>.
           </p>
-          <button className="reviews__submit form__submit button" type="submit"
+          <button
+            ref={this._button}
+            className="reviews__submit form__submit button"
+            type="submit"
             disabled={false}>
             Submit
           </button>

@@ -8,7 +8,7 @@ const EMAIL_REGEX = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[
 const EMAIL_ERROR = `Email введен неправильно`;
 const PASSWORD_ERROR = `Пароль не введен`;
 
-export class LoginFormComponent extends React.PureComponent {
+export class LoginForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this._emailRef = React.createRef();
@@ -101,7 +101,7 @@ export class LoginFormComponent extends React.PureComponent {
   }
 }
 
-LoginFormComponent.propTypes = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
@@ -111,4 +111,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const LoginForm = connect(null, mapDispatchToProps)(LoginFormComponent);
+export default connect(null, mapDispatchToProps)(LoginForm);

@@ -11,7 +11,7 @@ import {fetchReviews, postReview} from "../../middleware/thunk-api";
 import {PropertyReview} from "../property-review/property-review";
 import {PropertyReviewsForm} from "../property-reviews-form/property-reviews-form";
 
-export const PropertyReviewsComponent = (props) => {
+export const PropertyReviews = (props) => {
   const {reviews, id, isAuth, fetchReviewsById, postUserReview} = props;
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const PropertyReviewsComponent = (props) => {
   );
 };
 
-PropertyReviewsComponent.propTypes = {
+PropertyReviews.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropTypes.isRequired).isRequired,
   id: PropTypes.number.isRequired,
   isAuth: PropTypes.bool.isRequired,
@@ -59,8 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchReviews(id));
   },
   postUserReview(review, id) {
-    dispatch(postReview(review, id));
+    return dispatch(postReview(review, id));
   }
 });
 
-export const PropertyReviews = connect(mapStateToProps, mapDispatchToProps)(PropertyReviewsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyReviews);

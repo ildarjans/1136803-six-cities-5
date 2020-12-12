@@ -7,7 +7,7 @@ import {
   selectIsEmptyFavorites
 } from "../../selectors/selectors";
 
-import {Header} from "../header/header";
+import Header from "../header/header";
 import {Footer} from "../footer/footer";
 import {FavoritesItem} from "../favorites-item/favorites-item";
 import {FavoritesEmpty} from "../favorites-empty/favorites-empty";
@@ -15,7 +15,7 @@ import {offerPropTypes} from "../../prop-types/offer";
 
 const CLASSNAME_EMPTY = `page--favorites-empty`;
 
-const FavoritesPageComponent = ({favoriteCityOffers, isEmpty}) => {
+export const FavoritesPage = ({favoriteCityOffers, isEmpty}) => {
   return (
     <div className={`page ${isEmpty ? CLASSNAME_EMPTY : ``}`}>
 
@@ -50,9 +50,8 @@ const FavoritesPageComponent = ({favoriteCityOffers, isEmpty}) => {
   );
 };
 
-FavoritesPageComponent.propTypes = ({
+FavoritesPage.propTypes = ({
   favoriteCityOffers: PropTypes.objectOf(PropTypes.arrayOf(offerPropTypes.isRequired)).isRequired,
-  fetchFavorites: PropTypes.func.isRequired,
   isEmpty: PropTypes.bool.isRequired
 });
 
@@ -61,4 +60,4 @@ const mapStateToProps = (state) => ({
   isEmpty: selectIsEmptyFavorites(state),
 });
 
-export const FavoritesPage = connect(mapStateToProps)(FavoritesPageComponent);
+export default connect(mapStateToProps)(FavoritesPage);

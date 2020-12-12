@@ -6,7 +6,7 @@ import {selectIsAuthStatus} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 import {AppRoute} from "../../const";
 
-export const FavoriteButtonComponent = (props) => {
+export const FavoriteButton = (props) => {
   const {
     updateOfferFavoriteField,
     redirectLoginPage,
@@ -49,7 +49,7 @@ export const FavoriteButtonComponent = (props) => {
   );
 };
 
-FavoriteButtonComponent.propTypes = ({
+FavoriteButton.propTypes = ({
   updateOfferFavoriteField: PropTypes.func.isRequired,
   redirectLoginPage: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,
@@ -62,6 +62,10 @@ FavoriteButtonComponent.propTypes = ({
   }),
 });
 
+const mapStateToProps = (state) => ({
+  isAuth: selectIsAuthStatus(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   updateOfferFavoriteField(id, status) {
     return dispatch(updateFavoriteOffer(id, status));
@@ -71,8 +75,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = (state) => ({
-  isAuth: selectIsAuthStatus(state),
-});
-
-export const FavoriteButton = connect(mapStateToProps, mapDispatchToProps)(FavoriteButtonComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton);

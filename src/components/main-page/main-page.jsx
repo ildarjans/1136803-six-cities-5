@@ -5,12 +5,12 @@ import {connect} from "react-redux";
 import {selectCityOffers} from "../../selectors/selectors";
 import {offerPropTypes} from "../../prop-types/offer";
 
-import {LocationsTabs} from "../locations-tabs/locations-tabs";
-import {Header} from "../header/header";
-import {Cities} from "../cities/cities";
+import LocationsTabs from "../locations-tabs/locations-tabs";
+import Header from "../header/header";
+import Cities from "../cities/cities";
 import {MainEmpty} from "../main-empty/empty-main";
 
-export const MainPageComponent = ({cityOffers}) => {
+export const MainPage = ({cityOffers}) => {
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -27,7 +27,7 @@ export const MainPageComponent = ({cityOffers}) => {
   );
 };
 
-MainPageComponent.propTypes = {
+MainPage.propTypes = {
   cityOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
   cityOffers: selectCityOffers(state),
 });
 
-export const MainPage = connect(mapStateToProps)(MainPageComponent);
+export default connect(mapStateToProps)(MainPage);

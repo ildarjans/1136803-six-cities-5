@@ -11,13 +11,13 @@ import {
   selectMapCenter,
   selectSortedOffersByType
 } from "../../selectors/selectors";
-
-import {PlacesList} from "../places-list/places-list";
-import {PlacesSorting} from "../places-sorting/places-sorting";
-import Map from "../map/map";
 import {processActionCreator} from "../../store/process/process-action";
 
-export const CitiesComponent = ({offers, activeCity, center, icons, restoreHoveredOffer, onActiveOfferChange}) => {
+import {PlacesList} from "../places-list/places-list";
+import PlacesSorting from "../places-sorting/places-sorting";
+import Map from "../map/map";
+
+export const Cities = ({offers, activeCity, center, icons, restoreHoveredOffer, onActiveOfferChange}) => {
   useEffect(() => {
     restoreHoveredOffer();
   }, []);
@@ -44,7 +44,7 @@ export const CitiesComponent = ({offers, activeCity, center, icons, restoreHover
   );
 };
 
-CitiesComponent.propTypes = {
+Cities.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes.isRequired).isRequired,
   activeCity: PropTypes.oneOf(cities).isRequired,
   center: mapCenterPropTypes.isRequired,
@@ -69,4 +69,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const Cities = connect(mapStateToProps, mapDispatchToProps)(CitiesComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);

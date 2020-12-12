@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {AuthorizationStatus} from "../../const";
 import {selectUserAuthStatus, selectUserEmail} from "../../selectors/selectors";
 
-export const HeaderComponent = ({email, authorizationStatus}) => {
+export const Header = ({email, authorizationStatus}) => {
   return (
     <header className="header">
       <div className="container">
@@ -36,7 +36,7 @@ export const HeaderComponent = ({email, authorizationStatus}) => {
   );
 };
 
-HeaderComponent.propTypes = ({
+Header.propTypes = ({
   email: PropTypes.string,
   authorizationStatus: PropTypes.string.isRequired
 });
@@ -46,4 +46,4 @@ const mapStateToProps = (state) => ({
   authorizationStatus: selectUserAuthStatus(state)
 });
 
-export const Header = connect(mapStateToProps)(HeaderComponent);
+export default connect(mapStateToProps)(Header);

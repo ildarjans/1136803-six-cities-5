@@ -7,7 +7,7 @@ import {withCollapseToggle} from "../../hocs/with-collapse-toggle";
 import {selectSortType} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 
-export const PlacesSortingComponent = ({sortType, onSortTypeChange, collapsed, onCollapseToggle}) => {
+export const PlacesSorting = ({sortType, onSortTypeChange, collapsed, onCollapseToggle}) => {
   const handlePlacesOptionClick = (evt) => {
     onSortTypeChange(evt.target.dataset.sortType);
     onCollapseToggle();
@@ -51,7 +51,7 @@ export const PlacesSortingComponent = ({sortType, onSortTypeChange, collapsed, o
   );
 };
 
-PlacesSortingComponent.propTypes = {
+PlacesSorting.propTypes = {
   sortType: PropTypes.string.isRequired,
   onSortTypeChange: PropTypes.func.isRequired,
   onCollapseToggle: PropTypes.func.isRequired,
@@ -68,7 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const PlacesSorting = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withCollapseToggle(PlacesSortingComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withCollapseToggle(PlacesSorting));

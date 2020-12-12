@@ -1,5 +1,5 @@
 import React from "react";
-import {LocationsTabs} from "../locations-tabs/locations-tabs";
+import LocationsTabs from "../locations-tabs/locations-tabs";
 
 export const MainEmpty = () => {
   return (

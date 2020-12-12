@@ -7,7 +7,7 @@ import {cities} from "../../const";
 import {selectActiveCity} from "../../selectors/selectors";
 import {processActionCreator} from "../../store/process/process-action";
 
-export const LocationsTabsComponent = ({activeCity, onCityChange}) => {
+export const LocationsTabs = ({activeCity, onCityChange}) => {
   return (
     <div className="tabs">
       <section className="locations container">
@@ -38,7 +38,7 @@ export const LocationsTabsComponent = ({activeCity, onCityChange}) => {
 
 };
 
-LocationsTabsComponent.propTypes = {
+LocationsTabs.propTypes = {
   activeCity: PropTypes.oneOf(cities).isRequired,
   onCityChange: PropTypes.func.isRequired,
 };
@@ -53,4 +53,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export const LocationsTabs = connect(mapStateToProps, mapDispatchToProps)(LocationsTabsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationsTabs);

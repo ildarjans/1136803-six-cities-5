@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import {Header} from "../header/header";
-import {LoginForm} from "../login-form/login-form";
+import Header from "../header/header";
+import LoginForm from "../login-form/login-form";
 
 export const LoginPage = () => {
   return (
