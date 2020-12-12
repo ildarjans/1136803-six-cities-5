@@ -36,16 +36,6 @@ export class Map extends React.PureComponent {
     this._ref = React.createRef();
   }
 
-  _renderMarkers() {
-    const {icons, hoveredOfferId} = this.props;
-    this._layerGroup = leaflet.layerGroup(icons.map((it) => {
-      const icon = getIcon(it, hoveredOfferId);
-      return leaflet.marker(
-          [it.lat, it.lng], {icon});
-    }));
-    this._layerGroup.addTo(this._map);
-  }
-
   componentDidUpdate() {
     const {lat, lng, zoom} = this.props.center;
     this._layerGroup.clearLayers();
@@ -68,6 +58,15 @@ export class Map extends React.PureComponent {
     this._map.setView({lat, lng}, zoom);
   }
 
+  _renderMarkers() {
+    const {icons, hoveredOfferId} = this.props;
+    this._layerGroup = leaflet.layerGroup(icons.map((it) => {
+      const icon = getIcon(it, hoveredOfferId);
+      return leaflet.marker(
+          [it.lat, it.lng], {icon});
+    }));
+    this._layerGroup.addTo(this._map);
+  }
 
   render() {
     return <div ref={this._ref} style={{height: `100%`}}/>;
