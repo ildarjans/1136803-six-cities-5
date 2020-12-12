@@ -2,7 +2,7 @@ import {ApiRoute, AppRoute} from "../const";
 import {offersActionCreator} from "../store/offers/offers-action";
 import {reviewsActionCreator} from "../store/reviews/reviews-action";
 import {nearOffersActionCreator} from "../store/near-offers/near-offers-action";
-import {authActionCreator} from "../store/user/user-action";
+import {userActionCreator} from "../store/user/user-action";
 import {processActionCreator} from "../store/process/process-action";
 import {favoritesActionCreator} from "../store/favorites/favorites-action";
 import {adaptOfferToClient} from "../utils";
@@ -15,14 +15,6 @@ export const fetchOffers = () => (dispatch, _getState, api) => {
     .catch((err) => dispatch(offersActionCreator.offersLoadingFail(err.status)));
 };
 
-export const fetchReviews = (id) => (dispatch, _getState, api) => {
-  dispatch(reviewsActionCreator.reviewsLoadingStart());
-  return api
-    .get(`${ApiRoute.REVIEWS}/${id}`)
-    .then(({data}) => dispatch(reviewsActionCreator.reviewsLoadingSuccess(data)))
-    .catch((err) => dispatch(reviewsActionCreator.reviewsLoadingFail(err.status)));
-};
-
 export const fetchNearOffers = (id) => (dispatch, _getState, api) => {
   dispatch(nearOffersActionCreator.nearOffersLoadingStart());
   return api
@@ -32,26 +24,34 @@ export const fetchNearOffers = (id) => (dispatch, _getState, api) => {
 };
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => {
-  dispatch(authActionCreator.requireAuthorizationStatus());
+  dispatch(userActionCreator.requireAuthorizationStatus());
   return api
     .get(ApiRoute.LOGIN)
-    .then(({data}) => dispatch(authActionCreator.setUserLoginProfile(data)))
+    .then(({data}) => dispatch(userActionCreator.setUserLoginProfile(data)))
+    .then(() => dispatch(userActionCreator.authorizationSuccess()))
     .then(() => dispatch(fetchFavoritesOffers()))
-    .then(() => dispatch(authActionCreator.authorizationSuccess()))
-    .catch((err) => dispatch(authActionCreator.authorizationFail(err.message)));
+    .catch((err) => dispatch(userActionCreator.authorizationFail(err.message)));
 };
 
 export const loginUser = ({email, password}) => (dispatch, _getState, api) => {
-  dispatch(authActionCreator.requireAuthorizationStatus());
+  dispatch(userActionCreator.requireAuthorizationStatus());
   return api
     .post(ApiRoute.LOGIN, {email, password})
-    .then(({data}) => dispatch(authActionCreator.setUserLoginProfile(data)))
-    .then(() => dispatch(authActionCreator.authorizationSuccess()))
+    .then(({data}) => dispatch(userActionCreator.setUserLoginProfile(data)))
+    .then(() => dispatch(userActionCreator.authorizationSuccess()))
     .then(() => dispatch(processActionCreator.redirectToRoute(AppRoute.ROOT)))
     .catch((err) => {
-      dispatch(authActionCreator.authorizationFail(err.status));
+      dispatch(userActionCreator.authorizationFail(err.status));
       dispatch(processActionCreator.redirectToRoute(AppRoute.LOGIN));
     });
+};
+
+export const fetchReviews = (id) => (dispatch, _getState, api) => {
+  dispatch(reviewsActionCreator.reviewsLoadingStart());
+  return api
+    .get(`${ApiRoute.REVIEWS}/${id}`)
+    .then(({data}) => dispatch(reviewsActionCreator.reviewsLoadingSuccess(data)))
+    .catch((err) => dispatch(reviewsActionCreator.reviewsLoadingFail(err.status)));
 };
 
 export const postReview = ({comment, rating}, id) => (dispatch, _getState, api) => {
@@ -63,7 +63,7 @@ export const postReview = ({comment, rating}, id) => (dispatch, _getState, api) 
 };
 
 export const fetchFavoritesOffers = () => (dispatch, _getState, api) => {
-  dispatch(favoritesActionCreator.favoriteOfferUpdateStart());
+  dispatch(favoritesActionCreator.favoritesLoadingStart());
   return api
     .get(ApiRoute.GET_FAVORITE)
     .then(({data}) => dispatch(favoritesActionCreator.favoritesLoadingSuccess(data)))
@@ -87,7 +87,6 @@ export const updateFavoriteOffer = (id, status) => (dispatch, _getState, api) =>
         dispatch(favoritesActionCreator.removeFavoriteOffer(adaptedOffer));
       }
     })
-    .then(()=> dispatch(fetchFavoritesOffers()))
     .then(()=> dispatch(favoritesActionCreator.favoriteOfferUpdateSuccess()))
     .catch((err) => dispatch(favoritesActionCreator.favoriteOfferUpdateFail(err.message)));
 };
