@@ -31,7 +31,6 @@ export const userReducer = (state = initialState, action) => {
     case ActionType.SET_USER_LOGIN_PROFILE:
       return extend(state, {
         user: adaptUserToClient(action.payload),
-        waitingAuthorizationResponse: false,
       });
   }
   return state;

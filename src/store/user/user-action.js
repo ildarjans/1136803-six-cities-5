@@ -1,6 +1,6 @@
 import {ActionType} from "../action-type";
 
-export const authActionCreator = {
+export const userActionCreator = {
   requireAuthorizationStatus: () => ({
     type: ActionType.SEND_AUTHORIZATION_REQUEST,
   }),

@@ -11,12 +11,13 @@ const initialState = {
 
 const addFavoriteOffer = (state, action) => {
   const city = action.payload.city.name.toUpperCase();
+  const favoriteCityOffers = state.favoriteCityOffers[city] ? state.favoriteCityOffers[city] : [];
   return extend(
       state,
       {
         updating: false,
         favoriteCityOffers: extend(state.favoriteCityOffers,
-            {[city]: [...state.favoriteCityOffers[city], action.payload]})
+            {[city]: [...favoriteCityOffers, action.payload]})
       }
   );
 };

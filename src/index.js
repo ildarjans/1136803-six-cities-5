@@ -10,11 +10,11 @@ import {rootReducer} from "./store/root-reducer";
 import {checkAuthStatus, fetchOffers} from "./middleware/thunk-api";
 
 import {App} from "./components/app/app";
-import {authActionCreator} from "./store/user/user-action";
+import {userActionCreator} from "./store/user/user-action";
 import {redirect} from "./middleware/redirect";
 
 const api = createAPI(() => {
-  store.dispatch(authActionCreator.authorizationFail());
+  store.dispatch(userActionCreator.authorizationFail());
 });
 
 const store = createStore(

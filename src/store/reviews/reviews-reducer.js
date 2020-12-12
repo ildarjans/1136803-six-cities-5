@@ -13,7 +13,7 @@ export const reviewsReducer = (state = initialState, action) => {
     case ActionType.REVIEWS_LOADING_START:
       return extend(state, {
         reviews: [],
-        loading: false,
+        loading: true,
         error: null,
       });
     case ActionType.REVIEWS_LOADING_SUCCESS:
